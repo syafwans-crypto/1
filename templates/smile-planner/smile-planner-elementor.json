@@ -1,0 +1,4102 @@
+{
+  "content": [
+    {
+      "id": "09c60b1",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "gradient",
+        "background_color": "#EAF9FC",
+        "background_color_b": "#FFFFFF",
+        "background_gradient_angle": {
+          "unit": "deg",
+          "size": 180,
+          "sizes": []
+        }
+      },
+      "elements": [
+        {
+          "id": "a8d11f9",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 55,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "fa152d2",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Smile Upgrade Planner 2026",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#0EA5C6",
+                "background_background": "classic",
+                "background_color": "#EAF9FC",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "0b83d55",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Senyuman nampak kemas, wajah pun terus lebih yakin",
+                "header_size": "h1",
+                "align": "left",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 44,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "31342e4",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Tak pasti nak mula dengan braces, whitening, scaling atau rawatan lain? Di Klinik Pergigian Everglo, kami bantu semak keadaan gigi anda dan cadangkan pilihan rawatan yang sesuai dengan senyuman anda.</p>",
+                "text_color": "#667085",
+                "align": "left",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "49b3c6e",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "button",
+              "settings": {
+                "text": "Book Appointment Hari Ini",
+                "link": {
+                  "url": "#lead",
+                  "is_external": "",
+                  "nofollow": "",
+                  "custom_attributes": ""
+                },
+                "align": "left",
+                "background_color": "#FF6B5A",
+                "button_text_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "700",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "border_radius": {
+                  "unit": "px",
+                  "top": "50",
+                  "right": "50",
+                  "bottom": "50",
+                  "left": "50",
+                  "isLinked": false
+                },
+                "text_padding": {
+                  "unit": "px",
+                  "top": "16",
+                  "right": "28",
+                  "bottom": "16",
+                  "left": "28",
+                  "isLinked": false
+                },
+                "icon": {
+                  "value": "fas fa-arrow-right-long",
+                  "library": "fa-solid"
+                },
+                "icon_align": "right"
+              },
+              "elements": []
+            },
+            {
+              "id": "125c122",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {
+                    "_id": "65854fe",
+                    "text": "Konsultasi mesra",
+                    "selected_icon": {
+                      "value": "fas fa-check",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "43a38e3",
+                    "text": "Rawatan ikut kesesuaian gigi",
+                    "selected_icon": {
+                      "value": "fas fa-check",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "3c62788",
+                    "text": "Klinik moden & selesa",
+                    "selected_icon": {
+                      "value": "fas fa-check",
+                      "library": "fa-solid"
+                    }
+                  }
+                ],
+                "space_between": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "icon_color": "#22C55E",
+                "text_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "500",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            }
+          ]
+        },
+        {
+          "id": "3d111c2",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 45,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "f277785",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "REPLACE_WITH_YOUR_SITE/wp-content/uploads/smile-planner/hero.jpg",
+                  "id": 0,
+                  "alt": "",
+                  "source": "library"
+                },
+                "image_size": "large",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "28",
+                  "right": "28",
+                  "bottom": "28",
+                  "left": "28",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "402ad94",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {
+                    "_id": "e6f5dbe",
+                    "text": "5.0 / 5.0 -- 378 ulasan Google",
+                    "selected_icon": {
+                      "value": "fas fa-star",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "c82355a",
+                    "text": "Mesra first-timer yang nervous",
+                    "selected_icon": {
+                      "value": "fas fa-shield-heart",
+                      "library": "fa-solid"
+                    }
+                  }
+                ],
+                "space_between": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "icon_color": "#22C55E",
+                "text_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "500",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ae31c5f",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "id": "205869f",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "6b95ff9",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Kadang-kadang bukan tak cantik... cuma senyuman belum kena upgrade",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "d68e91a",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Ramai orang nampak okay dari jauh, tapi bila nak bergambar mula rasa serba salah. Ada yang tutup mulut bila ketawa. Ada yang senyum separuh je. Ada juga yang dah lama nak buat rawatan gigi, tapi tak tahu nak mula dari mana.</p>",
+                "text_color": "#667085",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "15ec27f",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "8fb8aea",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "c0d367e",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-teeth",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Gigi tak tersusun atau berlapis",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "7e062c0",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "67dcb42",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-tooth",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Gigi kuning walaupun dah berus hari-hari",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "b150c71",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "80c2d78",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-wind",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Karang gigi / nafas kurang segar",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "931c6e2",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "cbd6719",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-gear",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Gigi ada gap, rosak atau hilang",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "7c24a95",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "7e1879a",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Kalau salah satu ni kena dengan anda, mungkin dah sampai masa untuk buat pemeriksaan gigi.</p>",
+                    "text_color": "#1D2939",
+                    "align": "center",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Roboto",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 17,
+                      "sizes": []
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.7,
+                      "sizes": []
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "09c8848",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#EAF9FC"
+      },
+      "elements": [
+        {
+          "id": "309fcb3",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "dbfed10",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "UNTUK 2026",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#0EA5C6",
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "94b8c2b",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Untuk anda yang nak nampak lebih kemas dalam setiap gambar, meeting & momen penting",
+                "header_size": "h2",
+                "align": "left",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 30,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "24d534d",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Senyuman yang kemas boleh bantu penampilan nampak lebih terjaga. Bukan sebab nak jadi orang lain, tapi sebab anda layak rasa lebih yakin dengan diri sendiri.</p>",
+                "text_color": "#667085",
+                "align": "left",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            }
+          ]
+        },
+        {
+          "id": "b685681",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "d977221",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {
+                    "_id": "b42a7ec",
+                    "text": "Nak yakin waktu bergambar",
+                    "selected_icon": {
+                      "value": "fas fa-camera-retro",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "2288930",
+                    "text": "Nak senyum lebih natural masa kerja",
+                    "selected_icon": {
+                      "value": "fas fa-briefcase",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "4719601",
+                    "text": "Nak bersedia untuk majlis / wedding / raya",
+                    "selected_icon": {
+                      "value": "fas fa-ring",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "018898b",
+                    "text": "Nak mula jaga penampilan tanpa nampak over",
+                    "selected_icon": {
+                      "value": "fas fa-wand-magic-sparkles",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "a2b612a",
+                    "text": "Nak rawatan yang sesuai, bukan main pilih sendiri",
+                    "selected_icon": {
+                      "value": "fas fa-user-check",
+                      "library": "fa-solid"
+                    }
+                  }
+                ],
+                "space_between": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "icon_color": "#22C55E",
+                "text_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "500",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9c7b302",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "id": "2075492",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "338c555",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "SMILE UPGRADE PLANNER",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#0EA5C6",
+                "background_background": "classic",
+                "background_color": "#EAF9FC",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "cc62713",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Tak tahu rawatan apa sesuai? Mulakan dengan Smile Upgrade Planner",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "54b507f",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Doktor akan periksa keadaan gigi anda terlebih dahulu, kemudian cadangkan rawatan yang sesuai berdasarkan masalah dan matlamat senyuman anda.</p>",
+                "text_color": "#667085",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "9f45c1c",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "830adf7",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "d57ae09",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-comment-dots",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "1. WhatsApp & pilih slot",
+                        "description_text": "Mesej kami untuk tempah masa yang sesuai dengan jadual anda.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "b8c442d",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "1caeab5",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-magnifying-glass",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "2. Pemeriksaan gigi",
+                        "description_text": "Doktor semak keadaan gigi, gusi dan susunan senyuman anda.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "9dbe89e",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "a692358",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-list-check",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "3. Doktor cadangkan pilihan",
+                        "description_text": "Anda dapat cadangan rawatan ikut masalah dan matlamat sebenar.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "495f3ca",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 25,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "d852d6a",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-tooth",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "4. Mulakan rawatan",
+                        "description_text": "Teruskan rawatan ikut kesesuaian anda -- tanpa rasa terburu-buru.",
+                        "icon_color": "#7EDDD3",
+                        "icon_background_color": "#0F2F44",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#FFFFFF",
+                        "description_color": "rgba(255,255,255,0.82)",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9dd9279",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "cbcd984",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "button",
+                  "settings": {
+                    "text": "Book Appointment Hari Ini",
+                    "link": {
+                      "url": "#lead",
+                      "is_external": "",
+                      "nofollow": "",
+                      "custom_attributes": ""
+                    },
+                    "align": "center",
+                    "background_color": "#FF6B5A",
+                    "button_text_color": "#FFFFFF",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Poppins",
+                    "typography_font_weight": "700",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 17,
+                      "sizes": []
+                    },
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "50",
+                      "right": "50",
+                      "bottom": "50",
+                      "left": "50",
+                      "isLinked": false
+                    },
+                    "text_padding": {
+                      "unit": "px",
+                      "top": "16",
+                      "right": "28",
+                      "bottom": "16",
+                      "left": "28",
+                      "isLinked": false
+                    },
+                    "icon": {
+                      "value": "fas fa-arrow-right-long",
+                      "library": "fa-solid"
+                    },
+                    "icon_align": "right"
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19f8bbe",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#F6FAFB"
+      },
+      "elements": [
+        {
+          "id": "de5565b",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "8a6430a",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Rawatan yang boleh bantu senyuman anda nampak lebih kemas",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "06e9912",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "eabd22b",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "375cea5",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-teeth",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Braces / Pendakap Gigi",
+                        "description_text": "Untuk bantu susunan gigi yang tidak teratur.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "5e0c06d",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "e9fa60d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-tooth",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Scaling & Polishing",
+                        "description_text": "Untuk bersihkan karang gigi dan rasa mulut lebih segar.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "0fa5ec7",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "8cfe012",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-star",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Teeth Whitening",
+                        "description_text": "Untuk bantu gigi nampak lebih cerah.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "6616a61",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "6196948",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "363773d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-crown",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Crown & Bridge",
+                        "description_text": "Untuk kes gigi rosak, patah atau perlukan perlindungan tambahan.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "f53d1a4",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "c53da1b",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-teeth-open",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Denture / Gigi Palsu",
+                        "description_text": "Untuk kes kehilangan gigi dan mahu fungsi mengunyah lebih baik.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "dfe0fb0",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "e8b284f",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-stethoscope",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Consultation",
+                        "description_text": "Untuk mereka yang belum pasti rawatan mana sesuai.",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "04e8cf1",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "57fa295",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Cadangan rawatan bergantung kepada pemeriksaan doktor.</p>",
+                    "text_color": "#667085",
+                    "align": "center",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Roboto",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 17,
+                      "sizes": []
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.7,
+                      "sizes": []
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f4e7a51",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "id": "d6335d6",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "ba9946e",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Kenapa ramai pilih Klinik Pergigian Everglo?",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "7f6b4f4",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "e2e4ee2",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "662e2b6",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-wand-sparkles",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Klinik bersih, moden & selesa",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "410f58f",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "d36bbee",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-user-doctor",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Doktor gigi yang mesra dan teliti",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "0d9abc6",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "c5a40b0",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-heart",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Sesuai untuk first timer yang nervous",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "0e4a310",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "a7333dd",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "570e51a",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-comment-dots",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Penjelasan rawatan yang mudah faham",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "deeb920",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "a450e23",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-location-dot",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Lokasi mudah diakses",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "32741be",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "d1e6b65",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-clipboard-check",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Fokus pada rawatan yang sesuai dengan keadaan gigi",
+                        "description_text": "",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0d46a3e",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#F6FAFB"
+      },
+      "elements": [
+        {
+          "id": "729d239",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "5398d40",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Di antara panel & rakan kongsi kami",
+                "header_size": "p",
+                "align": "center",
+                "title_color": "#667085",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "83ecf85",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "image-gallery",
+              "settings": {
+                "wp_gallery": [
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/pmcare.png",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/health-metrics.png",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/b5e829_54465ad042e949de8b121ae119da2eeb_mv2.png",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/miya.png",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  }
+                ],
+                "gallery_columns": "4",
+                "gallery_link": "none",
+                "gallery_rand": "no"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b333794",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#EAF9FC"
+      },
+      "elements": [
+        {
+          "id": "567fbac",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "3ccc34c",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Mereka datang dengan rasa takut-takut... balik dengan senyuman lebih lega",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "62993c7",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "5425f35",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "79d90e2",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "testimonial",
+                      "settings": {
+                        "testimonial_content": "Letakkan review sebenar pelanggan di sini.",
+                        "testimonial_name": "Nama Pelanggan",
+                        "testimonial_job": "★★★★★ Google Review",
+                        "testimonial_image": {
+                          "url": "",
+                          "id": 0
+                        },
+                        "testimonial_content_color": "#667085",
+                        "testimonial_name_color": "#0F2F44"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "048d15d",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "00f53a4",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "testimonial",
+                      "settings": {
+                        "testimonial_content": "Letakkan review sebenar pelanggan di sini.",
+                        "testimonial_name": "Nama Pelanggan",
+                        "testimonial_job": "★★★★★ Google Review",
+                        "testimonial_image": {
+                          "url": "",
+                          "id": 0
+                        },
+                        "testimonial_content_color": "#667085",
+                        "testimonial_name_color": "#0F2F44"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "8c726d4",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "7a32fe7",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "testimonial",
+                      "settings": {
+                        "testimonial_content": "Letakkan review sebenar pelanggan di sini.",
+                        "testimonial_name": "Nama Pelanggan",
+                        "testimonial_job": "★★★★★ Google Review",
+                        "testimonial_image": {
+                          "url": "",
+                          "id": 0
+                        },
+                        "testimonial_content_color": "#667085",
+                        "testimonial_name_color": "#0F2F44"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4a36a05",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "703393d",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "image-gallery",
+                  "settings": {
+                    "wp_gallery": [
+                      {
+                        "url": "REPLACE_WITH_YOUR_SITE/wp-content/uploads/smile-planner/social-proof-1.jpg",
+                        "id": 0,
+                        "alt": "",
+                        "source": "library"
+                      },
+                      {
+                        "url": "REPLACE_WITH_YOUR_SITE/wp-content/uploads/smile-planner/social-proof-2.jpg",
+                        "id": 0,
+                        "alt": "",
+                        "source": "library"
+                      }
+                    ],
+                    "gallery_columns": "2",
+                    "gallery_link": "none",
+                    "gallery_rand": "no"
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01fc90e",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "id": "1734e75",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "4086ea6",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "VIDEO TESTIMONI",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#0EA5C6",
+                "background_background": "classic",
+                "background_color": "#EAF9FC",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "7de5d93",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Apa kata pelanggan kami",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "d55e74c",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Dengar sendiri pengalaman pesakit kami melalui video review di YouTube.</p>",
+                "text_color": "#667085",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "35e0ff8",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "b646319",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "610ad8e",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "video",
+                      "settings": {
+                        "video_type": "youtube",
+                        "youtube_url": "https://www.youtube.com/watch?v=ntRx9e_iGW0",
+                        "lazy_load": "yes"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "08caaa4",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "a92b4d8",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "video",
+                      "settings": {
+                        "video_type": "youtube",
+                        "youtube_url": "https://www.youtube.com/watch?v=LNB73zTz4CY",
+                        "lazy_load": "yes"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "301d4a1",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "d32220e",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "video",
+                      "settings": {
+                        "video_type": "youtube",
+                        "youtube_url": "https://www.youtube.com/watch?v=DA0Bs8ytlHE",
+                        "lazy_load": "yes"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "8759b9f",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "ff4436e",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "e54f90d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "video",
+                      "settings": {
+                        "video_type": "youtube",
+                        "youtube_url": "https://www.youtube.com/watch?v=X3Y4df1Uu1E",
+                        "lazy_load": "yes"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "f832b38",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "1ec6f61",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "video",
+                      "settings": {
+                        "video_type": "youtube",
+                        "youtube_url": "https://www.youtube.com/watch?v=CzxqiGhJNcw",
+                        "lazy_load": "yes"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "8d35fb1",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 33.33,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "a416921",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "video",
+                      "settings": {
+                        "video_type": "youtube",
+                        "youtube_url": "https://www.youtube.com/watch?v=X3Y4df1Uu1E",
+                        "lazy_load": "yes"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "cb0848e",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "2b564d6",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "video",
+                  "settings": {
+                    "video_type": "youtube",
+                    "youtube_url": "https://www.youtube.com/watch?v=JpUpLvj4aI4",
+                    "lazy_load": "yes"
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cff448c",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "id": "a256f68",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "b2e5bfb",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "REPLACE_WITH_YOUR_SITE/wp-content/uploads/smile-planner/clinic-experience.jpg",
+                  "id": 0,
+                  "alt": "",
+                  "source": "library"
+                },
+                "image_size": "large",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "26",
+                  "right": "26",
+                  "bottom": "26",
+                  "left": "26",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            }
+          ]
+        },
+        {
+          "id": "28541a6",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "04e3473",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Bukan klinik yang menakutkan. Ini tempat untuk mula jaga senyuman anda.",
+                "header_size": "h2",
+                "align": "left",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 28,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "b433ecc",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Kami faham ramai orang tangguh jumpa doktor gigi sebab takut sakit, takut kena judge, atau risau kos rawatan. Di Everglo, kami bantu anda faham keadaan gigi dulu sebelum buat keputusan.</p>",
+                "text_color": "#667085",
+                "align": "left",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "ee5b5a5",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {
+                    "_id": "f1a129a",
+                    "text": "Pemeriksaan dengan penerangan jelas",
+                    "selected_icon": {
+                      "value": "fas fa-magnifying-glass",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "9c9440c",
+                    "text": "Cadangan rawatan ikut keperluan",
+                    "selected_icon": {
+                      "value": "fas fa-list-check",
+                      "library": "fa-solid"
+                    }
+                  },
+                  {
+                    "_id": "6c090d3",
+                    "text": "Suasana klinik yang tenang dan selesa",
+                    "selected_icon": {
+                      "value": "fas fa-spa",
+                      "library": "fa-solid"
+                    }
+                  }
+                ],
+                "space_between": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "icon_color": "#22C55E",
+                "text_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "500",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1492ac",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#EAF9FC"
+      },
+      "elements": [
+        {
+          "id": "319daae",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "a2be3f9",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "GALERI",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#0EA5C6",
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "f700783",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Galeri Klinik Pergigian Everglo",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "22ec6ee",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Suasana klinik, pasukan kami dan momen pesakit yang pulang dengan senyuman lebih yakin.</p>",
+                "text_color": "#667085",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "901ac8a",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "image-gallery",
+              "settings": {
+                "wp_gallery": [
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/PHOTO-2023-06-15-19-04-24.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/photo_2025-09-03_11-18-07-2.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/348be99b-188f-483a-9961-8aa8b4965153.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-09-at-12.26.41_2b1b58c2.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951-1.png",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2953.png",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/e5ac2881-8d63-4d45-9efb-37aa7d2366da.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/68f5b174-860a-4cda-b248-1f74bb733314.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  },
+                  {
+                    "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/photo_2025-09-03_11-18-06-5.jpg",
+                    "id": 0,
+                    "alt": "",
+                    "source": "library"
+                  }
+                ],
+                "gallery_columns": "3",
+                "gallery_link": "none",
+                "gallery_rand": "no"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "150f013",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#F6FAFB"
+      },
+      "elements": [
+        {
+          "id": "553453d",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "28311bb",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "DOKTOR KAMI",
+                "header_size": "p",
+                "align": "left",
+                "title_color": "#0EA5C6",
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "600",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_letter_spacing": {
+                  "unit": "px",
+                  "size": 0.6,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "5923e75",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Kenali doktor yang akan rawat anda",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 34,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "63524bf",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Pasukan doktor gigi yang mesra, teliti dan biasa berdepan dengan pesakit yang nervous.</p>",
+                "text_color": "#667085",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "b03e221",
+              "elType": "section",
+              "isInner": true,
+              "settings": {
+                "content_width": "full"
+              },
+              "elements": [
+                {
+                  "id": "e017130",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 50,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "5c24d14",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "image",
+                      "settings": {
+                        "image": {
+                          "url": "REPLACE_WITH_YOUR_SITE/wp-content/uploads/smile-planner/dr-farah.png",
+                          "id": 0,
+                          "alt": "",
+                          "source": "library"
+                        },
+                        "image_size": "large",
+                        "border_radius": {
+                          "unit": "px",
+                          "top": "999",
+                          "right": "999",
+                          "bottom": "999",
+                          "left": "999",
+                          "isLinked": false
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "c3ead9d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Dr. Farah Fatah",
+                        "header_size": "h3",
+                        "align": "left",
+                        "title_color": "#0F2F44",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Poppins",
+                        "typography_font_weight": "800",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 22,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "c60d455",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>Pengarah & Doktor Gigi</p>",
+                        "text_color": "#0EA5C6",
+                        "align": "left",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Roboto",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "600",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "8732cfe",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>Pengasas Klinik Pergigian Everglo dengan pengalaman hampir 10 tahun. Dr. Farah dikenali dengan pendekatan yang lembut dan teliti -- terutama untuk pesakit yang takut atau pertama kali jumpa doktor gigi.</p>",
+                        "text_color": "#667085",
+                        "align": "left",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Roboto",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 17,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "400",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "9a73b8b",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>\"Saya sedia membantu memberikan rawatan yang berkualiti untuk keselesaan setiap pesakit.\"</p>",
+                        "text_color": "#1D2939",
+                        "align": "left",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Roboto",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 17,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "400",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "d51c8b5",
+                  "elType": "column",
+                  "isInner": false,
+                  "settings": {
+                    "_column_size": 50,
+                    "_inline_size": null
+                  },
+                  "elements": [
+                    {
+                      "id": "7d542d2",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "selected_icon": {
+                          "value": "fas fa-user-doctor",
+                          "library": "fa-solid"
+                        },
+                        "title_text": "Dr. Najmina",
+                        "description_text": "Letak foto",
+                        "icon_color": "#0EA5C6",
+                        "icon_background_color": "#EAF9FC",
+                        "icon_view": "framed",
+                        "icon_shape": "circle",
+                        "icon_size": {
+                          "unit": "px",
+                          "size": 20,
+                          "sizes": []
+                        },
+                        "icon_padding": {
+                          "unit": "px",
+                          "size": 14,
+                          "sizes": []
+                        },
+                        "title_color": "#0F2F44",
+                        "description_color": "#667085",
+                        "title_typography_typography": "custom",
+                        "title_typography_font_family": "Poppins",
+                        "title_typography_font_weight": "700",
+                        "title_typography_font_size": {
+                          "unit": "px",
+                          "size": 18,
+                          "sizes": []
+                        },
+                        "description_typography_typography": "custom",
+                        "description_typography_font_family": "Roboto",
+                        "description_typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "position": "top"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "38a97e1",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Dr. Najmina",
+                        "header_size": "h3",
+                        "align": "left",
+                        "title_color": "#0F2F44",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Poppins",
+                        "typography_font_weight": "800",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 22,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "bb69194",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>Doktor Gigi</p>",
+                        "text_color": "#0EA5C6",
+                        "align": "left",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Roboto",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 15,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "600",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "0541f79",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>Doktor gigi yang mesra dan sabar, komited untuk bantu setiap pesakit faham keadaan gigi mereka sebelum mula rawatan. Berpengalaman dalam rawatan pergigian am dan kosmetik untuk semua peringkat umur.</p>",
+                        "text_color": "#667085",
+                        "align": "left",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Roboto",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 17,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "400",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "68055cd",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p>\"Setiap pesakit layak rasa selesa dan faham setiap langkah rawatan mereka.\"</p>",
+                        "text_color": "#1D2939",
+                        "align": "left",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Roboto",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 17,
+                          "sizes": []
+                        },
+                        "typography_font_weight": "400",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.7,
+                          "sizes": []
+                        }
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "58ddde8",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "7728eb1",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Kemas kini foto & maklumat sebenar Dr. Najmina di sini.</p>",
+                    "text_color": "#667085",
+                    "align": "center",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Roboto",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": []
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.7,
+                      "sizes": []
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "69adf20",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#0F2F44",
+        "_element_id": "lead"
+      },
+      "elements": [
+        {
+          "id": "423e05c",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "8ea9c5b",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Nak kami bantu semak rawatan yang sesuai untuk anda?",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "19987ca",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Isi maklumat ringkas di bawah. Team Everglo akan hubungi anda untuk bantu pilih slot dan beri info lanjut.</p>",
+                "text_color": "rgba(255,255,255,0.78)",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "0541c9c",
+              "elType": "column",
+              "isInner": false,
+              "settings": {
+                "_column_size": 100,
+                "_inline_size": null
+              },
+              "elements": [
+                {
+                  "id": "2931cef",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "FORM FLUENTFORM",
+                    "header_size": "p",
+                    "align": "left",
+                    "title_color": "#0EA5C6",
+                    "background_background": "classic",
+                    "background_color": "#EAF9FC",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Poppins",
+                    "typography_font_weight": "600",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 13,
+                      "sizes": []
+                    },
+                    "typography_letter_spacing": {
+                      "unit": "px",
+                      "size": 0.6,
+                      "sizes": []
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "e13abcd",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "shortcode",
+                  "settings": {
+                    "shortcode": "[fluentform id=\"3\"]"
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "f2948ab",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p>Borang sebenar (Nama, Nombor WhatsApp, Rawatan diminati, Masalah gigi, Lokasi) akan dipaparkan di sini.</p>",
+                    "text_color": "#667085",
+                    "align": "center",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Roboto",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 14,
+                      "sizes": []
+                    },
+                    "typography_font_weight": "400",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.7,
+                      "sizes": []
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "925b8fa",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 820,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF"
+      },
+      "elements": [
+        {
+          "id": "a3bc3aa",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "da5a655",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Soalan yang selalu orang tanya sebelum datang klinik",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#0F2F44",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "ac57624",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "accordion",
+              "settings": {
+                "tabs": [
+                  {
+                    "_id": "f0cf0f7",
+                    "tab_title": "Adakah saya perlu membuat temujanji?",
+                    "tab_content": "Ya, adalah dinasihatkan untuk membuat temu janji untuk mengelakkan masa menunggu yang lebih lama."
+                  },
+                  {
+                    "_id": "f9a1734",
+                    "tab_title": "Adakah saya mendapat panggilan setelah membuat temu janji dalam talian?",
+                    "tab_content": "Ya, kami akan menghubungi anda dan jadualkan temu janji mengikut keselesaan anda. Penyambut tetamu akan membimbing anda melalui proses tersebut."
+                  },
+                  {
+                    "_id": "c14547a",
+                    "tab_title": "Saya takut dengan doktor gigi. Bolehkah anda membantu saya?",
+                    "tab_content": "Kami adalah doktor berpengalaman dan profesional, kami menyediakan pesakit dengan penjagaan yang terbaik sepanjang lawatan mereka. Setelah kebimbangan pergigian anda diuruskan, barulah kami akan meneruskan prosedur rawatan."
+                  },
+                  {
+                    "_id": "cfb6855",
+                    "tab_title": "Saya mempunyai banyak pertanyaan. Boleh saya tanya dalam talian?",
+                    "tab_content": "Jangan ragu untuk berjalan masuk bila-bila masa. Muatkan kami dengan semua keraguan dan kebimbangan anda mengenai rawatan pergigian. Kami membangunkan hubungan Pesakit -- Doktor dan menjamin kepuasan anda."
+                  },
+                  {
+                    "_id": "96444d7",
+                    "tab_title": "Adakah saya akan mengalami sakit semasa prosedur rawatan?",
+                    "tab_content": "Matlamat kami adalah untuk menyediakan penjagaan pergigian dengan profesionalisme yang terbaik dan keselesaan pesakit adalah keutamaan kami. Kami memberi jaminan bahawa rawatan anda akan menjadi pengalaman yang tidak menyakitkan dan selesa."
+                  },
+                  {
+                    "_id": "63c862a",
+                    "tab_title": "Adakah anda menerima perlindungan insurans?",
+                    "tab_content": "Ya, kami terima. Kami mempunyai beberapa perlindungan insurans yang tersedia di klinik pergigian kami."
+                  },
+                  {
+                    "_id": "7bc3694",
+                    "tab_title": "Adakah anda menerima kad kredit / debit?",
+                    "tab_content": "Ya, boleh."
+                  },
+                  {
+                    "_id": "49f5ff8",
+                    "tab_title": "Bolehkah saya membuat pembayaran secara ansuran?",
+                    "tab_content": "Jika anda mempunyai kad kredit MAYBANK, ya ansuran boleh. Kami juga menyediakan Atome dan Grab PayLater."
+                  },
+                  {
+                    "_id": "75ca4d9",
+                    "tab_title": "Di mana saya boleh mencari Klinik Everglo?",
+                    "tab_content": "Kami berada di Bandar Puteri Bangi, berdekatan Lotus's Bandar Puteri Bangi. No 8 (GF), Jalan Puteri 2A/3, Bandar Puteri Bangi, 43000 Kajang, Selangor. Anda juga boleh menggunakan Google Maps atau Waze untuk mencari kami."
+                  }
+                ],
+                "title_html_tag": "h3",
+                "icon": {
+                  "value": "fas fa-plus",
+                  "library": "fa-solid"
+                },
+                "icon_active": {
+                  "value": "fas fa-minus",
+                  "library": "fa-solid"
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c19bf0d",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "gradient",
+        "background_color": "#0F2F44",
+        "background_color_b": "#15425E",
+        "background_gradient_angle": {
+          "unit": "deg",
+          "size": 135,
+          "sizes": []
+        }
+      },
+      "elements": [
+        {
+          "id": "ebb304b",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "515fcfa",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "2026 ni, jangan lagi simpan senyuman dalam hati",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 38,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "35988f7",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Mulakan dengan satu langkah kecil. Check dulu keadaan gigi anda, kemudian barulah pilih rawatan yang sesuai.</p>",
+                "text_color": "rgba(255,255,255,0.82)",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "e511af3",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "button",
+              "settings": {
+                "text": "Book Appointment Hari Ini",
+                "link": {
+                  "url": "#lead",
+                  "is_external": "",
+                  "nofollow": "",
+                  "custom_attributes": ""
+                },
+                "align": "center",
+                "background_color": "#FF6B5A",
+                "button_text_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "700",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "border_radius": {
+                  "unit": "px",
+                  "top": "50",
+                  "right": "50",
+                  "bottom": "50",
+                  "left": "50",
+                  "isLinked": false
+                },
+                "text_padding": {
+                  "unit": "px",
+                  "top": "16",
+                  "right": "28",
+                  "bottom": "16",
+                  "left": "28",
+                  "isLinked": false
+                },
+                "icon": {
+                  "value": "fas fa-calendar-check",
+                  "library": "fa-solid"
+                },
+                "icon_align": "right"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "abb1b69",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "layout": "boxed",
+        "content_width": {
+          "unit": "px",
+          "size": 1180,
+          "sizes": []
+        },
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#0EA5C6"
+      },
+      "elements": [
+        {
+          "id": "b72413d",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "7c93954",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/Logo-Bg-Transparent-1.png",
+                  "id": 0,
+                  "alt": "",
+                  "source": "library"
+                },
+                "image_size": "large",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "20",
+                  "left": "20",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "cca0e48",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "heading",
+              "settings": {
+                "title": "Everglo Dental",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Poppins",
+                "typography_font_weight": "800",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 24,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "e7df9e7",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p><a href=\"https://klinikpergigianeverglo.com/term-of-services/\" style=\"color:inherit;\">Term of condition</a> | <a href=\"https://klinikpergigianeverglo.com/privacy-policy/\" style=\"color:inherit;\">Privacy Policy</a></p>",
+                "text_color": "rgba(255,255,255,0.92)",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "0f807ac",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Copyright@Everglo Dental. All Rights Reserved. Powered by <a href=\"https://srsadvertisement.com/\" style=\"color:#fff;\">SRS Advertisement</a></p>",
+                "text_color": "rgba(255,255,255,0.92)",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 17,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "2392554",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Disclaimer: TikTok is a Registered Trademark of TikTok.com. Google is a Registered Trademark of Google.com. Facebook or FB is a Registered Trademark of Facebook.com. Everglo Dental is not affiliated with TikTok.com, Google.com & Facebook.com in any way, nor does they sponsor or approve any of products. All trademarks mentioned here are copyrighted by their respective owners</p>",
+                "text_color": "rgba(255,255,255,0.62)",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "82cd3c3",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Privacy Policy: We use Google AdWords Remarketing, Facebook Ads Remarketing & TikTok Ads Remarketing to advertise this website across the Internet. All Ads Remarketing will display relevant ads tailored to you based on what parts of this website you have viewed by placing a cookie on your machine. This cookie does not in anyway identify you or give access to your computer. The cookie is used to say \"This person visited this page, so show them ads relating to that page.\" Ads Remarketing allows us to tailor our marketing to better suit your needs and only display ads that are relevant to you. If you do not wish to participate in our Ads Remarketing, you can opt out by visiting Ads Preferences Manager.</p>",
+                "text_color": "rgba(255,255,255,0.62)",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Roboto",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 13,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.7,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Smile Upgrade Planner 2026 -- Klinik Pergigian Everglo",
+  "type": "page"
+}
