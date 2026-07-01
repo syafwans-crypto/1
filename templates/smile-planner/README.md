@@ -1,72 +1,52 @@
-# Smile Upgrade Planner 2026 — Elementor Template
+# Smile Upgrade Planner 2026 — Elementor Template (pixel-faithful)
 
-Elementor-editable version of the "Smile Upgrade Planner 2026" landing page
-for Klinik Pergigian Everglo, converted from the Claude Design source file
-(`templates/smile-planner/SmilePlanner.dc.html`).
+Elementor page template for the "Smile Upgrade Planner 2026" landing page
+(Klinik Pergigian Everglo), converted from the Claude Design source so it
+renders **identically** to the original design.
 
-## What's here
+`preview.png` shows the rendered output.
 
-- `smile-planner-elementor.json` — an Elementor **page template** (16 sections,
-  179 elements) built entirely from native **free** Elementor widgets:
-  heading, text-editor, button, icon-list, icon-box, image, image-gallery,
-  video, testimonial, accordion, shortcode. No Elementor Pro required.
-- `assets/` — 5 images that were embedded directly in the design file (no
-  public URL): `hero.jpg`, `social-proof-1.jpg`, `social-proof-2.jpg`,
-  `clinic-experience.jpg`, `dr-farah.png`.
+## Approach — why this looks exactly like the design
+
+Elementor's free widgets can't reproduce the design's exact CSS (gradients,
+badges, floating cards, custom spacing), so instead of rebuilding it widget by
+widget, this template keeps each design section's **original HTML + inline CSS
+intact inside Elementor HTML widgets**. The result is pixel-for-pixel the same
+as Claude Design, while every section remains a separate, rearrangeable
+Elementor block.
+
+- **Fonts**: Poppins + Roboto load from Google Fonts (CDN).
+- **Icons**: Font Awesome 6.5 loads from CDN.
+- **Brand colors**: promoted to `:root` CSS variables (`--blue`, `--navy`, …).
+- **The 5 photos** that were embedded in the design with no public URL
+  (hero, 2 social-proof photos, clinic interior, Dr. Farah) are inlined as
+  optimized **data-URI JPEGs** — so the file is fully self-contained and needs
+  **no media upload**. Originals are in `assets/` for reference.
 
 ## How to import
 
-1. In WordPress, go to **Templates → Saved Templates → Import Templates**
-   (or, when editing/creating a page, open Elementor and use
-   **Folder icon → Import Template**).
-2. Upload `smile-planner-elementor.json`.
-3. Insert the imported template into a new/existing page.
+1. WordPress admin → **Templates → Saved Templates**.
+2. Click **Import Templates** (top of the page).
+3. Upload `smile-planner-elementor.json`.
+4. Edit any page with Elementor → folder icon → **My Templates** → insert it.
 
-## After import — fix the 5 placeholder images
+> If import times out, it's a server (LiteSpeed/PHP) limit, not the file.
+> This version is structurally light (17 HTML-widget sections, ~50 elements
+> vs. 179 before) so it imports far faster than a full native-widget rebuild.
+> If it still stalls, raise PHP `max_execution_time`/memory or ask your host
+> to increase the LiteSpeed connection timeout.
 
-The JSON references these under a placeholder path
-(`REPLACE_WITH_YOUR_SITE/wp-content/uploads/smile-planner/...`) because the
-original design file embedded them as inline data with no public URL.
-Elementor template exports never embed binary images either way — they
-always point at Media Library URLs — so this step is normal for any
-imported template with foreign images, not specific to this conversion:
+## What still needs the live site
 
-1. Upload the 5 files in `assets/` to your WordPress Media Library.
-2. In Elementor, click each broken image (Hero, the 2 social-proof photos,
-   the Clinic Experience photo, Dr. Farah's photo) and reselect it from the
-   Media Library.
+These reference the live `klinikpergigianeverglo.com` URLs and appear blank
+only in an offline preview — they load normally once the page is on your site:
 
-All other images (clinic gallery, partner logos, footer logo) already point
-at the live `klinikpergigianeverglo.com` URLs from the original design and
-need no changes.
+- Partner/panel logo marquee
+- Clinic gallery (9 photos)
+- YouTube video testimonials
+- Footer logo
 
-## Fonts & colors
+## Lead form
 
-The template uses **Poppins** (headings) and **Roboto** (body) with inline
-typography settings matching the brand palette:
-
-| Token  | Hex       | Token  | Hex       |
-|--------|-----------|--------|-----------|
-| Navy   | `#0F2F44` | Mint   | `#7EDDD3` |
-| Blue   | `#0EA5C6` | Grey   | `#F6FAFB` |
-| Sky    | `#EAF9FC` | CTA    | `#FF6B5A` |
-
-Elementor will auto-load Poppins/Roboto from Google Fonts — no extra font
-setup needed.
-
-## Known simplifications vs. the original design
-
-Elementor's free widgets don't support arbitrary CSS, so a few visual
-details from the original HTML were adapted rather than pixel-matched
-(everything below is freely re-editable after import):
-
-- The rotating logo **marquee** is a static 4-up image gallery instead of
-  an animated strip.
-- The two floating badges over the hero photo ("5.0 Google rating",
-  "Mesra first-timer") are a stacked icon-list under the image rather than
-  absolutely-positioned overlays.
-- The numbered "1–4" Smile Upgrade Planner steps use plain numerals in the
-  heading text instead of custom number badges.
-- The `[fluentform id="3"]` lead form is inserted via Elementor's
-  **Shortcode** widget, unchanged — it will render your real FluentForm
-  once the plugin is active.
+The lead section keeps the `[fluentform id="3"]` shortcode inline. It renders
+your real FluentForm once the FluentForm plugin is active.
