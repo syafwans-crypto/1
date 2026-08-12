@@ -1,0 +1,131 @@
+<!--
+  SECTION "FAQ" (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal — accordion buka/tutup dengan chevron berpusing.
+  Perubahan:
+  1. 9 ikon chevron Font Awesome diganti SVG inline (path asal FA6, CC BY 4.0).
+     Class .faq-chev dikekalkan supaya rule pusing 180° dalam template utama
+     terus berfungsi.
+  2. Style <details>/<summary>/jawapan yang berulang 9 kali dipindah ke class —
+     HTML section mengecil lebih 65%.
+  3. content-visibility: auto — browser skip kerja render sehingga user scroll
+     hampir ke section ini (tiada perubahan visual).
+-->
+
+<style>
+  .sp-faq-section {
+    background: var(--white);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+
+  .sp-faq-item {
+    background: var(--grey);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 4px 6px;
+  }
+
+  .sp-faq-item summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 18px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--navy);
+  }
+
+  .sp-faq-item p {
+    margin: 0;
+    padding: 0 18px 18px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .sp-faq-item svg.faq-chev {
+    height: 14px;
+    width: auto;
+    flex-shrink: 0;
+    fill: var(--blue);
+    transition: transform 220ms ease;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-faq-section">
+    <div style="max-width: 820px; margin: 0 auto; width: 100%; padding: clamp(90px,14vw,150px) clamp(20px,5vw,32px) clamp(56px,9vw,100px);">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem,4vw,2.4rem); line-height: 1.18; letter-spacing: -0.01em; color: var(--navy);">Soalan yang selalu orang tanya sebelum datang klinik</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+
+        <details class="sp-faq-item">
+          <summary>Adakah saya perlu membuat temujanji?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Ya, adalah dinasihatkan untuk membuat temu janji untuk mengelakkan masa menunggu yang lebih lama.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Adakah saya mendapat panggilan setelah membuat temu janji dalam talian?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Ya, kami akan menghubungi anda dan jadualkan temu janji mengikut keselesaan anda. Penyambut tetamu akan membimbing anda melalui proses tersebut.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Saya takut dengan doktor gigi. Bolehkah anda membantu saya?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Kami adalah doktor berpengalaman dan profesional, kami menyediakan pesakit dengan penjagaan yang terbaik sepanjang lawatan mereka. Setelah kebimbangan pergigian anda diuruskan, barulah kami akan meneruskan prosedur rawatan.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Saya mempunyai banyak pertanyaan. Boleh saya tanya dalam talian?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Jangan ragu untuk berjalan masuk bila-bila masa. Muatkan kami dengan semua keraguan dan kebimbangan anda mengenai rawatan pergigian. Kami membangunkan hubungan Pesakit – Doktor dan menjamin kepuasan anda.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Adakah saya akan mengalami sakit semasa prosedur rawatan?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Matlamat kami adalah untuk menyediakan penjagaan pergigian dengan profesionalisme yang terbaik dan keselesaan pesakit adalah keutamaan kami. Kami memberi jaminan bahawa rawatan anda akan menjadi pengalaman yang tidak menyakitkan dan selesa.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Adakah anda menerima perlindungan insurans?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Ya, kami terima. Kami mempunyai beberapa perlindungan insurans yang tersedia di klinik pergigian kami.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Adakah anda menerima kad kredit / debit?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Ya, boleh.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Bolehkah saya membuat pembayaran secara ansuran?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Jika anda mempunyai kad kredit MAYBANK, ya ansuran boleh. Kami juga menyediakan Atome dan Grab PayLater.</p>
+        </details>
+
+        <details class="sp-faq-item">
+          <summary>Di mana saya boleh mencari Klinik Everglo?
+            <svg class="faq-chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </summary>
+          <p>Kami berada di Bandar Puteri Bangi, berdekatan Lotus's Bandar Puteri Bangi. No 8 (GF), Jalan Puteri 2A/3, Bandar Puteri Bangi, 43000 Kajang, Selangor. Anda juga boleh menggunakan Google Maps atau Waze untuk mencari kami.</p>
+        </details>
+
+      </div>
+    </div>
+  </section></div>
