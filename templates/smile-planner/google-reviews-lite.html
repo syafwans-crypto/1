@@ -1,0 +1,111 @@
+<!--
+  SECTION "REVIEW GOOGLE" / 3 KOLUM SCROLL (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal — 3 kolum bergerak atas/bawah, pause bila hover,
+  bintang, avatar, nama & masa. Perubahan:
+  1. Kolum review HANYA dibina bila user scroll hampir ke section (IntersectionObserver,
+     600px awal) — sebelum tu, TIADA satu pun daripada 26 avatar di-request.
+     (Versi asal bina semua terus masa page load, tanpa lazy loading.)
+  2. Semua avatar dapat loading="lazy" + decoding="async" + width/height 44 — layout
+     stabil dan decode tak block main thread. Kad duplikat untuk gelung animasi
+     ditanda aria-hidden (screen reader tak baca dua kali); URL sama = guna cache.
+  3. content-visibility: auto pada wrapper — browser skip kerja render + animasi
+     sehingga hampir viewport.
+  4. Animasi dihormati prefers-reduced-motion (pause), sama macam section hero.
+
+  NOTA: avatar dipaparkan hanya 44x44px. Jika fail PNG asal besar, guna URL saiz
+  "Thumbnail" 150px dari Media Library (suffix -150x150.png) dalam senarai data.
+-->
+
+<style>
+.tc-wrap{display:flex;gap:16px;height:460px;overflow:hidden;position:relative;max-width:1100px;margin:0 auto;content-visibility:auto;contain-intrinsic-size:auto 460px}
+.tc-wrap::before,.tc-wrap::after{content:"";position:absolute;left:0;right:0;height:60px;z-index:2;pointer-events:none}
+.tc-wrap::before{top:0;background:linear-gradient(#fff,transparent)}
+.tc-wrap::after{bottom:0;background:linear-gradient(transparent,#fff)}
+.tc-col{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.tc-col.up .tc-track{animation:tc-up 32s linear infinite}
+.tc-col.down .tc-track{animation:tc-down 36s linear infinite}
+.tc-wrap:hover .tc-track{animation-play-state:paused}
+.tc-track{display:flex;flex-direction:column;gap:16px}
+.tc-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:18px 20px;font-size:14px;line-height:1.6;color:#444;box-shadow:0 2px 8px rgba(0,0,0,.04);overflow-wrap:break-word;word-break:break-word}
+.tc-stars{color:#f5a623;font-size:14px;letter-spacing:2px;margin-bottom:8px;white-space:nowrap}
+.tc-name{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-top:14px;min-width:0}
+.tc-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#eef2ff}
+.tc-nm{font-size:13px;font-weight:600;color:#111;overflow-wrap:break-word;word-break:break-word;line-height:1.3}
+.tc-role{font-size:12px;color:#888}
+@keyframes tc-up{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+@keyframes tc-down{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}
+@media(max-width:1024px){.tc-wrap{height:420px;gap:12px}}
+@media(max-width:768px){.tc-wrap{height:380px;gap:8px}.tc-card{padding:14px 12px;font-size:12.5px}.tc-stars{letter-spacing:1px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.tc-track{animation-play-state:paused!important}}
+</style>
+
+<div class="tc-wrap" id="tc"></div>
+
+<script>
+(function(){
+const data=[
+{name:"Nurul Khadijah",time:"2 days ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Nurul-Khadijah-1.png",text:"Doktor dan staf friendly dan baik dalam menjalankan tugas, for me, ni 1st time saya lakukan 3d scan untuk gigi and then they keep on tanya saya tntang how keadaan gigi kmudian gambar gigi 3d pun dorg share kepada saya dan suggesting apa dapat saya buat if nak lakukan treatment. Such a good experience alhamdulillah."},
+{name:"tofast tolive",time:"2 weeks ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/tofast-tolive.png",text:"friendly staff, great dentist"},
+{name:"Shah Georgienna",time:"a month ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Shah-Georgienna.png",text:"good services"},
+{name:"Nik Haneef",time:"a month ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Nik-Haneef.png",text:"Good service and very friendly staff best"},
+{name:"Syimir Sabary",time:"a month ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Syimir-Sabary.png",text:"Service sangat terbaik dan mudah.. Doktor semua baik2 dan sangat senang berurusan👍👍"},
+{name:"Mizz Dee",time:"2 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Mizz-Dee.png",text:"Good service 👍🏻 Staff sangat membantu.. Penerangan dari Dr Farah sangat jelas tentang pemakaian braces, dan penjagaan gigi yang terbaik. Harga berpatutan! Drop by and get your dental treatment today...👌🏻"},
+{name:"Mindful Mom Studio",time:"2 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Mindful-Mom-Studio.png",text:"Staff dan doktor yg soft spoken. Replaced beberapa filling yg dah yellowish. Very detailed explanation and suggestion given by Dr Farah. Highly recommended."},
+{name:"iqbal al amin Jamaluddin",time:"10 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/iqbal-al-amin-Jamaluddin.png",text:"Brought the kids here Sunday morning, and the process was very smooth. The doctor was friendly and really explained my kids teeth condition and advise on way to go. The clinic was clean and pretty. Definitely recommend this clinic to anyone looking for a good, reliable dentist. No unnecessary procedure too. Thanks Everglo clinic..!"},
+{name:"Batrissyia Myesarra",time:"6 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/04/Batrissyia-Myesarra.png",text:"As a first timer, I would say the environment was comfy and the nurses were really friendly. Had my scaling here and it was the fastest scaling i've ever done at any dental clinic! Did not hurt a bit, and my teeth were really shiny after! Thanks Everglo for the amazing experience"},
+{name:"Wan Faizah",time:"4 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Wan-Faizah.png",text:"Friendly and courteous dentist and staffs. The dentist is very patient and knowledgeable and super gentle in handling our issues. Highly recommended. The arrangement of the appointment is also smooth and superb."},
+{name:"Nizam Omar",time:"9 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Nizam-Omar.png",text:"Thank you Doctor and staff of Everglo Dental Clinic. This clinic is even open on a public holiday!"},
+{name:"Muhd Rio Mustaqhim Mohd Jamal",time:"9 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Muhd-Rio-Mustaqhim-Mohd-Jamal.png",text:"The doctor is really good, very clear in giving explanations and truly takes the time to ensure we understand everything. Really appreciate the way her explained in detail"},
+{name:"Hana Aziz",time:"9 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/Hana-Aziz.png",text:"Dr Najmina is the best. Great skill and soft spoken. Although I choose normal scaling, the procedure is still painless and comfortable. Recommended"},
+{name:"Ray Shyuan",time:"4 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Ray-Shyuan.png",text:"Very good service. The staffs are extremely friendly especially the doctor! The place is super clean and comfortable too <3"},
+{name:"Izzah Aziz",time:"2 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Izzah-Aziz.png",text:"Good one..mesra kids for sensitive kids(adhd). Doctor & staff very polite. Procedure very smooth & gentle.❤️ highly recommended."},
+{name:"Honey Mimi",time:"8 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Honey-Mimi.png",text:"Very awesomee!! nice vibe and service very tip top. Sure akan comeback ☺️"},
+{name:"Ghadaffi Khalid",time:"2 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/Ghadaffi-Khalid.png",text:"Great experience for my wife who is terrified with anything to do with dentistry 🤣 But here she's really satisfied with it. Definitely will come again."},
+{name:"Wiza Yusof",time:"2 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Wiza-Yusof.png",text:"Friendly doctor and staff. Procedures and treatments were well explained. Clinic looks modern and clean. Would recommend to anyone :)"},
+{name:"Syaza Azmi",time:"9 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/02/Syaza-Azmi.png",text:"Clinic opens on public holiday! Came in to bring my mom for extraction. Staffs and Dr Najmina is friendly and provides clear explanation. Definitely coming back again."},
+{name:"Nina Razak",time:"a year ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Nina-Razak.png",text:"Love the service. Went for walk in scaling service and they were able to take me in. Thorough check and able to resolve my sensitive teeth issue (which other dentist just advice to use sensitive toothpaste). Will come for teeth whitening service next."},
+{name:"FATIN UMAIRAH",time:"5 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/FATIN-UMAIRAH.png",text:"Prosess best tak sakit sangat even first time. Will repeat"},
+{name:"Muhamad Alif Muhammad",time:"a year ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Muhamad-Alif-Muhammad.png",text:"Doc Farah very gentle gave treatment to my teeth prob. Tq."},
+{name:"R. Bartowski",time:"6 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/R.-Bartowski.png",text:"Went for scaling and polish while wife went for scaling, polish, fluoride application and restoration. the doctor was professional. consultation was clear and precise. Treatment was thorough. Overall, good service!! Recommended"},
+{name:"Nur Anisah",time:"5 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Nur-Anisah.png",text:"Went to the clinic just now, Very satisfied with the service! Doing scalling and polishing, Its very clean! I'm happy. the doctor was very friendly. The clinic was also nice and clean. Will be my favourite dentist after this. Thankyou doctor 👌🏻"},
+{name:"Nada Murad",time:"2 years ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Nada-Murad.png",text:"Very nice, friendly doctor and staff, good treatment with reasonable price. A special thanks to doctor Farah!"},
+{name:"helyawati baharudin",time:"4 months ago",img:"https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/helyawati-baharudin.png",text:"Service sangat2 memuaskan. Klinik pilihan kami sekeluarga. Dr dan staff yang ramah dan baik."}
+];
+
+function card(d,hidden){
+  const c=document.createElement("div");c.className="tc-card";
+  if(hidden)c.setAttribute("aria-hidden","true");
+  c.innerHTML=`<div class="tc-stars">★★★★★</div><div>${d.text}</div><div class="tc-name"><img class="tc-avatar" src="${d.img}" alt="${hidden?"":d.name}" width="44" height="44" loading="lazy" decoding="async" onerror="this.style.display='none'"><div class="tc-nm">${d.name}</div><div class="tc-role">${d.time}</div></div>`;
+  return c;
+}
+
+const wrap=document.getElementById("tc");
+if(!wrap)return;
+let built=false;
+
+function build(){
+  if(built)return;
+  built=true;
+  const colCount=3;
+  const cols=[[],[],[]];
+  data.forEach((item,i)=>cols[i%colCount].push(item));
+  cols.forEach((items,i)=>{
+    const colEl=document.createElement("div");colEl.className="tc-col "+(i%2===0?"up":"down");
+    const track=document.createElement("div");track.className="tc-track";
+    items.forEach(d=>track.appendChild(card(d,false)));
+    /* Duplikat untuk gelung animasi — URL sama = cache, aria-hidden supaya tak dibaca dua kali */
+    items.forEach(d=>track.appendChild(card(d,true)));
+    colEl.appendChild(track);wrap.appendChild(colEl);
+  });
+}
+
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(function(ent){
+    if(ent[0].isIntersecting){build();io.disconnect();}
+  },{rootMargin:'600px 0px'});
+  io.observe(wrap);
+}else{
+  build();
+}
+})();
+</script>
