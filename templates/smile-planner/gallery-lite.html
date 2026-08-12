@@ -1,0 +1,76 @@
+<!--
+  SECTION "GALERI" (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal. Perubahan:
+  1. Ikon Font Awesome pada badge GALERI diganti SVG inline (path asal FA6, CC BY 4.0).
+  2. Style tile gambar yang berulang 10 kali dipindah ke class (.sp-gal-tile) —
+     HTML mengecil lebih 60%.
+  3. Semua gambar dapat decoding="async" + width/height (kekal loading="lazy").
+  4. content-visibility: auto — browser skip kerja render + decode 10 gambar
+     sehingga user scroll hampir ke section ini.
+  Class hover sp-hover-13 hingga sp-hover-22 kekal — definisinya dalam template utama.
+
+  NOTA PENJIMATAN TERBESAR (perlu buat manual dalam WordPress):
+  10 gambar galeri guna fail saiz penuh sedangkan tile dipaparkan hanya ~190-280px.
+  Salin URL saiz "Medium" 300px dari Media Library (suffix seperti -300x300.jpg)
+  dan ganti src setiap gambar — boleh jimat beberapa MB pada section ini sahaja.
+  Perhatian khas: IMG_2951-1.png & IMG_2953.png ialah PNG (paling berat) — versi
+  JPG/Medium jauh lebih kecil.
+-->
+
+<style>
+  .sp-gal-section {
+    background: var(--sky);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+
+  .sp-gal-tile {
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    box-shadow: 0 8px 22px rgba(15, 47, 68, 0.08);
+  }
+
+  .sp-gal-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease;
+  }
+
+  .sp-gal-badge-ico {
+    height: 0.9em;
+    width: auto;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: -0.05em;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-gal-section">
+    <div style="max-width: 1180px; margin: 0 auto; width: 100%; padding: clamp(56px,9vw,100px) clamp(20px,5vw,32px);">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 14px;">
+        <span style="align-self: center; display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--blue); font-family: var(--font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; padding: 7px 13px; border-radius: 999px;">
+          <!-- fa-images (Font Awesome Free 6, CC BY 4.0) -->
+          <svg class="sp-gal-badge-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path d="M160 32c-35.3 0-64 28.7-64 64l0 224c0 35.3 28.7 64 64 64l352 0c35.3 0 64-28.7 64-64l0-224c0-35.3-28.7-64-64-64L160 32zM396 138.7l96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320l-144 0-48 0-80 0c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84C360.5 132 368 128 376 128s15.5 4 20 10.7zM192 128a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM48 120c0-13.3-10.7-24-24-24S0 106.7 0 120L0 344c0 75.1 60.9 136 136 136l320 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-320 0c-48.6 0-88-39.4-88-88l0-224z"/></svg>
+          GALERI
+        </span>
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.65rem,4vw,2.5rem); line-height: 1.15; letter-spacing: -0.01em; color: var(--navy);">Galeri Klinik Pergigian Everglo</h2>
+        <p style="margin: 0; font-family: var(--font-body); font-size: clamp(1rem,2.1vw,1.12rem); line-height: 1.7; color: var(--muted);">Suasana klinik, pasukan kami dan momen pesakit yang pulang dengan senyuman lebih yakin.</p>
+      </div>
+
+      <!-- [TUKAR-URL] ganti setiap src dengan URL saiz Medium (-300x300) dari Media Library -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-top: 44px;">
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/PHOTO-2023-06-15-19-04-24.jpg" alt="Galeri Everglo" class="sp-hover-13" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/photo_2025-09-03_11-18-07-2.jpg" alt="Galeri Everglo" class="sp-hover-14" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/348be99b-188f-483a-9961-8aa8b4965153.jpg" alt="Galeri Everglo" class="sp-hover-15" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-09-at-12.26.41_2b1b58c2.jpg" alt="Galeri Everglo" class="sp-hover-16" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951-1.png" alt="Galeri Everglo" class="sp-hover-17" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2953.png" alt="Galeri Everglo" class="sp-hover-18" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/e5ac2881-8d63-4d45-9efb-37aa7d2366da.jpg" alt="Galeri Everglo" class="sp-hover-19" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/68f5b174-860a-4cda-b248-1f74bb733314.jpg" alt="Galeri Everglo" class="sp-hover-20" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/bbe2b515-4ce5-421b-9da4-56e97785e2ec.jpg" alt="Galeri Everglo" class="sp-hover-21" width="280" height="280" loading="lazy" decoding="async"></div>
+        <div class="sp-gal-tile"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2025/12/photo_2025-09-03_11-18-06-5.jpg" alt="Galeri Everglo" class="sp-hover-22" width="280" height="280" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section></div>
