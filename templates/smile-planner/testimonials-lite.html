@@ -1,0 +1,116 @@
+<!--
+  SECTION "TESTIMONI" / DECK GAMBAR (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal — fan-out animasi bila scroll sampai, hover zoom,
+  dan boleh drag setiap gambar. Perubahan:
+  1. Deck gambar HANYA dibina bila user scroll hampir ke section (IntersectionObserver,
+     600px awal) — sebelum tu, tiada satu pun daripada 10 gambar di-request. Animasi
+     fan-out kekal trigger pada threshold .25 macam asal.
+  2. Semua gambar dapat decoding="async" (kekal loading="lazy").
+  3. content-visibility: auto — browser skip kerja render sehingga hampir viewport.
+
+  NOTA PENJIMATAN TERBESAR (perlu buat manual dalam WordPress):
+  10 gambar testimoni (1-1.png ... 10-1.png) dipaparkan hanya 210x210px. Jika fail
+  asal besar (PNG penuh boleh 500KB+ setiap satu = ~5MB semua), salin URL saiz
+  "Medium" 300px dari Media Library (biasanya suffix seperti -300x300.png) dan
+  ganti dalam senarai [TUKAR-URL] di bawah — penjimatan boleh capai 80-90%.
+-->
+
+<div class="evg-stories">
+  <p class="evg-stories-kicker">TESTIMONI</p>
+  <h2 class="evg-stories-title">Apa kata pelanggan kami</h2>
+  <p class="evg-stories-sub">Kisah &amp; pengalaman sebenar pesakit Klinik Pergigian Everglo.</p>
+  <div class="evg-stories-stage"><div class="evg-stories-deck" id="evgDeck"></div></div>
+</div>
+
+<style>
+  .evg-stories{
+    font-family: var(--font-body,'Roboto',sans-serif); text-align:center; padding:56px 16px 40px; overflow:hidden;
+    content-visibility:auto; contain-intrinsic-size:auto 520px;
+  }
+  .evg-stories-kicker{ margin:0; font-family:var(--font-display,'Poppins',sans-serif); font-weight:600; font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted,#667085); }
+  .evg-stories-title{ margin:6px 0 8px; font-family:var(--font-display,'Poppins',sans-serif); font-weight:800; font-size:clamp(1.8rem,4.6vw,2.8rem); color:var(--navy,#0F2F44); }
+  .evg-stories-sub{ margin:0 auto 8px; max-width:520px; color:var(--muted,#667085); font-size:1rem; }
+  .evg-stories-stage{ position:relative; height:300px; display:flex; align-items:center; justify-content:center; }
+  .evg-stories-deck{ position:relative; width:1px; height:220px; }
+  .evg-photo{
+    position:absolute; left:50%; top:0; width:210px; height:210px; margin-left:-105px;
+    border-radius:26px; overflow:hidden; background:transparent;
+    box-shadow:0 14px 34px rgba(15,47,68,.18); cursor:grab;
+    transform: translateX(0) rotate(0deg) scale(1);
+    transition: transform .85s cubic-bezier(.2,.85,.25,1);
+    transition-delay: var(--d,0s);
+    -webkit-user-select:none; user-select:none; touch-action:none;
+  }
+  .evg-photo img{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; transform:scale(1.22); }
+  .evg-stories.is-open .evg-photo{ transform: translateX(var(--x)) rotate(var(--r)) scale(1); }
+  .evg-stories.is-open .evg-photo:hover{ transform: translateX(var(--x)) rotate(0deg) scale(1.14) !important; z-index:9999 !important; box-shadow:0 26px 55px rgba(15,47,68,.28); }
+  .evg-photo.dragging{ transition:none; cursor:grabbing; z-index:9999 !important; }
+  @media (max-width:900px){ .evg-stories-deck{ transform:scale(.6); } .evg-stories-stage{ height:230px; } }
+  @media (max-width:560px){ .evg-stories-deck{ transform:scale(.4); } .evg-stories-stage{ height:190px; } }
+</style>
+
+<script>
+(function(){
+  /* [TUKAR-URL] ganti dengan URL saiz Medium (contoh: .../1-1-300x300.png) untuk jimat besar */
+  var imgs = [
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/1-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/2-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/3-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/4-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/5-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/6-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/7-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/8-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/9-1.png",
+    "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/10-1.png"
+  ];
+  var deck = document.getElementById('evgDeck');
+  if(!deck) return;
+  var wrap = deck.closest('.evg-stories');
+  var built = false;
+
+  function buildDeck(){
+    if(built) return;
+    built = true;
+    var n = imgs.length, step = 108, mid = (n-1)/2;
+    imgs.forEach(function(src,i){
+      var x = Math.round((i-mid)*step);
+      var r = ((i%2===0)? -1:1) * (2 + (i%3));
+      var card = document.createElement('div');
+      card.className='evg-photo';
+      card.style.setProperty('--x', x+'px');
+      card.style.setProperty('--r', r+'deg');
+      card.style.setProperty('--d', (i*0.08)+'s');
+      card.style.zIndex = 100 - i;
+      card.innerHTML = '<img src="'+src+'" alt="Kisah pesakit '+(i+1)+'" loading="lazy" decoding="async" draggable="false">';
+      deck.appendChild(card);
+      var sx=0, sy=0, dragging=false;
+      card.addEventListener('pointerdown', function(e){ dragging=true; sx=e.clientX; sy=e.clientY; card.classList.add('dragging'); card.setPointerCapture(e.pointerId); });
+      card.addEventListener('pointermove', function(e){ if(!dragging) return; var dx=e.clientX-sx, dy=e.clientY-sy; card.style.transform='translate('+(x+dx)+'px,'+dy+'px) rotate('+r+'deg) scale(1.06)'; });
+      function end(){ if(!dragging) return; dragging=false; card.classList.remove('dragging'); card.style.transform=''; }
+      card.addEventListener('pointerup', end); card.addEventListener('pointercancel', end);
+    });
+  }
+
+  function open(){ wrap.classList.add('is-open'); }
+
+  if('IntersectionObserver' in window){
+    /* Bina deck awal sikit (600px sebelum sampai) supaya gambar sempat load */
+    var ioBuild = new IntersectionObserver(function(ent){
+      if(ent[0].isIntersecting){ buildDeck(); ioBuild.disconnect(); }
+    },{rootMargin:'600px 0px'});
+    ioBuild.observe(wrap);
+
+    /* Fan-out bila 25% section masuk viewport — sama macam asal */
+    var io = new IntersectionObserver(function(ent){
+      ent.forEach(function(en){
+        if(en.isIntersecting){ buildDeck(); setTimeout(open,150); io.disconnect(); }
+      });
+    },{threshold:.25});
+    io.observe(wrap);
+  } else {
+    buildDeck();
+    setTimeout(open,400);
+  }
+})();
+</script>
