@@ -1,10 +1,28 @@
 <!--
-  EVG HERO (VERSI RINGAN) — paste sekali sahaja ke dalam satu Elementor HTML widget.
-  UI 100% sama seperti versi asal. Perubahan hanya pada cara asset dimuatkan:
+  EVG HERO (VERSI RINGAN + SEO/GEO) — paste sekali sahaja ke dalam satu Elementor HTML widget.
+  Optimization load:
   1. Font Poppins dimuat secara non-blocking (tidak block render) + 1 weight kurang (900 -> 800, tak nampak beza pada ikon).
   2. Gambar background klinik (PNG besar) hanya dimuat SELEPAS page siap load, kemudian fade-in.
   3. Semua <img> guna decoding="async" + width/height untuk elak layout shift.
   4. Gambar duplikat animasi guna URL sama = browser cache, tiada download tambahan.
+
+  Optimization SEO/GEO (berdasarkan data Google Search Console):
+  5. Eyebrow & deskripsi kini mengandungi keyword lokasi + rawatan secara semula jadi:
+     "klinik gigi bandar puteri bangi", "klinik pergigian bangi", "kajang", "scaling",
+     "braces / pendakap gigi", "gigi palsu", "whitening", "veneer", "cabut gigi",
+     "mesra kanak-kanak" — semua query yang muncul dalam GSC.
+  6. Alt text setiap gambar unik & deskriptif (bukan lagi generic).
+  7. JSON-LD schema jenis "Dentist" di bawah — nama, alternateName (tangkap salah eja
+     "Everglow"), alamat penuh, kawasan servis, senarai rawatan & rating. Ini yang
+     dibaca oleh Google (rich results) DAN oleh AI seperti ChatGPT/Perplexity (GEO).
+
+  WAJIB SET DI PERINGKAT PAGE (RankMath/Yoast/Elementor, bukan dalam widget ni):
+  - Title tag  : Klinik Gigi Bandar Puteri Bangi | Klinik Pergigian Everglo — Scaling, Braces, Whitening & Veneer
+  - Meta desc  : Klinik pergigian di Bandar Puteri Bangi, Kajang. Rawatan gigi teliti & mesra
+                 first-timer: pemeriksaan, scaling, tampalan, cabut gigi, braces, gigi palsu,
+                 whitening & veneer. 5.0 bintang (381 ulasan Google). Book appointment hari ini.
+  - Lengkapkan "telephone", "openingHoursSpecification" dan "sameAs" dalam JSON-LD di bawah
+    (ditanda [ISI]) — maklumat konsisten dengan Google Business Profile sangat penting.
 -->
 
 <!-- LOAD FONT POPPINS (non-blocking) -->
@@ -679,10 +697,10 @@
     <!-- BAHAGIAN KIRI -->
     <div class="evg-hero-copy">
 
-      <div class="evg-eyebrow">
+      <p class="evg-eyebrow">
         <span class="evg-eyebrow-dot"></span>
-        Klinik Pergigian Everglo @ Bandar Puteri Bangi
-      </div>
+        Klinik Pergigian Everglo @ Bandar Puteri Bangi, Kajang
+      </p>
 
       <h1 class="evg-hero-title">
         Bukan Sekadar<br>
@@ -694,9 +712,11 @@
       </h1>
 
       <p class="evg-hero-desc">
-        Dapatkan rawatan gigi yang teliti, selesa dan sesuai dengan
-        keadaan anda—daripada pemeriksaan rutin hingga rawatan untuk
-        menaikkan semula keyakinan senyuman.
+        Klinik gigi di Bandar Puteri Bangi, Kajang — rawatan pergigian
+        teliti dan selesa untuk seisi keluarga. Daripada pemeriksaan
+        rutin, scaling, tampalan dan cabut gigi hinggalah braces
+        (pendakap gigi), gigi palsu, whitening dan veneer untuk
+        menaikkan semula keyakinan senyuman anda.
       </p>
 
       <ul class="evg-benefits">
@@ -745,7 +765,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111654.png"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Pesakit selesai rawatan gigi di Klinik Pergigian Everglo, Bandar Puteri Bangi"
             width="480" height="600"
             loading="eager"
             fetchpriority="high"
@@ -754,7 +774,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.jpg"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Rawatan scaling dan pemeriksaan gigi di klinik gigi Bandar Puteri Bangi"
             width="480" height="600"
             loading="lazy"
             decoding="async"
@@ -762,7 +782,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111739.png"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Doktor gigi Everglo bersama pesakit rawatan braces di Bangi"
             width="480" height="600"
             loading="lazy"
             decoding="async"
@@ -770,7 +790,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/dbc9114f-1547-4f8a-b849-f647282ac246.jpg"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Suasana klinik pergigian yang selesa dan moden di Everglo Kajang"
             width="480" height="600"
             loading="lazy"
             decoding="async"
@@ -822,7 +842,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111727.png"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Pesakit whitening gigi tersenyum yakin di Klinik Everglo Bandar Puteri Bangi"
             width="480" height="600"
             loading="eager"
             fetchpriority="high"
@@ -831,7 +851,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/03376b41-713c-4988-a916-fa0a65c5ede5.jpg"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Kaunter penyambut tetamu Klinik Pergigian Everglo di Bandar Puteri Bangi"
             width="480" height="600"
             loading="lazy"
             decoding="async"
@@ -839,7 +859,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.jpg"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Rawatan gigi mesra kanak-kanak di klinik gigi Kajang"
             width="480" height="600"
             loading="lazy"
             decoding="async"
@@ -847,7 +867,7 @@
 
           <img
             src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3-1.jpg"
-            alt="Pesakit Klinik Pergigian Everglo"
+            alt="Pesakit first-timer selesa menjalani rawatan pergigian di Everglo"
             width="480" height="600"
             loading="lazy"
             decoding="async"
@@ -929,6 +949,60 @@
     </div>
   </div>
 </section>
+
+<!--
+  JSON-LD SCHEMA "Dentist" — dibaca oleh Google (rich results / local pack) dan
+  AI engine seperti ChatGPT, Perplexity & Gemini (GEO). alternateName menangkap
+  salah eja yang muncul dalam Search Console ("everglow", "everglo dental").
+  [ISI]: lengkapkan telephone, sameAs (link Google Maps/Facebook/Instagram) dan
+  openingHoursSpecification — kemudian buang komen ini.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Klinik Pergigian Everglo",
+  "alternateName": ["Everglo Dental", "Everglo Dental Clinic", "Everglow Dental", "Klinik Gigi Everglo"],
+  "description": "Klinik gigi di Bandar Puteri Bangi, Kajang. Rawatan pergigian teliti dan mesra first-timer: pemeriksaan gigi, scaling & polishing, tampalan, cabut gigi, braces (pendakap gigi), gigi palsu (denture), teeth whitening, crown & bridge dan veneer. Mesra kanak-kanak. Rating 5.0 daripada 381 ulasan Google.",
+  "url": "https://klinikpergigianeverglo.com/",
+  "image": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No 8 (GF), Jalan Puteri 2A/3, Bandar Puteri Bangi",
+    "addressLocality": "Kajang",
+    "addressRegion": "Selangor",
+    "postalCode": "43000",
+    "addressCountry": "MY"
+  },
+  "areaServed": [
+    "Bandar Puteri Bangi",
+    "Bangi",
+    "Kajang",
+    "Bandar Seri Putra",
+    "Bukit Mahkota",
+    "Nilai",
+    "Semenyih"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "381"
+  },
+  "availableService": [
+    { "@type": "MedicalProcedure", "name": "Pemeriksaan Gigi (Dental Check-up)" },
+    { "@type": "MedicalProcedure", "name": "Scaling & Polishing" },
+    { "@type": "MedicalProcedure", "name": "Tampalan Gigi (Filling)" },
+    { "@type": "MedicalProcedure", "name": "Cabut Gigi (Extraction)" },
+    { "@type": "MedicalProcedure", "name": "Braces / Pendakap Gigi" },
+    { "@type": "MedicalProcedure", "name": "Gigi Palsu / Denture" },
+    { "@type": "MedicalProcedure", "name": "Teeth Whitening" },
+    { "@type": "MedicalProcedure", "name": "Crown & Bridge" },
+    { "@type": "MedicalProcedure", "name": "Veneer Gigi" }
+  ],
+  "paymentAccepted": "Cash, Credit Card, Debit Card, Atome, Grab PayLater, Insurans Panel",
+  "knowsLanguage": ["ms", "en"]
+}
+</script>
 
 <!-- MUAT BACKGROUND KLINIK SELEPAS PAGE SIAP LOAD (tidak block content utama) -->
 <script>
