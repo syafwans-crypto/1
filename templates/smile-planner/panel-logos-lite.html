@@ -1,0 +1,66 @@
+<!--
+  SECTION "PANEL & RAKAN KONGSI" / LOGO MARQUEE (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal. Perubahan:
+  1. Style kad logo yang berulang 8 kali dipindah ke class (.sp-panel-card) — HTML
+     mengecil lebih 70%.
+  2. Semua logo dapat decoding="async" (kekal loading="lazy"). Logo duplikat untuk
+     gelung marquee guna URL sama = browser cache, tiada download tambahan.
+  3. content-visibility: auto — browser skip kerja render + animasi marquee sehingga
+     user scroll hampir ke section ini (tiada perubahan visual).
+  Animasi @keyframes everglo-marquee kekal guna definisi dalam template utama.
+
+  NOTA: logo PNG dipaparkan maksimum 210x66px. Jika fail asal dalam Media Library
+  besar (contoh 1000px+), tukar src kepada URL saiz "Medium" (300px) — jimat lagi.
+-->
+
+<style>
+  .sp-panel-section {
+    background: var(--grey);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 260px;
+  }
+
+  .sp-panel-card {
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 116px;
+    box-shadow: 0 6px 18px rgba(15, 47, 68, 0.06);
+  }
+
+  .sp-panel-card img {
+    max-height: 66px;
+    max-width: 210px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-panel-section">
+    <div style="max-width: 1080px; margin: 0 auto; width: 100%; padding: clamp(40px,6vw,64px) clamp(20px,5vw,32px); text-align: center;">
+      <span style="font-family: var(--font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);">Di antara panel &amp; rakan kongsi kami</span>
+
+      <div style="overflow: hidden; margin-top: 30px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);">
+        <div style="display: flex; align-items: center; gap: clamp(20px,4vw,52px); width: max-content; animation: everglo-marquee 20s linear infinite;">
+
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/pmcare.png" alt="PMCare" loading="lazy" decoding="async"></div>
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/health-metrics.png" alt="Health Metrics" loading="lazy" decoding="async"></div>
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/b5e829_54465ad042e949de8b121ae119da2eeb_mv2.png" alt="Panel insurans" loading="lazy" decoding="async"></div>
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/miya.png" alt="MiCare" loading="lazy" decoding="async"></div>
+
+          <!-- Duplikat untuk gelung marquee (URL sama = cache) -->
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/pmcare.png" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/health-metrics.png" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/b5e829_54465ad042e949de8b121ae119da2eeb_mv2.png" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+          <div class="sp-panel-card"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/miya.png" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+
+        </div>
+      </div>
+    </div>
+  </section></div>
