@@ -1,0 +1,246 @@
+<!--
+  SECTION "SMILE UPGRADE PLANNER" / LANGKAH 1-4 (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal. Perubahan:
+  1. Gambar background (opacity 0.1) TIDAK dimuat terus — ia dimuat hanya bila user
+     scroll hampir ke section ini (IntersectionObserver), kemudian fade-in lembut.
+  2. Ikon anak panah Font Awesome pada CTA diganti SVG inline (path asal FA6, CC BY 4.0).
+  3. Style kad langkah yang berulang 4 kali dipindah ke class (.sp-step-card).
+  4. Semua gambar hiasan dapat decoding="async" (kekal loading="lazy").
+  5. Script parallax sama, cuma listener jadi passive (scroll lebih licin).
+
+  NOTA PENJIMATAN TERBESAR (perlu buat manual dalam WordPress):
+  Gambar hiasan gigi terapung di bawah guna fail penuh "-scaled" (boleh capai 2560px)
+  sedangkan ia dipaparkan hanya 44-90px! Pergi ke Media Library, klik setiap gambar,
+  dan salin URL saiz "Thumbnail" (150px) atau "Medium" (300px) — biasanya URL sama
+  tapi ada suffix seperti "-150x150" atau "-300x225" sebelum .png — kemudian ganti
+  URL di baris yang ditanda [TUKAR-URL] di bawah. Ini boleh jimat beberapa MB.
+-->
+
+<style>
+  .sp-planner-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 0;
+  }
+
+  .sp-planner-bg.sp-bg-on {
+    background-image: url("https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/77646068_SL-072622-51930-20-scaled.jpg");
+    opacity: 0.1;
+  }
+
+  .sp-step-card {
+    position: relative;
+    background: var(--grey);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sp-step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .sp-step-card h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--navy);
+  }
+
+  .sp-step-card p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .sp-step-card-dark {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .sp-step-card-dark .sp-step-num {
+    background: var(--mint);
+    color: var(--navy);
+  }
+
+  .sp-step-card-dark h3 {
+    color: #fff;
+  }
+
+  .sp-step-card-dark p {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .sp-cta-arrow-svg {
+    height: 1em;
+    width: auto;
+    fill: currentColor;
+    display: block;
+  }
+
+  .evg-float {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    width: clamp(44px, 7vw, 90px);
+    display: block;
+    transform: translate(var(--px, 0px), var(--py, 0px));
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+  }
+
+  .evg-float img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+    filter: drop-shadow(0 8px 14px rgba(15, 47, 68, 0.15));
+    animation: evg-idle 4.5s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .evg-f1 { top: 8%; left: 4%; }
+  .evg-f1 img { animation-delay: 0s; }
+  .evg-f2 { top: 14%; right: 5%; }
+  .evg-f2 img { animation-delay: 0.8s; }
+  .evg-f3 { bottom: 26%; left: 2.5%; }
+  .evg-f3 img { animation-delay: 0.4s; }
+  .evg-f4 { bottom: 10%; right: 3%; }
+  .evg-f4 img { animation-delay: 1.2s; }
+  .evg-f5 { top: 46%; right: 1.5%; width: clamp(38px, 5.5vw, 72px); }
+  .evg-f5 img { animation-delay: 0.6s; }
+
+  @keyframes evg-idle {
+    0% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-14px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(-5deg); }
+  }
+
+  @media (max-width: 767px) {
+    .evg-float { width: clamp(34px, 11vw, 52px); }
+    .evg-float img { opacity: 0.75; }
+    .evg-f3 { bottom: 38%; }
+    .evg-f5 { top: 40%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .evg-float img { animation: none; }
+    .sp-planner-bg { transition: none; }
+  }
+</style>
+
+<div class="evg-smile-planner">
+  <section id="planner" style="position: relative; background: var(--white); overflow: hidden;">
+    <div class="sp-bg-layer sp-planner-bg"></div>
+
+    <!-- Gigi terapung (hiasan) — [TUKAR-URL] ganti dengan URL saiz Thumbnail/Medium dari Media Library -->
+    <span class="evg-float evg-f1" data-depth="34"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/healthy-white-molar-tooth-isolated-white-background.png" alt="" loading="lazy" decoding="async"></span>
+    <span class="evg-float evg-f2" data-depth="-28"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/smiling-mouth-png-bubble-element-transparent-background-scaled.png" alt="" loading="lazy" decoding="async"></span>
+    <span class="evg-float evg-f3" data-depth="22"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/distressed-dental-illustration-with-halftone-effect.png" alt="" loading="lazy" decoding="async"></span>
+    <span class="evg-float evg-f4" data-depth="-36"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/red-lips-with-gloss-scaled.png" alt="" loading="lazy" decoding="async"></span>
+    <span class="evg-float evg-f5" data-depth="18"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/halftone-mouth-with-teeth-torn-paper-scaled.png" alt="" loading="lazy" decoding="async"></span>
+
+    <div style="position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; width: 100%; padding: clamp(56px,9vw,100px) clamp(20px,5vw,32px);">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 16px;">
+        <span style="align-self: center; background: var(--sky); color: var(--blue); font-family: var(--font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; padding: 7px 13px; border-radius: 999px;">SMILE UPGRADE PLANNER</span>
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.65rem,4vw,2.5rem); line-height: 1.15; letter-spacing: -0.01em; color: var(--navy);">Tak tahu rawatan apa sesuai? Mulakan dengan Smile Upgrade Planner</h2>
+        <p style="margin: 0; font-family: var(--font-body); font-size: clamp(1rem,2.1vw,1.15rem); line-height: 1.7; color: var(--muted);">Doktor akan periksa keadaan gigi anda terlebih dahulu, kemudian cadangkan rawatan yang sesuai berdasarkan masalah dan matlamat senyuman anda.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 44px;">
+        <div class="sp-step-card">
+          <span class="sp-step-num">1</span>
+          <h3>WhatsApp &amp; pilih slot</h3>
+          <p>Mesej kami untuk tempah masa yang sesuai dengan jadual anda.</p>
+        </div>
+        <div class="sp-step-card">
+          <span class="sp-step-num">2</span>
+          <h3>Pemeriksaan gigi</h3>
+          <p>Doktor semak keadaan gigi, gusi dan susunan senyuman anda.</p>
+        </div>
+        <div class="sp-step-card">
+          <span class="sp-step-num">3</span>
+          <h3>Doktor cadangkan pilihan</h3>
+          <p>Anda dapat cadangan rawatan ikut masalah dan matlamat sebenar.</p>
+        </div>
+        <div class="sp-step-card sp-step-card-dark">
+          <span class="sp-step-num">4</span>
+          <h3>Mulakan rawatan</h3>
+          <p>Teruskan rawatan ikut kesesuaian anda — tanpa rasa terburu-buru.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="#form" class="sp-hover-6" style="display: inline-flex; align-items: center; gap: 10px; background: var(--cta); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: clamp(0.98rem,2vw,1.08rem); padding: 16px 30px; border-radius: 999px; text-decoration: none; box-shadow: 0 14px 30px rgba(255,107,90,0.32); transition: background 160ms ease, transform 160ms ease;">Book Appointment Hari Ini
+          <!-- fa-arrow-right-long (Font Awesome Free 6, CC BY 4.0) -->
+          <svg class="sp-cta-arrow-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var sec = document.getElementById('planner');
+    if (!sec) return;
+
+    // Muat background hanya bila section hampir masuk viewport
+    var bg = sec.querySelector('.sp-planner-bg');
+    if (bg && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          bg.classList.add('sp-bg-on');
+          io.disconnect();
+        }
+      }, { rootMargin: '600px 0px' });
+      io.observe(sec);
+    } else if (bg) {
+      bg.classList.add('sp-bg-on');
+    }
+
+    // Parallax gigi terapung (sama seperti asal, listener passive)
+    var floats = sec.querySelectorAll('.evg-float');
+    var raf;
+    sec.addEventListener('pointermove', function (e) {
+      if (e.pointerType === 'touch') return;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        var r = sec.getBoundingClientRect();
+        var cx = (e.clientX - r.left) / r.width - 0.5;
+        var cy = (e.clientY - r.top) / r.height - 0.5;
+        floats.forEach(function (f) {
+          var d = parseFloat(f.getAttribute('data-depth')) || 20;
+          f.style.setProperty('--px', (cx * d).toFixed(1) + 'px');
+          f.style.setProperty('--py', (cy * d).toFixed(1) + 'px');
+        });
+      });
+    }, { passive: true });
+    sec.addEventListener('pointerleave', function () {
+      floats.forEach(function (f) {
+        f.style.setProperty('--px', '0px');
+        f.style.setProperty('--py', '0px');
+      });
+    }, { passive: true });
+  })();
+  </script>
+</div>
