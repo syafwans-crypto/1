@@ -21,8 +21,8 @@
   - Meta desc  : Klinik pergigian di Bandar Puteri Bangi, Kajang. Rawatan gigi teliti & mesra
                  first-timer: pemeriksaan, scaling, tampalan, cabut gigi, braces, gigi palsu,
                  whitening & veneer. 5.0 bintang (381 ulasan Google). Book appointment hari ini.
-  - Lengkapkan "telephone", "openingHoursSpecification" dan "sameAs" dalam JSON-LD di bawah
-    (ditanda [ISI]) — maklumat konsisten dengan Google Business Profile sangat penting.
+  - Telefon, alamat & waktu operasi dalam JSON-LD sudah diisi ikut Google Business
+    Profile. Pilihan: tambah link Facebook/Instagram/Google Maps dalam "sameAs".
 -->
 
 <!-- LOAD FONT POPPINS (non-blocking) -->
@@ -954,26 +954,41 @@
   JSON-LD SCHEMA "Dentist" — dibaca oleh Google (rich results / local pack) dan
   AI engine seperti ChatGPT, Perplexity & Gemini (GEO). alternateName menangkap
   salah eja yang muncul dalam Search Console ("everglow", "everglo dental").
-  [ISI]: lengkapkan telephone, sameAs (link Google Maps/Facebook/Instagram) dan
-  openingHoursSpecification — kemudian buang komen ini.
+  Nama, alamat, telefon & waktu operasi diisi TEPAT ikut Google Business Profile.
+  Pilihan tambahan: masukkan link Facebook/Instagram/Google Maps dalam "sameAs".
 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Dentist",
-  "name": "Klinik Pergigian Everglo",
-  "alternateName": ["Everglo Dental", "Everglo Dental Clinic", "Everglow Dental", "Klinik Gigi Everglo"],
+  "name": "Klinik Pergigian Everglo @ Bandar Puteri Bangi",
+  "alternateName": ["Klinik Pergigian Everglo", "Everglo Dental", "Everglo Dental Clinic", "Everglow Dental", "Klinik Gigi Everglo"],
   "description": "Klinik gigi di Bandar Puteri Bangi, Kajang. Rawatan pergigian teliti dan mesra first-timer: pemeriksaan gigi, scaling & polishing, tampalan, cabut gigi, braces (pendakap gigi), gigi palsu (denture), teeth whitening, crown & bridge dan veneer. Mesra kanak-kanak. Rating 5.0 daripada 381 ulasan Google.",
   "url": "https://klinikpergigianeverglo.com/",
   "image": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png",
+  "telephone": "+60-11-6264-9191",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "No 8 (GF), Jalan Puteri 2A/3, Bandar Puteri Bangi",
+    "streetAddress": "8, Jalan Puteri 2A/3, Bandar Bukit Mahkota",
     "addressLocality": "Kajang",
     "addressRegion": "Selangor",
     "postalCode": "43000",
     "addressCountry": "MY"
   },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
   "areaServed": [
     "Bandar Puteri Bangi",
     "Bangi",
