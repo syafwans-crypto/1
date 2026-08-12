@@ -1,0 +1,114 @@
+<!--
+  SECTION "TENTANG KLINIK" / GAMBAR + 3 POIN (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal. Perubahan:
+  1. Gambar klinik yang sebelum ini di-embed sebagai base64 data-URI (menambah puluhan
+     KB pada SETIAP page load, tak boleh cache & tak boleh lazy) kini diganti dengan
+     URL Media Library + loading="lazy" — HTML mengecil drastik, gambar hanya
+     di-download bila hampir viewport, dan browser boleh cache.
+  2. Ikon Font Awesome (<i class="fa-solid ...">) diganti dengan SVG inline — path asal
+     dari Font Awesome Free 6 (CC BY 4.0, https://fontawesome.com/license/free).
+  3. Style baris yang berulang 3 kali dipindah ke class (.sp-about-row).
+  4. content-visibility: auto — browser skip kerja render + decode gambar sehingga
+     user scroll hampir ke section ini.
+
+  NOTA: fail "IMG_7124-scaled.jpg" ialah versi besar (hingga 2560px). Gambar ini
+  dipaparkan maksimum ~520px lebar — jika ada, guna URL saiz "Large" 1024px
+  (contoh: IMG_7124-1024x819.jpg) dari Media Library untuk jimat lagi.
+-->
+
+<style>
+  .sp-about-section {
+    background: var(--white);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
+  }
+
+  .sp-about-img {
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(15, 47, 68, 0.16);
+    aspect-ratio: 5/4;
+  }
+
+  .sp-about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .sp-about-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .sp-about-row > span:last-child {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--navy);
+  }
+
+  .sp-about-ico {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--sky);
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sp-about-ico svg {
+    height: 16px;
+    width: auto;
+    fill: currentColor;
+    display: block;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-about-section">
+    <div style="max-width: 1180px; margin: 0 auto; width: 100%; padding: clamp(56px,9vw,100px) clamp(20px,5vw,32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px,5vw,56px); align-items: center;">
+
+      <div class="sp-about-img">
+        <img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_7124-scaled.jpg" alt="Suasana rawatan di Klinik Everglo" width="520" height="416" loading="lazy" decoding="async">
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.55rem,3.6vw,2.3rem); line-height: 1.2; letter-spacing: -0.01em; color: var(--navy);">Bukan klinik yang menakutkan. Ini tempat untuk mula jaga senyuman anda.</h2>
+        <p style="margin: 0; font-family: var(--font-body); font-size: clamp(1rem,2.1vw,1.12rem); line-height: 1.7; color: var(--muted);">Kami faham ramai orang tangguh jumpa doktor gigi sebab takut sakit, takut kena judge, atau risau kos rawatan. Di Everglo, kami bantu anda faham keadaan gigi dulu sebelum buat keputusan.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+
+          <div class="sp-about-row">
+            <span class="sp-about-ico">
+              <!-- fa-magnifying-glass (Font Awesome Free 6, CC BY 4.0) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+            </span>
+            <span>Pemeriksaan dengan penerangan jelas</span>
+          </div>
+
+          <div class="sp-about-row">
+            <span class="sp-about-ico">
+              <!-- fa-list-check (Font Awesome Free 6, CC BY 4.0) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32l224 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-224 0c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32l288 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-288 0c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+            </span>
+            <span>Cadangan rawatan ikut keperluan</span>
+          </div>
+
+          <div class="sp-about-row">
+            <span class="sp-about-ico">
+              <!-- fa-spa (Font Awesome Free 6, CC BY 4.0) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path d="M183.1 235.3c33.7 20.7 62.9 48.1 85.8 80.5c7 9.9 13.4 20.3 19.1 31c5.7-10.8 12.1-21.1 19.1-31c22.9-32.4 52.1-59.8 85.8-80.5C437.6 207.8 490.1 192 546 192l9.9 0c11.1 0 20.1 9 20.1 20.1C576 360.1 456.1 480 308.1 480L288 480l-20.1 0C119.9 480 0 360.1 0 212.1C0 201 9 192 20.1 192l9.9 0c55.9 0 108.4 15.8 153.1 43.3zM301.5 37.6c15.7 16.9 61.1 71.8 84.4 164.6c-38 21.6-71.4 50.8-97.9 85.6c-26.5-34.8-59.9-63.9-97.9-85.6c23.2-92.8 68.6-147.7 84.4-164.6C278 33.9 282.9 32 288 32s10 1.9 13.5 5.6z"/></svg>
+            </span>
+            <span>Suasana klinik yang tenang dan selesa</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section></div>
