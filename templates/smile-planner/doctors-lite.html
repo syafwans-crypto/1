@@ -1,0 +1,136 @@
+<!--
+  SECTION "DOKTOR KAMI" (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal. Perubahan:
+  1. Gambar doktor kini ada loading="lazy" + decoding="async" + width/height
+     (versi asal load kedua-dua gambar serta-merta walaupun section jauh di bawah).
+  2. Style kad doktor yang berulang 2 kali dipindah ke class (.sp-doc-card) —
+     HTML lebih kecil dan senang maintain.
+  3. content-visibility: auto — browser skip kerja render sehingga user scroll
+     hampir ke section ini (tiada perubahan visual).
+
+  NOTA: potret dipaparkan hanya 96x96px. Fail PNG potret biasanya besar (500KB+).
+  Guna URL saiz "Thumbnail"/"Medium" dari Media Library (contoh: Dr.-Farah-1-300x300.png)
+  untuk jimat besar.
+-->
+
+<style>
+  .sp-doc-section {
+    background: var(--grey);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+
+  .sp-doc-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 28px rgba(15, 47, 68, 0.07);
+  }
+
+  .sp-doc-head {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .sp-doc-avatar {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--sky);
+    box-shadow: 0 0 0 4px var(--sky);
+  }
+
+  .sp-doc-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+
+  .sp-doc-card h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--navy);
+  }
+
+  .sp-doc-role {
+    margin: 4px 0 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--blue);
+  }
+
+  .sp-doc-bio {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .sp-doc-quote {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    line-height: 1.7;
+    color: var(--ink);
+    font-style: italic;
+    background: var(--grey);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-doc-section">
+    <div style="max-width: 1080px; margin: 0 auto; width: 100%; padding: clamp(56px,9vw,100px) clamp(20px,5vw,32px);">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 14px;">
+        <span style="align-self: center; background: #fff; color: var(--blue); font-family: var(--font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; padding: 7px 13px; border-radius: 999px;">DOKTOR KAMI</span>
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.65rem,4vw,2.5rem); line-height: 1.15; letter-spacing: -0.01em; color: var(--navy);">Kenali doktor yang akan rawat anda</h2>
+        <p style="margin: 0; font-family: var(--font-body); font-size: clamp(1rem,2.1vw,1.12rem); line-height: 1.7; color: var(--muted);">Pasukan doktor gigi yang mesra, teliti dan biasa berdepan dengan pesakit yang nervous.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 44px;">
+
+        <!-- Dr. Farah -->
+        <div class="sp-doc-card">
+          <div class="sp-doc-head">
+            <div class="sp-doc-avatar">
+              <img src="https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/Dr.-Farah-1.png" alt="Dr. Farah Fatah" width="96" height="96" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <h3>Dr. Farah Fatah</h3>
+              <p class="sp-doc-role">Pengarah &amp; Doktor Gigi</p>
+            </div>
+          </div>
+          <p class="sp-doc-bio">Pengasas Klinik Pergigian Everglo dengan pengalaman hampir 10 tahun. Dr. Farah dikenali dengan pendekatan yang lembut dan teliti — terutama untuk pesakit yang takut atau pertama kali jumpa doktor gigi.</p>
+          <p class="sp-doc-quote">"Saya sedia membantu memberikan rawatan yang berkualiti untuk keselesaan setiap pesakit."</p>
+        </div>
+
+        <!-- Dr. Najmina -->
+        <div class="sp-doc-card">
+          <div class="sp-doc-head">
+            <div class="sp-doc-avatar">
+              <img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Dr.-Najmina.png" alt="Dr. Najmina" width="96" height="96" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <h3>Dr. Najmina</h3>
+              <p class="sp-doc-role">Doktor Gigi</p>
+            </div>
+          </div>
+          <p class="sp-doc-bio">Doktor gigi yang mesra dan sabar, komited untuk bantu setiap pesakit faham keadaan gigi mereka sebelum mula rawatan. Berpengalaman dalam rawatan pergigian am dan kosmetik untuk semua peringkat umur.</p>
+          <p class="sp-doc-quote">"Setiap pesakit layak rasa selesa dan faham setiap langkah rawatan mereka."</p>
+        </div>
+
+      </div>
+    </div>
+  </section></div>
