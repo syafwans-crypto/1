@@ -1,0 +1,114 @@
+<!--
+  SECTION "RAWATAN" (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal. Perubahan:
+  1. Style kad yang berulang 6 kali dipindah ke class .evg-treat-card / .evg-treat-ico
+     (class ini memang sudah ada pada kad asal sebagai penanda, cuma tiada definisi
+     — sekarang definisi diletakkan sekali sahaja). HTML mengecil >60%.
+  2. Ikon PNG dapat width/height + decoding="async" (kekal loading="lazy").
+  3. content-visibility: auto — browser skip kerja render section ni sehingga user
+     scroll hampir kepadanya (tiada perubahan visual).
+  Class hover sp-hover-7 hingga sp-hover-12 kekal — definisinya dalam template utama.
+-->
+
+<style>
+  .sp-treat-section {
+    background: var(--grey);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 780px;
+  }
+
+  .evg-treat-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .evg-treat-card h3 {
+    margin: 4px 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.18rem;
+    color: var(--navy);
+  }
+
+  .evg-treat-card p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .evg-treat-ico {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--sky);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .evg-treat-ico img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-treat-section">
+    <div style="max-width: 1180px; margin: 0 auto; width: 100%; padding: clamp(56px,9vw,100px) clamp(20px,5vw,32px);">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.65rem,4vw,2.5rem); line-height: 1.15; letter-spacing: -0.01em; color: var(--navy);">Rawatan yang boleh bantu senyuman anda nampak lebih kemas</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 44px;">
+
+        <div class="sp-hover-7 evg-treat-card">
+          <span class="evg-treat-ico"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/braces_2725536.png" alt="Braces / Pendakap Gigi" width="34" height="34" loading="lazy" decoding="async"></span>
+          <h3>Braces / Pendakap Gigi</h3>
+          <p>Untuk bantu susunan gigi yang tidak teratur.</p>
+        </div>
+
+        <div class="sp-hover-8 evg-treat-card">
+          <span class="evg-treat-ico"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/scalling-and-polishing.png" alt="Scaling &amp; Polishing" width="34" height="34" loading="lazy" decoding="async"></span>
+          <h3>Scaling &amp; Polishing</h3>
+          <p>Untuk bersihkan karang gigi dan rasa mulut lebih segar.</p>
+        </div>
+
+        <div class="sp-hover-9 evg-treat-card">
+          <span class="evg-treat-ico"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/whitening1.png" alt="Teeth Whitening" width="34" height="34" loading="lazy" decoding="async"></span>
+          <h3>Teeth Whitening</h3>
+          <p>Untuk bantu gigi nampak lebih cerah.</p>
+        </div>
+
+        <div class="sp-hover-10 evg-treat-card">
+          <span class="evg-treat-ico"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/crown-and-bridge.png" alt="Crown &amp; Bridge" width="34" height="34" loading="lazy" decoding="async"></span>
+          <h3>Crown &amp; Bridge</h3>
+          <p>Untuk kes gigi rosak, patah atau perlukan perlindungan tambahan.</p>
+        </div>
+
+        <div class="sp-hover-11 evg-treat-card">
+          <span class="evg-treat-ico"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/dentures_1331803.png" alt="Denture / Gigi Palsu" width="34" height="34" loading="lazy" decoding="async"></span>
+          <h3>Denture / Gigi Palsu</h3>
+          <p>Untuk kes kehilangan gigi dan mahu fungsi mengunyah lebih baik.</p>
+        </div>
+
+        <div class="sp-hover-12 evg-treat-card">
+          <span class="evg-treat-ico"><img src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/consultation.png" alt="Consultation" width="34" height="34" loading="lazy" decoding="async"></span>
+          <h3>Consultation</h3>
+          <p>Untuk mereka yang belum pasti rawatan mana sesuai.</p>
+        </div>
+
+      </div>
+
+      <p style="margin: 26px 0 0; text-align: center; font-family: var(--font-body); font-size: 0.95rem; color: var(--muted); font-style: italic;">Cadangan rawatan bergantung kepada pemeriksaan doktor.</p>
+    </div>
+  </section></div>
