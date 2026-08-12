@@ -1,0 +1,40 @@
+<!--
+  SECTION "CTA AKHIR" (VERSI RINGAN) — Smile Planner.
+  UI 100% sama seperti versi asal — latar gradient navy, dua bulatan hiasan,
+  heading, teks dan butang Book Appointment. Perubahan:
+  1. Ikon kalendar Font Awesome pada butang diganti SVG inline (path asal FA6,
+     CC BY 4.0). Class hover sp-hover-23 kekal — definisinya dalam template utama.
+  2. content-visibility: auto — browser skip kerja render sehingga user scroll
+     hampir ke section ini (tiada perubahan visual).
+-->
+
+<style>
+  .sp-cta-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #15425e 100%);
+    position: relative;
+    overflow: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 420px;
+  }
+
+  .sp-cta-cal-ico {
+    height: 1.2rem;
+    width: auto;
+    fill: currentColor;
+    display: block;
+  }
+</style>
+
+<div class="evg-smile-planner"><section class="sp-cta-section">
+    <div style="position: absolute; top: -80px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(126,221,211,0.12);"></div>
+    <div style="position: absolute; bottom: -90px; left: -50px; width: 240px; height: 240px; border-radius: 50%; background: rgba(14,165,198,0.16);"></div>
+    <div style="position: relative; max-width: 760px; margin: 0 auto; width: 100%; padding: clamp(60px,10vw,110px) clamp(20px,5vw,32px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+      <h2 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem,4.6vw,2.8rem); line-height: 1.15; letter-spacing: -0.02em; color: #fff;">Jangan  berlengah lagi buat rawatan gigi</h2>
+      <p style="margin: 0; max-width: 560px; font-family: var(--font-body); font-size: clamp(1rem,2.2vw,1.18rem); line-height: 1.65; color: rgba(255,255,255,0.82);">Mulakan dengan satu langkah kecil. Check dulu keadaan gigi anda, kemudian barulah pilih rawatan yang sesuai.</p>
+      <a href="#form" class="sp-hover-23" style="display: inline-flex; align-items: center; gap: 12px; background: var(--cta); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem,2.2vw,1.15rem); padding: 18px 34px; border-radius: 999px; text-decoration: none; box-shadow: 0 16px 36px rgba(255,107,90,0.4); transition: background 160ms ease, transform 160ms ease;">
+        <!-- fa-calendar-check (Font Awesome Free 6, CC BY 4.0) -->
+        <svg class="sp-cta-cal-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg>
+        Book Appointment Hari Ini
+      </a>
+    </div>
+  </section></div>
