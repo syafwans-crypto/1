@@ -19,6 +19,15 @@
      pelayar memuat turun kedua-dua fail.
   H. (21 Ogos) Dua baris <link rel="preconnect"> dibuang — ia berganda dengan widget
      CSS pertama dan mencetuskan amaran Lighthouse ">4 preconnect".
+  I. (21 Ogos) Galeri hero ditukar ke WebP. PSI mengukur galeri ini pada 3,447 KiB —
+     98% daripada keseluruhan berat gambar halaman. Screenshot-111654.png sahaja
+     1,145.7 KiB untuk imej 507x639 (3.6 bait/piksel — hampir tiada mampatan), dan
+     ia yang membawa fetchpriority="high".
+     • fcf75655-...-1.jpg kini menunjuk ke fail WebP yang SAMA dengan fcf75655-...jpg.
+       PSI menunjukkan kedua-duanya 284.2 KiB pada 1200x1518 — fail yang serupa,
+       dimuat naik dua kali. Satu URL = satu muat turun, bukan dua.
+     • dbc9114f-1547-4f8a-b849-f647282ac246.jpg KEKAL JPG — tiada WebP disediakan
+       untuknya. Ini satu-satunya fail galeri hero yang belum ditukar.
 
   ═══ MASIH PERLU DIISI (lihat komen di atas blok JSON-LD) ═══
   - URL Facebook, Instagram, Google Maps → sameAs
@@ -779,7 +788,7 @@
 
           <!-- SATU-SATUNYA gambar dengan fetchpriority="high" pada seluruh halaman -->
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111654.png"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Screenshot-2026-07-07-111654.webp"
             alt="Pesakit selesai rawatan gigi di Klinik Pergigian Everglo, Bandar Puteri Bangi"
             width="480" height="600"
             loading="eager"
@@ -788,7 +797,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.webp"
             alt="Rawatan scaling dan pemeriksaan gigi di klinik gigi Bandar Puteri Bangi"
             width="480" height="600"
             loading="lazy"
@@ -796,7 +805,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111739.png"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Screenshot-2026-07-07-111739.webp"
             alt="Doktor gigi Everglo bersama pesakit rawatan braces di Bangi"
             width="480" height="600"
             loading="lazy"
@@ -813,7 +822,7 @@
 
           <!-- GAMBAR DUPLIKAT UNTUK ANIMASI (URL sama = guna cache, tiada download tambahan) -->
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111654.png"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Screenshot-2026-07-07-111654.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
@@ -822,7 +831,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
@@ -831,7 +840,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111739.png"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Screenshot-2026-07-07-111739.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
@@ -858,7 +867,7 @@
           <!-- fetchpriority="high" DIBUANG di sini — dua gambar berebut keutamaan yang
                sama merugikan kedua-duanya. loading="eager" dikekalkan sebab ia above-fold. -->
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111727.png"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Screenshot-2026-07-07-111727.webp"
             alt="Pesakit whitening gigi tersenyum yakin di Klinik Everglo Bandar Puteri Bangi"
             width="480" height="600"
             loading="eager"
@@ -866,7 +875,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/03376b41-713c-4988-a916-fa0a65c5ede5.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/03376b41-713c-4988-a916-fa0a65c5ede5.webp"
             alt="Kaunter penyambut tetamu Klinik Pergigian Everglo di Bandar Puteri Bangi"
             width="480" height="600"
             loading="lazy"
@@ -874,7 +883,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.webp"
             alt="Rawatan gigi mesra kanak-kanak di klinik gigi Kajang"
             width="480" height="600"
             loading="lazy"
@@ -882,7 +891,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3-1.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.webp"
             alt="Pesakit first-timer selesa menjalani rawatan pergigian di Everglo"
             width="480" height="600"
             loading="lazy"
@@ -891,7 +900,7 @@
 
           <!-- GAMBAR DUPLIKAT UNTUK ANIMASI (URL sama = guna cache, tiada download tambahan) -->
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111727.png"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Screenshot-2026-07-07-111727.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
@@ -900,7 +909,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/03376b41-713c-4988-a916-fa0a65c5ede5.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/03376b41-713c-4988-a916-fa0a65c5ede5.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
@@ -909,7 +918,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
@@ -918,7 +927,7 @@
           >
 
           <img
-            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3-1.jpg"
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.webp"
             alt=""
             aria-hidden="true"
             width="480" height="600"
