@@ -13,6 +13,12 @@
   E. Person untuk Dr. Farah Fatah & Dr. Najmina — E-E-A-T untuk laman kesihatan.
   F. fetchpriority="high" dibuang dari gambar kolum kedua. Dua gambar berebut keutamaan
      yang sama merugikan kedua-duanya; satu sahaja yang patut jadi keutamaan.
+  G. (21 Ogos) IMG_2951.png (4.73 MB, 3024x4032) diganti dengan Everglo-Clinic-scaled.webp
+     di KESEMUA EMPAT rujukan: CSS background-image, script loader, JSON-LD
+     primaryImageOfPage, dan JSON-LD image[0]. Menukar hanya sebahagian menyebabkan
+     pelayar memuat turun kedua-dua fail.
+  H. (21 Ogos) Dua baris <link rel="preconnect"> dibuang — ia berganda dengan widget
+     CSS pertama dan mencetuskan amaran Lighthouse ">4 preconnect".
 
   ═══ MASIH PERLU DIISI (lihat komen di atas blok JSON-LD) ═══
   - URL Facebook, Instagram, Google Maps → sameAs
@@ -33,9 +39,9 @@
   3. Semua <img> ada decoding="async" + width/height. 4. Duplikat animasi guna URL sama.
 -->
 
-<!-- LOAD FONT POPPINS (non-blocking) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- LOAD FONT POPPINS (non-blocking) — preconnect sengaja TIADA di sini;
+     widget CSS pertama (6da1fece) sudah preconnect ke fonts.googleapis.com dan
+     fonts.gstatic.com. Menduakannya mencetuskan amaran Lighthouse ">4 preconnect". -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
       rel="stylesheet" media="print" onload="this.media='all'">
 <noscript>
@@ -95,7 +101,7 @@
   }
 
   .evg-hero.evg-bg-on::before {
-    background-image: url("https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png");
+    background-image: url("https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Everglo-Clinic-scaled.webp");
     opacity: var(--evg-bg-image-opacity);
   }
 
@@ -1027,7 +1033,7 @@
       "inLanguage": "ms-MY",
       "isPartOf": { "@id": "https://klinikpergigianeverglo.com/#website" },
       "about": { "@id": "https://klinikpergigianeverglo.com/#dentist" },
-      "primaryImageOfPage": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png"
+      "primaryImageOfPage": "https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Everglo-Clinic-scaled.webp"
     },
     {
       "@type": "Dentist",
@@ -1043,7 +1049,7 @@
       "description": "Klinik gigi di Bandar Puteri Bangi, Kajang. Rawatan pergigian teliti dan mesra first-timer: pemeriksaan gigi, scaling & polishing, tampalan, cabut gigi, braces (pendakap gigi), gigi palsu (denture), teeth whitening, crown & bridge dan veneer. Mesra kanak-kanak.",
       "url": "https://klinikpergigianeverglo.com/",
       "image": [
-        "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png",
+        "https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Everglo-Clinic-scaled.webp",
         "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_7124-scaled.jpg"
       ],
       "logo": "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/logo-everglo2.png",
@@ -1187,7 +1193,7 @@
           heroes[i].classList.add("evg-bg-on");
         }
       };
-      img.src = "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png";
+      img.src = "https://klinikpergigianeverglo.com/wp-content/uploads/2026/08/Everglo-Clinic-scaled.webp";
     }
 
     if (document.readyState === "complete") {
