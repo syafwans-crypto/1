@@ -1,0 +1,1199 @@
+<!--
+  EVG HERO (VERSI RINGAN + SEO/GEO) — paste sekali sahaja ke dalam satu Elementor HTML widget.
+
+  ═══ PERUBAHAN DALAM VERSI INI (audit SEO 2026-08-20) ═══
+  A. JSON-LD ditulis semula sebagai @graph: WebPage + WebSite + Dentist + 2 Person + FAQPage.
+  B. aggregateRating DIBUANG — Google tak papar review rich result untuk LocalBusiness
+     self-serving sejak 2019, dan rating yang perniagaan isytihar sendiri tanpa objek
+     Review melanggar garis panduan structured data. Review sebenar kekal di Google
+     Business Profile, tempat ia sepatutnya.
+  C. Alamat diseragamkan ke "Bandar Puteri Bangi" (dulu JSON-LD tulis "Bandar Bukit
+     Mahkota" sedangkan FAQ & hero tulis "Bandar Puteri Bangi"). ⚠️ SAHKAN dengan GBP.
+  D. FAQPage ditambah (9 soalan dari section FAQ) — untuk pengekstrakan AI, bukan bintang.
+  E. Person untuk Dr. Farah Fatah & Dr. Najmina — E-E-A-T untuk laman kesihatan.
+  F. fetchpriority="high" dibuang dari gambar kolum kedua. Dua gambar berebut keutamaan
+     yang sama merugikan kedua-duanya; satu sahaja yang patut jadi keutamaan.
+
+  ═══ MASIH PERLU DIISI (lihat komen di atas blok JSON-LD) ═══
+  - URL Facebook, Instagram, Google Maps → sameAs
+  - Koordinat GPS → geo
+  - Nombor pendaftaran MDC kedua-dua doktor → hasCredential
+
+  ═══ WAJIB SET DI PERINGKAT PAGE (RankMath/Yoast — BUKAN dalam widget ni) ═══
+  Tag <meta> yang di-paste dalam widget Elementor akan mendarat dalam <body>, bukan
+  <head>, dan scraper WhatsApp/Facebook akan abaikan. Guna panel plugin SEO:
+  - Title tag : Klinik Gigi Bandar Puteri Bangi | Klinik Pergigian Everglo
+  - Meta desc : Klinik pergigian di Bandar Puteri Bangi, Kajang. Scaling, tampalan,
+                cabut gigi, braces, gigi palsu, whitening & veneer. Mesra first-timer.
+                Book hari ini.
+  - Open Graph + Twitter Card : isi dalam tab "Social" plugin SEO.
+
+  Optimization load (kekal dari versi asal):
+  1. Font Poppins non-blocking. 2. Background klinik dimuat selepas page load.
+  3. Semua <img> ada decoding="async" + width/height. 4. Duplikat animasi guna URL sama.
+-->
+
+<!-- LOAD FONT POPPINS (non-blocking) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</noscript>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Pastikan butang anchor berhenti kemas di bahagian borang */
+  #form {
+    scroll-margin-top: 90px;
+  }
+
+  .evg-hero,
+  .evg-hero * {
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif !important;
+  }
+
+  .evg-hero {
+    /* Ubah nilai ini jika mahu background lebih atau kurang jelas */
+    --evg-bg-image-opacity: 0.14;
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    width: 100%;
+    padding: 70px 24px;
+    color: #ffffff;
+    font-family: "Poppins", Arial, sans-serif;
+
+    background:
+      radial-gradient(circle at 15% 20%, rgba(25, 196, 218, 0.35), transparent 32%),
+      radial-gradient(circle at 90% 80%, rgba(255, 212, 59, 0.13), transparent 28%),
+      linear-gradient(135deg, #063c68 0%, #075e87 48%, #058bab 100%);
+  }
+
+  /* BACKGROUND GAMBAR KLINIK — dimuat lewat (lepas page load) melalui class .evg-bg-on */
+  .evg-hero::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+
+    background-repeat: no-repeat;
+    background-position: 58% 52%;
+    background-size: cover;
+
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    filter: saturate(0.85) contrast(0.92);
+    transform: scale(1.02);
+    pointer-events: none;
+  }
+
+  .evg-hero.evg-bg-on::before {
+    background-image: url("https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png");
+    opacity: var(--evg-bg-image-opacity);
+  }
+
+  /* OVERLAY BIRU */
+  .evg-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+
+    background:
+      radial-gradient(circle at 12% 18%, rgba(25, 196, 218, 0.22), transparent 36%),
+      radial-gradient(circle at 90% 82%, rgba(255, 212, 59, 0.09), transparent 30%),
+      linear-gradient(135deg, rgba(6, 60, 104, 0.18), rgba(5, 139, 171, 0.08));
+
+    pointer-events: none;
+  }
+
+  .evg-hero-container {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+
+    align-items: center;
+    gap: clamp(40px, 6vw, 90px);
+
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  /* BAHAGIAN HEADLINE */
+  .evg-hero-copy {
+    max-width: 760px;
+  }
+
+  .evg-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 0 0 22px;
+    padding: 9px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 10px 30px rgba(0, 28, 52, 0.14);
+
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .evg-eyebrow-dot {
+    flex: 0 0 auto;
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background: #ff2d2d;
+    box-shadow:
+      0 0 0 5px rgba(255, 45, 45, 0.22),
+      0 0 12px rgba(255, 45, 45, 0.95),
+      0 0 22px rgba(255, 45, 45, 0.65);
+
+    transform-origin: center;
+    animation: evg-red-blink 1s ease-in-out infinite;
+  }
+
+  /* BULLET MERAH MENYALA DAN BERKELIP */
+  @keyframes evg-red-blink {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      background: #ff2d2d;
+      box-shadow:
+        0 0 0 5px rgba(255, 45, 45, 0.22),
+        0 0 12px rgba(255, 45, 45, 0.95),
+        0 0 22px rgba(255, 45, 45, 0.65);
+    }
+
+    50% {
+      opacity: 0.55;
+      transform: scale(0.72);
+      background: #ff5a5a;
+      box-shadow:
+        0 0 0 10px rgba(255, 45, 45, 0),
+        0 0 5px rgba(255, 45, 45, 0.45);
+    }
+  }
+
+  .evg-hero-title {
+    margin: 0;
+
+    color: #ffffff;
+    font-size: clamp(44px, 5vw, 76px);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.045em;
+  }
+
+  .evg-yellow-underline {
+    color: #ffd43b;
+
+    text-decoration-line: underline;
+    text-decoration-color: #ffd43b;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 10px;
+    text-decoration-skip-ink: none;
+    -webkit-text-decoration-skip: none;
+  }
+
+  .evg-hero-desc {
+    max-width: 650px;
+    margin: 32px 0 0;
+
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  /* BENEFIT */
+  .evg-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px 20px;
+
+    margin: 25px 0 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .evg-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .evg-benefit-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    width: 21px;
+    height: 21px;
+
+    border-radius: 50%;
+    color: #064a70;
+    background: #ffd43b;
+
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  /* BUTTON */
+  .evg-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+
+    margin-top: 34px;
+  }
+
+  .evg-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 56px;
+    padding: 16px 25px;
+
+    border: 0;
+    border-radius: 13px;
+
+    color: #063c68 !important;
+    background: #ffd43b !important;
+    box-shadow: 0 15px 35px rgba(0, 25, 48, 0.25);
+
+    animation: none !important;
+
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-decoration: none !important;
+
+    transition:
+      transform 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .evg-cta:hover,
+  .evg-cta:focus-visible {
+    color: #ffffff !important;
+    background: #ff2d2d !important;
+    box-shadow:
+      0 0 0 5px rgba(255, 45, 45, 0.20),
+      0 0 24px rgba(255, 45, 45, 0.92),
+      0 18px 42px rgba(116, 0, 0, 0.48);
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  .evg-cta:hover .evg-cta-arrow,
+  .evg-cta:focus-visible .evg-cta-arrow {
+    color: #ffffff !important;
+  }
+
+  .evg-cta-arrow {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .evg-cta-note {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .evg-cta-note strong {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  /* GALERI GAMBAR BERGERAK */
+  .evg-wall {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    width: 100%;
+    max-width: 510px;
+    height: 650px;
+    margin-left: auto;
+  }
+
+  .evg-wall-col {
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+  }
+
+  .evg-wall-col:nth-child(2) {
+    margin-top: -35px;
+    margin-bottom: 35px;
+  }
+
+  .evg-wall-track {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    will-change: transform;
+  }
+
+  .evg-wall-track img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+
+    border: 5px solid rgba(255, 255, 255, 0.90);
+    border-radius: 20px;
+
+    background: #ffffff;
+    box-shadow: 0 18px 36px rgba(0, 30, 50, 0.25);
+  }
+
+  .evg-wall-up {
+    animation: evg-scroll-up 25s linear infinite;
+  }
+
+  .evg-wall-down {
+    animation: evg-scroll-down 27s linear infinite;
+  }
+
+  .evg-wall:hover .evg-wall-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes evg-scroll-up {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(calc(-50% - 7px));
+    }
+  }
+
+  @keyframes evg-scroll-down {
+    from {
+      transform: translateY(calc(-50% - 7px));
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  /* BADGE */
+  .evg-wbadge {
+    position: absolute;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 12px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    border-radius: 15px;
+
+    color: #063c68;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 35px rgba(0, 30, 50, 0.22);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .evg-wbadge-rating {
+    top: 16%;
+    left: -38px;
+  }
+
+  .evg-wbadge-trust {
+    right: -28px;
+    bottom: 17%;
+  }
+
+  .evg-wbadge-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    width: 39px;
+    height: 39px;
+
+    border-radius: 12px;
+    color: #063c68;
+    background: #ffd43b;
+
+    font-size: 21px;
+    font-weight: 800;
+  }
+
+  .evg-wbadge-ico-dark {
+    color: #ffffff;
+    background: #075e87;
+  }
+
+  .evg-wbadge-title {
+    color: #063c68;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .evg-wbadge-sub {
+    margin-top: 3px;
+
+    color: #617383;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .evg-wbadge-trust-text {
+    color: #063c68;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .evg-wbadge-trust-text span {
+    color: #078ca9;
+  }
+
+  /* TABLET */
+  @media (max-width: 1050px) {
+    .evg-hero {
+      padding: 60px 24px;
+    }
+
+    .evg-hero-container {
+      grid-template-columns: minmax(0, 1fr) minmax(350px, 0.85fr);
+      gap: 38px;
+    }
+
+    .evg-hero-title {
+      font-size: clamp(40px, 5vw, 58px);
+    }
+
+    .evg-wall {
+      height: 570px;
+    }
+
+    .evg-wbadge-rating {
+      left: -18px;
+    }
+
+    .evg-wbadge-trust {
+      right: -14px;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    .evg-hero {
+      padding: 42px 17px 35px;
+    }
+
+    .evg-hero-container {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+
+    .evg-hero-copy {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .evg-eyebrow {
+      justify-content: center;
+      max-width: 100%;
+
+      margin-bottom: 18px;
+      padding: 8px 12px;
+
+      font-size: 10px;
+      letter-spacing: 0.015em;
+    }
+
+    .evg-hero-title {
+      font-size: clamp(36px, 11vw, 48px);
+      line-height: 1.09;
+      letter-spacing: -0.04em;
+    }
+
+    .evg-yellow-underline {
+      text-decoration-thickness: 3px;
+      text-underline-offset: 7px;
+    }
+
+    .evg-hero-desc {
+      margin-top: 25px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .evg-benefits {
+      justify-content: center;
+      gap: 10px 14px;
+      margin-top: 21px;
+    }
+
+    .evg-benefits li {
+      font-size: 12px;
+    }
+
+    .evg-hero-actions {
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .evg-cta {
+      width: 100%;
+      min-height: 55px;
+    }
+
+    .evg-cta-note {
+      width: 100%;
+      text-align: center;
+    }
+
+    .evg-wall {
+      max-width: 500px;
+      height: 470px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+
+    .evg-wall-track {
+      gap: 10px;
+    }
+
+    .evg-wall-track img {
+      border-width: 4px;
+      border-radius: 15px;
+    }
+
+    .evg-wall-col {
+      border-radius: 18px;
+    }
+
+    .evg-wall-col:nth-child(2) {
+      margin-top: -22px;
+      margin-bottom: 22px;
+    }
+
+    .evg-wbadge {
+      gap: 8px;
+      padding: 9px 11px;
+      border-radius: 12px;
+    }
+
+    .evg-wbadge-rating {
+      top: 15%;
+      left: -4px;
+    }
+
+    .evg-wbadge-trust {
+      right: -4px;
+      bottom: 13%;
+    }
+
+    .evg-wbadge-ico {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+
+    .evg-wbadge-title {
+      font-size: 12px;
+    }
+
+    .evg-wbadge-sub,
+    .evg-wbadge-trust-text {
+      font-size: 9px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .evg-hero-title {
+      font-size: 34px;
+    }
+
+    .evg-wall {
+      height: 425px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .evg-wall-track {
+      animation-play-state: paused !important;
+    }
+
+    .evg-eyebrow-dot {
+      animation: none;
+    }
+
+    .evg-cta {
+      transition: none;
+    }
+
+    .evg-hero::before {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="evg-hero">
+  <div class="evg-hero-container">
+
+    <!-- BAHAGIAN KIRI -->
+    <div class="evg-hero-copy">
+
+      <p class="evg-eyebrow">
+        <span class="evg-eyebrow-dot"></span>
+        Klinik Pergigian Everglo @ Bandar Puteri Bangi, Kajang
+      </p>
+
+      <h1 class="evg-hero-title">
+        Bukan Sekadar<br>
+        Rawat Gigi.<br>
+
+        <span class="evg-yellow-underline">
+          “Kami Bantu Anda Senyum Lebih Yakin.”
+        </span>
+      </h1>
+
+      <p class="evg-hero-desc">
+        Klinik gigi di Bandar Puteri Bangi, Kajang — rawatan pergigian
+        teliti dan selesa untuk seisi keluarga. Daripada pemeriksaan
+        rutin, scaling, tampalan dan cabut gigi hinggalah braces
+        (pendakap gigi), gigi palsu, whitening dan veneer untuk
+        menaikkan semula keyakinan senyuman anda.
+      </p>
+
+      <ul class="evg-benefits">
+        <li>
+          <span class="evg-benefit-check">✓</span>
+          Rawatan teliti
+        </li>
+
+        <li>
+          <span class="evg-benefit-check">✓</span>
+          Klinik selesa
+        </li>
+
+        <li>
+          <span class="evg-benefit-check">✓</span>
+          Mesra first-timer
+        </li>
+      </ul>
+
+      <div class="evg-hero-actions">
+
+        <!-- BUTTON KUNING KE BORANG: pastikan CSS ID borang Elementor ialah form -->
+        <a
+          class="evg-cta"
+          href="#form"
+          aria-label="Pergi ke borang untuk book appointment"
+        >
+          BOOK APPOINTMENT HARI INI
+          <span class="evg-cta-arrow">→</span>
+        </a>
+
+        <div class="evg-cta-note">
+          <strong>Tak pasti rawatan apa?</strong>
+          Boleh WhatsApp kami dahulu.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BAHAGIAN KANAN: GAMBAR BERGERAK -->
+    <div class="evg-wall">
+
+      <!-- KOLEKSI GAMBAR PERTAMA -->
+      <div class="evg-wall-col">
+        <div class="evg-wall-track evg-wall-up">
+
+          <!-- SATU-SATUNYA gambar dengan fetchpriority="high" pada seluruh halaman -->
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111654.png"
+            alt="Pesakit selesai rawatan gigi di Klinik Pergigian Everglo, Bandar Puteri Bangi"
+            width="480" height="600"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.jpg"
+            alt="Rawatan scaling dan pemeriksaan gigi di klinik gigi Bandar Puteri Bangi"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111739.png"
+            alt="Doktor gigi Everglo bersama pesakit rawatan braces di Bangi"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/dbc9114f-1547-4f8a-b849-f647282ac246.jpg"
+            alt="Suasana klinik pergigian yang selesa dan moden di Everglo Kajang"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <!-- GAMBAR DUPLIKAT UNTUK ANIMASI (URL sama = guna cache, tiada download tambahan) -->
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111654.png"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/6f1b69fe-fa15-46d2-ab76-c80cca4ab2aa.jpg"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111739.png"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/dbc9114f-1547-4f8a-b849-f647282ac246.jpg"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+        </div>
+      </div>
+
+      <!-- KOLEKSI GAMBAR KEDUA -->
+      <div class="evg-wall-col">
+        <div class="evg-wall-track evg-wall-down">
+
+          <!-- fetchpriority="high" DIBUANG di sini — dua gambar berebut keutamaan yang
+               sama merugikan kedua-duanya. loading="eager" dikekalkan sebab ia above-fold. -->
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111727.png"
+            alt="Pesakit whitening gigi tersenyum yakin di Klinik Everglo Bandar Puteri Bangi"
+            width="480" height="600"
+            loading="eager"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/03376b41-713c-4988-a916-fa0a65c5ede5.jpg"
+            alt="Kaunter penyambut tetamu Klinik Pergigian Everglo di Bandar Puteri Bangi"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.jpg"
+            alt="Rawatan gigi mesra kanak-kanak di klinik gigi Kajang"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3-1.jpg"
+            alt="Pesakit first-timer selesa menjalani rawatan pergigian di Everglo"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <!-- GAMBAR DUPLIKAT UNTUK ANIMASI (URL sama = guna cache, tiada download tambahan) -->
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Screenshot-2026-07-07-111727.png"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/03376b41-713c-4988-a916-fa0a65c5ede5.jpg"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3.jpg"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <img
+            src="https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/fcf75655-ee23-46cc-97b3-33bf1a92f1d3-1.jpg"
+            alt=""
+            aria-hidden="true"
+            width="480" height="600"
+            loading="lazy"
+            decoding="async"
+          >
+
+        </div>
+      </div>
+
+      <!-- BADGE GOOGLE REVIEW -->
+      <div class="evg-wbadge evg-wbadge-rating">
+
+        <span class="evg-wbadge-ico">
+          ★
+        </span>
+
+        <div>
+          <div class="evg-wbadge-title">
+            5.0 / 5.0
+          </div>
+
+          <div class="evg-wbadge-sub">
+            381 ulasan Google
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BADGE MESRA FIRST-TIMER -->
+      <div class="evg-wbadge evg-wbadge-trust">
+
+        <span class="evg-wbadge-ico evg-wbadge-ico-dark">
+          ♥
+        </span>
+
+        <div class="evg-wbadge-trust-text">
+          Mesra first-timer<br>
+          <span>yang nervous</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  JSON-LD @graph — dibaca oleh Google (rich results / local pack) dan oleh AI
+  seperti ChatGPT, Perplexity & Gemini (GEO).
+  ═══════════════════════════════════════════════════════════════════════════
+
+  ⚠️  SATU BENDA WAJIB DISAHKAN SEBELUM PUBLISH
+      "streetAddress" di bawah ditulis "Bandar Puteri Bangi" — versi yang sama
+      dengan FAQ dan hero. JSON-LD lama tulis "Bandar Bukit Mahkota".
+      Buka Google Business Profile, salin alamat VERBATIM, dan pastikan ia
+      padan 100% dengan yang di bawah. NAP tak konsisten melemahkan map pack.
+
+  ═══ TIGA TAMBAHAN YANG BOLEH DIBUAT BILA-BILA MASA ═══
+  Saya sengaja TIDAK letak placeholder palsu, sebab placeholder akan buat
+  validator gagal. Bila anda dah ada datanya, tambah begini:
+
+  1) sameAs — tambah URL sebenar dalam array "sameAs" di bawah:
+       "sameAs": [
+         "https://www.tiktok.com/@klinikpergigianeverglo",
+         "https://www.facebook.com/PROFIL_ANDA",
+         "https://www.instagram.com/PROFIL_ANDA",
+         "https://maps.app.goo.gl/PAUTAN_ANDA"
+       ],
+
+  2) geo — klik kanan pin di Google Maps untuk dapat koordinat, kemudian
+     letak selepas "address": { ... },
+       "geo": { "@type": "GeoCoordinates", "latitude": 2.9xxx, "longitude": 101.7xxx },
+       "hasMap": "https://maps.app.goo.gl/PAUTAN_ANDA",
+
+  3) Nombor MDC — dalam setiap blok "Person", letak selepas "description":
+       "hasCredential": {
+         "@type": "EducationalOccupationalCredential",
+         "credentialCategory": "Malaysian Dental Council Registration",
+         "identifier": "MDC-XXXXX"
+       },
+     Ini penambahan E-E-A-T terbesar untuk laman kesihatan (YMYL).
+
+  NOTA FAQPage: jangan harap bintang di SERP. Sejak Ogos 2023 Google hadkan FAQ
+  rich result kepada laman kerajaan & institusi kesihatan. Nilai sebenar markup
+  ni ialah pengekstrakan oleh AI — untuk GEO, bukan untuk bintang.
+
+  NOTA aggregateRating: sengaja DIBUANG. Rating 5.0/381 anda memang betul, tapi
+  ia self-serving markup — Google tak papar review rich result untuk
+  LocalBusiness sejak 2019, dan rating tanpa objek Review melanggar garis
+  panduan. Review sebenar anda hidup di Google Business Profile; biar di sana.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://klinikpergigianeverglo.com/#website",
+      "url": "https://klinikpergigianeverglo.com/",
+      "name": "Klinik Pergigian Everglo",
+      "inLanguage": "ms-MY",
+      "publisher": { "@id": "https://klinikpergigianeverglo.com/#dentist" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://klinikpergigianeverglo.com/smile-planner/#webpage",
+      "url": "https://klinikpergigianeverglo.com/smile-planner/",
+      "name": "Smile Upgrade Planner | Klinik Pergigian Everglo",
+      "description": "Smile Upgrade Planner — pemeriksaan gigi dan cadangan rawatan yang sesuai di Klinik Pergigian Everglo, Bandar Puteri Bangi, Kajang.",
+      "inLanguage": "ms-MY",
+      "isPartOf": { "@id": "https://klinikpergigianeverglo.com/#website" },
+      "about": { "@id": "https://klinikpergigianeverglo.com/#dentist" },
+      "primaryImageOfPage": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png"
+    },
+    {
+      "@type": "Dentist",
+      "@id": "https://klinikpergigianeverglo.com/#dentist",
+      "name": "Klinik Pergigian Everglo @ Bandar Puteri Bangi",
+      "alternateName": [
+        "Klinik Pergigian Everglo",
+        "Everglo Dental",
+        "Everglo Dental Clinic",
+        "Everglow Dental",
+        "Klinik Gigi Everglo"
+      ],
+      "description": "Klinik gigi di Bandar Puteri Bangi, Kajang. Rawatan pergigian teliti dan mesra first-timer: pemeriksaan gigi, scaling & polishing, tampalan, cabut gigi, braces (pendakap gigi), gigi palsu (denture), teeth whitening, crown & bridge dan veneer. Mesra kanak-kanak.",
+      "url": "https://klinikpergigianeverglo.com/",
+      "image": [
+        "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png",
+        "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_7124-scaled.jpg"
+      ],
+      "logo": "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/logo-everglo2.png",
+      "telephone": "+60-11-6264-9191",
+      "priceRange": "$$",
+      "currenciesAccepted": "MYR",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No 8 (GF), Jalan Puteri 2A/3, Bandar Puteri Bangi",
+        "addressLocality": "Kajang",
+        "addressRegion": "Selangor",
+        "postalCode": "43000",
+        "addressCountry": "MY"
+      },
+      "sameAs": [
+        "https://www.tiktok.com/@klinikpergigianeverglo"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Bandar Puteri Bangi" },
+        { "@type": "City", "name": "Bangi" },
+        { "@type": "City", "name": "Kajang" },
+        { "@type": "City", "name": "Bandar Seri Putra" },
+        { "@type": "City", "name": "Bukit Mahkota" },
+        { "@type": "City", "name": "Nilai" },
+        { "@type": "City", "name": "Semenyih" }
+      ],
+      "availableService": [
+        { "@type": "MedicalProcedure", "name": "Pemeriksaan Gigi (Dental Check-up)" },
+        { "@type": "MedicalProcedure", "name": "Scaling & Polishing" },
+        { "@type": "MedicalProcedure", "name": "Tampalan Gigi (Filling)" },
+        { "@type": "MedicalProcedure", "name": "Cabut Gigi (Extraction)" },
+        { "@type": "MedicalProcedure", "name": "Braces / Pendakap Gigi" },
+        { "@type": "MedicalProcedure", "name": "Gigi Palsu / Denture" },
+        { "@type": "MedicalProcedure", "name": "Teeth Whitening" },
+        { "@type": "MedicalProcedure", "name": "Crown & Bridge" },
+        { "@type": "MedicalProcedure", "name": "Veneer Gigi" }
+      ],
+      "employee": [
+        { "@id": "https://klinikpergigianeverglo.com/#dr-farah" },
+        { "@id": "https://klinikpergigianeverglo.com/#dr-najmina" }
+      ],
+      "paymentAccepted": "Cash, Credit Card, Debit Card, Atome, Grab PayLater, Insurans Panel",
+      "knowsLanguage": ["ms", "en"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://klinikpergigianeverglo.com/#dr-farah",
+      "name": "Dr. Farah Fatah",
+      "jobTitle": "Pengarah & Doktor Gigi",
+      "image": "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/Dr.-Farah-1.png",
+      "description": "Pengasas Klinik Pergigian Everglo dengan pengalaman hampir 10 tahun. Dikenali dengan pendekatan yang lembut dan teliti, terutama untuk pesakit yang takut atau pertama kali jumpa doktor gigi.",
+      "worksFor": { "@id": "https://klinikpergigianeverglo.com/#dentist" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://klinikpergigianeverglo.com/#dr-najmina",
+      "name": "Dr. Najmina",
+      "jobTitle": "Doktor Gigi",
+      "image": "https://klinikpergigianeverglo.com/wp-content/uploads/2026/07/Dr.-Najmina.png",
+      "description": "Doktor gigi yang mesra dan sabar, berpengalaman dalam rawatan pergigian am dan kosmetik untuk semua peringkat umur.",
+      "worksFor": { "@id": "https://klinikpergigianeverglo.com/#dentist" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://klinikpergigianeverglo.com/smile-planner/#faq",
+      "isPartOf": { "@id": "https://klinikpergigianeverglo.com/smile-planner/#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Adakah saya perlu membuat temujanji?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ya, adalah dinasihatkan untuk membuat temu janji untuk mengelakkan masa menunggu yang lebih lama." }
+        },
+        {
+          "@type": "Question",
+          "name": "Adakah saya mendapat panggilan setelah membuat temu janji dalam talian?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ya, kami akan menghubungi anda dan jadualkan temu janji mengikut keselesaan anda. Penyambut tetamu akan membimbing anda melalui proses tersebut." }
+        },
+        {
+          "@type": "Question",
+          "name": "Saya takut dengan doktor gigi. Bolehkah anda membantu saya?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Kami adalah doktor berpengalaman dan profesional, kami menyediakan pesakit dengan penjagaan yang terbaik sepanjang lawatan mereka. Setelah kebimbangan pergigian anda diuruskan, barulah kami akan meneruskan prosedur rawatan." }
+        },
+        {
+          "@type": "Question",
+          "name": "Saya mempunyai banyak pertanyaan. Boleh saya tanya dalam talian?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Jangan ragu untuk berjalan masuk bila-bila masa. Muatkan kami dengan semua keraguan dan kebimbangan anda mengenai rawatan pergigian. Kami membangunkan hubungan Pesakit – Doktor dan menjamin kepuasan anda." }
+        },
+        {
+          "@type": "Question",
+          "name": "Adakah saya akan mengalami sakit semasa prosedur rawatan?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Matlamat kami adalah untuk menyediakan penjagaan pergigian dengan profesionalisme yang terbaik dan keselesaan pesakit adalah keutamaan kami. Kami memberi jaminan bahawa rawatan anda akan menjadi pengalaman yang tidak menyakitkan dan selesa." }
+        },
+        {
+          "@type": "Question",
+          "name": "Adakah anda menerima perlindungan insurans?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ya, kami terima. Kami mempunyai beberapa perlindungan insurans yang tersedia di klinik pergigian kami." }
+        },
+        {
+          "@type": "Question",
+          "name": "Adakah anda menerima kad kredit / debit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ya, boleh." }
+        },
+        {
+          "@type": "Question",
+          "name": "Bolehkah saya membuat pembayaran secara ansuran?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Jika anda mempunyai kad kredit MAYBANK, ya ansuran boleh. Kami juga menyediakan Atome dan Grab PayLater." }
+        },
+        {
+          "@type": "Question",
+          "name": "Di mana saya boleh mencari Klinik Everglo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Kami berada di Bandar Puteri Bangi, berdekatan Lotus's Bandar Puteri Bangi. No 8 (GF), Jalan Puteri 2A/3, Bandar Puteri Bangi, 43000 Kajang, Selangor. Anda juga boleh menggunakan Google Maps atau Waze untuk mencari kami." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- MUAT BACKGROUND KLINIK SELEPAS PAGE SIAP LOAD (tidak block content utama) -->
+<script>
+  (function () {
+    function loadHeroBg() {
+      var img = new Image();
+      img.onload = function () {
+        var heroes = document.querySelectorAll(".evg-hero");
+        for (var i = 0; i < heroes.length; i++) {
+          heroes[i].classList.add("evg-bg-on");
+        }
+      };
+      img.src = "https://klinikpergigianeverglo.com/wp-content/uploads/2024/09/IMG_2951.png";
+    }
+
+    if (document.readyState === "complete") {
+      loadHeroBg();
+    } else {
+      window.addEventListener("load", loadHeroBg);
+    }
+  })();
+</script>
