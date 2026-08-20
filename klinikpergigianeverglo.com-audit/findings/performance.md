@@ -1,69 +1,124 @@
-# Performance — 35/100 · PROVISIONAL
+# Performance — 65/100 · DIUKUR (bukan lagi anggaran)
 
-> **Do not act before re-measuring logged out.** WP Rocket does not optimise for logged-in
-> users, so minification, combination and JS-delay are absent from this capture. No CrUX
-> field data and no lab run were possible. Treat 35 as unmeasured.
+**Sumber:** PageSpeed Insights, Mobile, 20 Ogos 2026 4:41 PM GMT+8
+Moto G Power teremulasi · Slow 4G throttling · Lighthouse 13.4.1 · Single page session
 
-The findings below are **plugin-driven** and will largely persist for public visitors.
+> **Pembetulan.** Audit asal memberi 35 (provisional) berdasarkan capture logged-in
+> yang melangkau WP Rocket. Angka sebenar ialah **65**. Caveat itu betul; anggarannya
+> tidak. Semua angka di bawah adalah ukuran sebenar.
 
-## High — vendor libraries for features the page never uses
+## Metrik
 
-Loaded by Happy Elementor Addons (free + Pro) and Royal Elementor Addons:
+| Metrik | Nilai | Sasaran | Status |
+|---|---|---|---|
+| First Contentful Paint | 2.9s | ≤1.8s | ⚠️ |
+| **Largest Contentful Paint** | **8.7s** | ≤2.5s | 🔴 |
+| Total Blocking Time | **0ms** | ≤200ms | ✅ |
+| Cumulative Layout Shift | 0.116 | <0.1 | ⚠️ |
+| Speed Index | 4.1s | ≤3.4s | ⚠️ |
 
-`three.min.js` · `gsap` · `TweenMax` · `ScrollMagic` · `motionpath` · `anime.js` ·
-`Chart.js` · `plyr` · `swiper-bundle` · `owl.carousel` · `multiscroll` · `slick` ·
-`isotope` · `magnific-popup` · `justifiedGallery` · `twentytwenty` · `datatables` ·
-`prism` · `pdfobject` · `circlr` · `select2` · `alpinejs` · `rangeslider` ·
-`hover-effect.umd` · **`fullcalendar` + `locales-all.min.js`**
+Skor lain: Accessibility 91 · Best Practices 100 · SEO 92 · Agentic Browsing 1/3 🔴
 
-The page uses: a hero, cards, an accordion, a form, a video playlist. `locales-all.min.js`
-ships every locale on earth for a calendar that does not exist here.
+---
 
-**Largest single lever available.** Configuration problem, not a code problem. Test on staging.
+## ❌ FINDING DIBATALKAN — "vendor libraries" bukan isu
 
-## High — four Google Font families, all weights
+Audit asal menandakan **High severity** untuk timbunan library Happy Addons / Royal
+Addons (three.js, gsap, ScrollMagic, Chart.js, plyr, swiper, owl, multiscroll, slick,
+isotope, datatables, prism, fullcalendar + locales-all, dan lain-lain).
 
-| Family | Weights | Source |
+**Lighthouse Treemap menunjukkan jumlah JavaScript halaman ini ialah 20.7 KiB:**
+
+| Fail | Saiz | % |
 |---|---|---|
-| Roboto | 100–900 + all italics | Elementor kit |
-| Roboto Slab | 100–900 + all italics | Elementor kit |
-| Poppins | 300–800 | custom section 1 |
-| Poppins | 400,600,700,800 | custom section 2 (duplicate request) |
-| Inter, Cardo | — | theme, self-hosted |
+| `smush-lazy-load.min.js` | 7.5 KiB | 36% |
+| `wpr-beacon.js` | 7.5 KiB | 36% |
+| Inline (Rocket, FluentForm, Click-to-Chat, dll.) | 5.7 KiB | 27% |
 
-Three independent typography systems; the Elementor pair is almost certainly unused here.
+WP Rocket menangguhkan semua library tersebut sehingga interaksi pengguna — ia tidak
+pernah dimuat pada page load. **TBT 0ms** dan **Best Practices 100** mengesahkannya.
 
-## Medium — unpinned CDN dependency
+**Tindakan: batalkan Fasa 3 item 15.** Mengaudit dan menyahaktifkan widget addon ialah
+kerja berisiko regresi untuk faedah sifar. Jangan buat.
 
+---
+
+## 🔴 Isu #1 — Penghantaran gambar (jimat 3,256 KiB)
+
+> Lighthouse Insight: *Improve image delivery — Est savings of 3,256 KiB*
+
+**3.2 megabait.** Ini punca LCP 8.7s dan Speed Index 4.1s. Jurang FCP→LCP sebanyak 5.8
+saat mengesahkan elemen terbesar ialah gambar, bukan teks atau JS.
+
+Punca yang telah disahkan dari sumber halaman:
+- Gambar hero — `Screenshot-*.png`, **screenshot disimpan sebagai PNG**, format terberat,
+  dipaparkan hanya 480×600
+- 8 × `Testimoni*.png` @ 1024×1024
+- `IMG_7124-scaled.jpg` (≤2560px) dipaparkan ~520px
+- 10 gambar galeri saiz penuh, dipaparkan 190–280px
+- `IMG_2951-1.png`, `IMG_2953.png` — fotograf dalam format PNG
+
+Ini tepat item `[TUKAR-URL]` yang dev asal tandakan sendiri dan tidak pernah laksanakan.
+
+### Penyelesaian: guna Smush yang sedia terpasang
+
+Tidak perlu menukar URL secara manual satu per satu.
+
+1. Smush → **Bulk Smush** → hidupkan **Resize Full Size Images**, maks ~1920px
+2. Smush → **WebP Conversion** → hidupkan
+3. Jalankan **Bulk Smush** untuk seluruh Media Library
+
+Screenshot PNG → WebP biasanya susut 85–90%.
+
+### Sebelum bertindak
+Buka **Diagnostics → Largest Contentful Paint element** dalam PageSpeed untuk nama
+elemen yang tepat. Senarai di atas adalah inferens daripada corak metrik dan sumber
+halaman — sahkan dahulu.
+
+---
+
+## 🔴 Isu #2 — Render-blocking (jimat 620ms)
+
+Google Fonts Elementor: **Roboto** dan **Roboto Slab**, 100–900 plus setiap italic
+(~36 varian), sedangkan section kustom halaman ini menggunakan Poppins yang dimuat
+berasingan, dan tema meng-host Inter/Cardo secara lokal. Tiga sistem tipografi.
+
+Buat **selepas** gambar — 620ms kecil berbanding 3.2 MB.
+
+---
+
+## ⚠️ Isu #3 — Lebih 4 preconnect
+
+> Lighthouse Warning: *More than 4 `preconnect` connections were found*
+
+Punca: `fonts.googleapis.com` dan `fonts.gstatic.com` di-preconnect **dua kali** —
+sekali dalam widget CSS pertama (`6da1fece`), sekali lagi dalam widget hero
+(`1d9e088a`) — ditambah `dns-prefetch` untuk `cdn.jsdelivr.net`, `unpkg.com` dan
+`cdnjs.cloudflare.com`.
+
+Padam dua baris ini dari **widget hero sahaja**:
 ```html
-<script id="alpine-js" src="//unpkg.com/alpinejs?ver=3.22.0"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 ```
-`ver` is a WordPress cache-buster, **not a version pin** — this resolves to `alpinejs`
-*latest*. Reliability and supply-chain exposure on a live site. Same pattern for
-`cdn.jsdelivr.net` and `cdnjs.cloudflare.com` scripts.
+Kekalkan baris `<link href="...Poppins...">` dan blok `<noscript>`.
 
-## Medium — competing LCP candidates
+---
 
-Both hero columns declare:
-```html
-<img fetchpriority="high" … loading="eager" fetchpriority="high" decoding="async">
-```
-Two high-priority images compete; neither is likely the true LCP element (the H1 text
-probably is). Note `fetchpriority` is duplicated on the same tag.
+## ⚠️ Isu #4 — CLS 0.116
 
-## Medium — oversized images (developer's own to-do)
+Sedikit di atas ambang 0.1. Suspek: font swap (Poppins `display=swap`), dan kandungan
+yang di-inject JavaScript (26 review, deck testimoni 10 gambar) yang muncul lewat.
+Keutamaan rendah — betulkan selepas LCP.
 
-Source comment: *"NOTA PENJIMATAN TERBESAR … penjimatan boleh capai 80-90%"* — with
-`[TUKAR-URL]` markers in four sections. None executed.
+---
 
-- 8 × `Testimoni*.png` @ 1024×1024, displayed small
-- `IMG_7124-scaled.jpg` (≤2560px) displayed ~520px
-- 10 gallery images at full size, displayed 190–280px
-- Floating decorations using `-scaled.png` at 44–90px display
-- `IMG_2951-1.png`, `IMG_2953.png` — PNG photographs
+## Yang memang berfungsi baik
 
-## Done well
-
-`content-visibility: auto` + `contain-intrinsic-size` · Font Awesome → inline SVG ·
-cache-reusing duplicate URLs · `IntersectionObserver` deferral · `prefers-reduced-motion`
-respected · explicit `width`/`height` preventing CLS.
+- **TBT 0ms** — JavaScript langsung tidak menyekat main thread
+- **Best Practices 100/100**
+- WP Rocket menangguhkan JS dengan berkesan
+- `content-visibility: auto` + `contain-intrinsic-size`
+- Font Awesome digantikan SVG inline
+- `prefers-reduced-motion` dihormati
+- `width`/`height` eksplisit pada hampir semua gambar

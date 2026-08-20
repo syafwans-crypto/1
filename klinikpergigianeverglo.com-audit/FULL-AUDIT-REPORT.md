@@ -3,7 +3,7 @@
 **Date:** 2026-08-20
 **Scope:** Single URL, supplied HTML source
 **Business type detected:** Local Service — brick-and-mortar dental clinic (Dentist), Bandar Puteri Bangi / Kajang, Selangor, Malaysia. YMYL health content.
-**SEO Health Score: 53 / 100**
+**SEO Health Score: 56 / 100**  *(dikemas kini 20 Ogos — Performance kini diukur, bukan dianggar)*
 
 ---
 
@@ -84,13 +84,15 @@ sections. The build was finished; the SEO checklist was not.
 | Content Quality | 23% | 62 | 14.26 |
 | On-Page SEO | 20% | 45 | 9.00 |
 | Schema / Structured Data | 10% | 55 | 5.50 |
-| Performance (CWV) | 10% | 35 *(provisional)* | 3.50 |
+| Performance (CWV) | 10% | **65** *(diukur)* | 6.50 |
 | AI Search Readiness | 10% | 55 | 5.50 |
 | Images | 5% | 48 | 2.40 |
-| **Total** | | | **52.92 → 53** |
+| **Total** | | | **55.92 → 56** |
 
-Because the Performance component is provisional (see caveat 1), the true total could move
-roughly ±4 points once a logged-out render is measured.
+Performance telah diukur pada 20 Ogos 2026 (PageSpeed Insights, mobile): **65**, bukan 35.
+Lihat `findings/performance.md` untuk data penuh. Satu finding High severity — timbunan
+vendor library — **dibatalkan**: jumlah JavaScript halaman ialah 20.7 KiB kerana WP Rocket
+menangguhkan semuanya. Isu sebenar ialah **3,256 KiB gambar** dan **LCP 8.7s**.
 
 ---
 

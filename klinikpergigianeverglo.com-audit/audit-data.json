@@ -1,8 +1,8 @@
 {
   "summary": {
-    "health_score": 53,
+    "health_score": 56,
     "business_type": "Local Service - brick-and-mortar dental clinic (Dentist), Bandar Puteri Bangi / Kajang, Selangor, Malaysia. YMYL health content.",
-    "audit_scope": "Single URL, supplied HTML source. Captured from a logged-in admin preview (preview=true), so admin-only assets are present and WP Rocket optimisation is bypassed. Network-dependent checks were not possible.",
+    "audit_scope": "Single URL, supplied HTML source. Captured from a logged-in admin preview (preview=true), so admin-only assets are present and WP Rocket optimisation is bypassed. Network-dependent checks were not possible. Performance re-measured 20 Aug 2026 via PageSpeed Insights (mobile); that category is no longer provisional.",
     "top_findings": [
       "No meta description anywhere in <head>; no SEO plugin emitting meta output",
       "Duplicate <title> tag, and the title is a slug artefact ('Smile-Planner') with no keyword or location",
@@ -199,51 +199,51 @@
     },
     {
       "name": "Performance (CWV)",
-      "score": 35,
+      "score": 65,
       "what_works": [
-        "content-visibility: auto with contain-intrinsic-size on most sections",
-        "Font Awesome webfont replaced with inline SVG",
-        "Marquee and deck duplicates reuse identical URLs to hit cache",
-        "IntersectionObserver deferral of heavy sections",
-        "prefers-reduced-motion respected throughout",
-        "Explicit width/height on nearly every image, preventing CLS"
+        "Total Blocking Time 0ms - JavaScript does not block the main thread at all",
+        "Best Practices 100/100",
+        "Total page JavaScript is 20.7 KiB; WP Rocket defers all addon vendor libraries until interaction",
+        "content-visibility: auto with contain-intrinsic-size",
+        "Font Awesome replaced with inline SVG",
+        "prefers-reduced-motion respected; explicit width/height preventing CLS"
       ],
       "findings": [
         {
-          "title": "PROVISIONAL SCORE - capture was logged in, WP Rocket bypassed",
+          "title": "MEASURED - PageSpeed Insights mobile, 20 Aug 2026",
           "severity": "Info",
-          "description": "WP Rocket does not optimise pages for logged-in users, so minification, combination and JS-delay are all absent from this capture. The public page may be materially faster. No CrUX field data and no lab run were possible.",
-          "recommendation": "Run PageSpeed Insights logged out before acting on any performance item. Treat 35 as unmeasured."
+          "description": "Performance 65. FCP 2.9s, LCP 8.7s, TBT 0ms, CLS 0.116, Speed Index 4.1s. Accessibility 91, Best Practices 100, SEO 92, Agentic Browsing 1/3. Supersedes the provisional score of 35, which was based on a logged-in capture that bypassed WP Rocket.",
+          "recommendation": "Treat these as the baseline for re-measurement after the image work."
         },
         {
-          "title": "Vendor libraries loaded for features the page never uses",
+          "title": "Image delivery - 3,256 KiB of savings available",
+          "severity": "Critical",
+          "description": "Lighthouse reports 3.2 MB of image savings. The 5.8s gap between FCP (2.9s) and LCP (8.7s) confirms the largest element is an image. Confirmed sources: hero Screenshot-*.png files (screenshots stored as PNG, displayed at 480x600), eight Testimoni PNGs at 1024x1024, IMG_7124-scaled.jpg at up to 2560px displayed ~520px, ten full-size gallery images displayed 190-280px, and PNG photographs IMG_2951-1.png and IMG_2953.png.",
+          "recommendation": "Use the already-installed Smush plugin: enable Resize Full Size Images (max ~1920px) and WebP Conversion, then run Bulk Smush across the Media Library. Confirm the exact LCP element first via PageSpeed Diagnostics."
+        },
+        {
+          "title": "Render-blocking requests - 620ms of savings",
           "severity": "High",
-          "description": "Happy Elementor Addons (free + Pro) and Royal Elementor Addons load three.js, gsap, TweenMax, ScrollMagic, anime.js, Chart.js, plyr, swiper, owl.carousel, multiscroll, slick, isotope, magnific-popup, justifiedGallery, twentytwenty, datatables, prism, pdfobject, circlr, select2, alpinejs, rangeslider, and fullcalendar with locales-all.min.js. The page uses a hero, cards, an accordion, a form and a video playlist.",
-          "recommendation": "Audit and disable unused addon widgets so these assets stop enqueueing. Highest-value performance lever; test on staging."
+          "description": "Elementor loads Roboto and Roboto Slab at 100-900 plus every italic (~36 variants) while the page's custom sections load Poppins separately and the theme self-hosts Inter and Cardo. Three typography systems.",
+          "recommendation": "Reduce to one font system. Do this after the image work - 620ms is small next to 3.2 MB."
         },
         {
-          "title": "Four Google Font families, all weights",
-          "severity": "High",
-          "description": "Elementor requests Roboto and Roboto Slab at 100-900 plus every italic (~36 variants), while custom sections load Poppins twice, and the theme hosts Inter and Cardo locally. Three independent typography systems.",
-          "recommendation": "Disable Elementor's Google Fonts or pin to the weights actually used; consolidate to one font system."
-        },
-        {
-          "title": "Unpinned third-party CDN dependency",
+          "title": "More than 4 preconnect connections",
           "severity": "Medium",
-          "description": "//unpkg.com/alpinejs?ver=3.22.0 - the ver parameter is a WordPress cache-buster, not a version pin, so this resolves to whatever alpinejs latest is today. Reliability and supply-chain exposure on a production site. Same pattern for cdn.jsdelivr.net and cdnjs.cloudflare.com scripts.",
-          "recommendation": "Pin explicit versions or self-host."
+          "description": "fonts.googleapis.com and fonts.gstatic.com are preconnected twice - once in the first CSS widget (6da1fece) and again in the hero widget (1d9e088a) - plus dns-prefetch entries for cdn.jsdelivr.net, unpkg.com and cdnjs.cloudflare.com.",
+          "recommendation": "Delete the two preconnect lines from the hero widget only; keep the Poppins stylesheet link and noscript block."
         },
         {
-          "title": "Competing LCP candidates",
-          "severity": "Medium",
-          "description": "Both hero columns declare fetchpriority=\"high\" with loading=\"eager\" on their first image, so two images compete for bandwidth, and neither is likely the true LCP element (the H1 text probably is). The hero background is deferred until after window.load and faded in, producing a visible late repaint.",
-          "recommendation": "Keep at most one fetchpriority=\"high\" resource and confirm the actual LCP element before tuning."
+          "title": "CLS 0.116, marginally above threshold",
+          "severity": "Low",
+          "description": "Just over the 0.1 target. Likely font swap (Poppins display=swap) plus JS-injected content (26 reviews, 10-image testimonial deck) arriving late.",
+          "recommendation": "Address after LCP."
         },
         {
-          "title": "Oversized images - the developer's own unactioned to-do",
-          "severity": "Medium",
-          "description": "Four source comments flag this with [TUKAR-URL] markers claiming 80-90% savings. Confirmed: eight Testimoni PNGs at 1024x1024 shown small; IMG_7124-scaled.jpg (up to 2560px) shown at ~520px; ten gallery images at full size shown at 190-280px; floating decorations using -scaled.png at 44-90px display; IMG_2951-1.png and IMG_2953.png are PNG photographs.",
-          "recommendation": "Execute every [TUKAR-URL] to-do; convert PNG photographs to WebP."
+          "title": "WITHDRAWN - vendor libraries are not an issue",
+          "severity": "Info",
+          "description": "The original audit flagged the Happy Addons / Royal Addons library stack as High severity. The Lighthouse treemap shows total page JavaScript is 20.7 KiB: smush-lazy-load.min.js (7.5), wpr-beacon.js (7.5) and 5.7 KiB inline. WP Rocket defers every one of those libraries until user interaction; they never load on page load. TBT 0ms confirms it.",
+          "recommendation": "Cancel Phase 3 item 15. Auditing and disabling addon widgets is regression-prone work for zero benefit."
         }
       ]
     },
