@@ -1,0 +1,382 @@
+{
+  "summary": {
+    "health_score": 53,
+    "business_type": "Local Service - brick-and-mortar dental clinic (Dentist), Bandar Puteri Bangi / Kajang, Selangor, Malaysia. YMYL health content.",
+    "audit_scope": "Single URL, supplied HTML source. Captured from a logged-in admin preview (preview=true), so admin-only assets are present and WP Rocket optimisation is bypassed. Network-dependent checks were not possible.",
+    "top_findings": [
+      "No meta description anywhere in <head>; no SEO plugin emitting meta output",
+      "Duplicate <title> tag, and the title is a slug artefact ('Smile-Planner') with no keyword or location",
+      "<html lang=\"en-US\"> on a page written entirely in Bahasa Melayu",
+      "Only 2 internal links on the whole page; six treatments named, none linked; logo not linked",
+      "NAP conflict within the page: JSON-LD says 'Bandar Bukit Mahkota', FAQ and hero say 'Bandar Puteri Bangi'"
+    ],
+    "quick_wins": [
+      "Set the title and meta description already drafted in the page's own source comment",
+      "Change site language to ms_MY to fix the lang attribute",
+      "Add Open Graph / Twitter Card tags - all traffic is Meta/TikTok/WhatsApp ads",
+      "Fill the 15 empty alt attributes, especially the four promo images",
+      "Add sameAs (Facebook, Instagram, TikTok, Google Maps) to the existing JSON-LD"
+    ]
+  },
+  "categories": [
+    {
+      "name": "On-Page SEO",
+      "score": 45,
+      "what_works": [
+        "Canonical is correctly self-referencing",
+        "Exactly one H1; H2/H3 section structure is otherwise logical",
+        "Page is indexable - no noindex directive"
+      ],
+      "findings": [
+        {
+          "title": "No meta description",
+          "severity": "Critical",
+          "description": "No <meta name=\"description\"> in <head>. The only robots directive is WordPress's default max-image-preview:large, confirming no SEO plugin is managing meta output.",
+          "recommendation": "Install RankMath or Yoast and set the description already drafted in the hero widget's source comment."
+        },
+        {
+          "title": "Duplicate <title> tag",
+          "severity": "Critical",
+          "description": "<title>Smile-Planner - Klinik Pergigian Everglo</title> is emitted twice in <head>. Invalid HTML; indicates a theme/plugin conflict.",
+          "recommendation": "Trace which component emits the second tag and remove it. Replace the title with a keyword-bearing one, e.g. 'Klinik Gigi Bandar Puteri Bangi | Everglo - Braces, Scaling, Veneer'."
+        },
+        {
+          "title": "H1 contains no target keyword",
+          "severity": "High",
+          "description": "H1 is 'Bukan Sekadar Rawat Gigi. \"Kami Bantu Anda Senyum Lebih Yakin.\"' - emotionally strong but with no service or location term. The keywords sit in a <p class=\"evg-eyebrow\"> directly above it.",
+          "recommendation": "Work location plus primary service into the H1, or promote the eyebrow content into the H1."
+        },
+        {
+          "title": "Internal linking effectively absent",
+          "severity": "High",
+          "description": "The page links to exactly two internal URLs (/term-of-services/, /privacy-policy/) plus one external dofollow link to srsadvertisement.com. Six treatments are named and none link anywhere. The logo is not wrapped in an anchor. The elementor_canvas template strips site header and footer, so there is no navigation at all.",
+          "recommendation": "Link the logo to home, link each treatment card to its treatment page, and add a related-services block."
+        },
+        {
+          "title": "Empty <h2> in footer",
+          "severity": "Low",
+          "description": "The footer contains <h2 style=\"...\"></h2> with no content.",
+          "recommendation": "Delete the empty heading element."
+        },
+        {
+          "title": "English slug on a Malay page",
+          "severity": "Low",
+          "description": "/smile-planner/ carries no Malay keyword. The page appears recently published, so a change would risk fresh indexation for limited gain.",
+          "recommendation": "Keep the URL. Fix title, meta description and H1 instead."
+        }
+      ]
+    },
+    {
+      "name": "Technical SEO",
+      "score": 58,
+      "what_works": [
+        "Self-referencing canonical present and correct",
+        "HTTPS throughout; no mixed-content references",
+        "No noindex; page is crawlable"
+      ],
+      "findings": [
+        {
+          "title": "Wrong language declaration",
+          "severity": "High",
+          "description": "<html lang=\"en-US\"> while all visible copy is Bahasa Melayu. Affects screen readers, translation behaviour, and language classification by search engines and LLMs.",
+          "recommendation": "Set WordPress Settings > Site Language to Bahasa Melayu, or filter language_attributes()."
+        },
+        {
+          "title": "Key content injected by JavaScript, absent from raw HTML",
+          "severity": "Medium",
+          "description": "The 26 Google reviews and the 10-image testimonial deck exist only in JS arrays until an IntersectionObserver fires (rootMargin 600px). Googlebot renders JS and will likely see them; non-rendering crawlers, including most LLM retrieval bots, will see empty containers.",
+          "recommendation": "Server-render the reviews into HTML; keep the observer for animation only."
+        },
+        {
+          "title": "Duplicate <meta name=\"viewport\">",
+          "severity": "Medium",
+          "description": "Two viewport tags are emitted - one by the theme, one by Elementor with viewport-fit=cover.",
+          "recommendation": "Remove one; harmless in practice but indicates two systems competing over the same tag."
+        },
+        {
+          "title": "No breadcrumbs or BreadcrumbList schema",
+          "severity": "Medium",
+          "description": "On a canvas-template page with no navigation, breadcrumbs would be the only orientation signal for users and crawlers.",
+          "recommendation": "Add a breadcrumb trail with BreadcrumbList markup."
+        },
+        {
+          "title": "Content copy-protection plugin active",
+          "severity": "Low",
+          "description": "wccp_free (WP Content Copy Protection) blocks selection and right-click. Does not affect Googlebot, but prevents visitors copying the clinic address or phone number.",
+          "recommendation": "Consider disabling on a brochure site where copying contact details is desirable."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 62,
+      "what_works": [
+        "Substantial original Malay copy addressing genuine patient anxieties",
+        "Named practitioners with bios - Dr. Farah Fatah and Dr. Najmina",
+        "26 verbatim Google reviews with names and recency",
+        "Nine genuine FAQs present in raw HTML",
+        "Appropriate medical hedging: 'Cadangan rawatan bergantung kepada pemeriksaan doktor.'"
+      ],
+      "findings": [
+        {
+          "title": "YMYL page with no professional credentials",
+          "severity": "High",
+          "description": "Neither doctor lists a qualification or a Malaysian Dental Council (MDC) registration number. No practitioner bio pages, no Person schema, no medically-reviewed-by line.",
+          "recommendation": "Add qualifications and MDC registration numbers, link to individual bio pages, and add Person schema."
+        },
+        {
+          "title": "No visible NAP block",
+          "severity": "High",
+          "description": "The address appears only inside a collapsed FAQ answer. The phone number appears only inside the WhatsApp widget's JSON config, not as readable text. Hours appear only in JSON-LD. No map embed, no directions link.",
+          "recommendation": "Add visible address, tel: link, opening hours and a Google Maps link to the footer."
+        },
+        {
+          "title": "Testimonials are images of text",
+          "severity": "Medium",
+          "description": "Eight Testimoni*.png files and the ten-image #evgDeck are screenshots of written testimonials, unreadable by search engines and AI.",
+          "recommendation": "Convert to real HTML text with proper markup."
+        },
+        {
+          "title": "Treatment descriptions are one line each",
+          "severity": "Medium",
+          "description": "Each of the six treatments gets a single sentence. No detail on process, duration, aftercare or indicative pricing - the questions patients actually search.",
+          "recommendation": "Expand each treatment, or link to a dedicated page that does."
+        },
+        {
+          "title": "Promotional offers carry no readable terms",
+          "severity": "Low",
+          "description": "Four 'Promo Bulan Ini' images have empty alt text, so offer terms, validity and pricing are unreadable to crawlers and screen-reader users.",
+          "recommendation": "Add HTML text alongside the promo images stating offer, price and validity."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 55,
+      "what_works": [
+        "Dentist JSON-LD is more thorough than most clinic sites",
+        "Services marked up as MedicalProcedure; openingHoursSpecification, areaServed, paymentAccepted, knowsLanguage all present",
+        "alternateName array captures real misspellings such as 'Everglow Dental'"
+      ],
+      "findings": [
+        {
+          "title": "Schema address contradicts on-page address",
+          "severity": "High",
+          "description": "JSON-LD streetAddress says 'Bandar Bukit Mahkota'; the FAQ and hero both say 'Bandar Puteri Bangi'. Adjacent localities, but structured data, on-page text and the Google Business Profile must state one identical address.",
+          "recommendation": "Pick the address that exactly matches the Google Business Profile and propagate it everywhere."
+        },
+        {
+          "title": "Self-serving aggregateRating",
+          "severity": "High",
+          "description": "aggregateRating 5.0 / 381 reviews is asserted by the business about itself with no corresponding Review objects. Google has not shown review rich results for self-serving LocalBusiness markup since 2019, and this pattern conflicts with the structured-data guidelines.",
+          "recommendation": "Remove aggregateRating, or add Review objects for reviews actually displayed on the page. The Google Business Profile is where these reviews legitimately surface."
+        },
+        {
+          "title": "No FAQPage schema despite nine real FAQs",
+          "severity": "Medium",
+          "description": "FAQs are already semantically marked with <details>/<summary>. Note that since August 2023 Google restricts FAQ rich results to authoritative government and health institutional sites, so a private clinic should not expect SERP expansion. The value is machine extraction by ChatGPT, Perplexity and AI Overviews.",
+          "recommendation": "Add FAQPage JSON-LD for GEO benefit, with realistic expectations about rich results."
+        },
+        {
+          "title": "No VideoObject markup for seven embedded videos",
+          "severity": "Medium",
+          "description": "Seven YouTube videos are embedded via the Elementor playlist with no VideoObject markup, so no video rich results or key-moments eligibility.",
+          "recommendation": "Add VideoObject schema per video."
+        },
+        {
+          "title": "No sameAs",
+          "severity": "Medium",
+          "description": "The source comment explicitly suggests adding Facebook/Instagram/Google Maps to sameAs; it was never done. The clinic has an active TikTok, Facebook and Instagram presence.",
+          "recommendation": "Add sameAs with all official profile URLs - the cheapest high-value schema fix available."
+        },
+        {
+          "title": "Schema describes the organisation, not this page",
+          "severity": "Low",
+          "description": "The url property points at the homepage. There is no @id, no WebPage node, and no Service node for the 'Smile Upgrade Planner' the page is about. No geo coordinates or priceRange.",
+          "recommendation": "Restructure as a @graph: WebPage -> about -> Dentist, and add geo and priceRange."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 35,
+      "what_works": [
+        "content-visibility: auto with contain-intrinsic-size on most sections",
+        "Font Awesome webfont replaced with inline SVG",
+        "Marquee and deck duplicates reuse identical URLs to hit cache",
+        "IntersectionObserver deferral of heavy sections",
+        "prefers-reduced-motion respected throughout",
+        "Explicit width/height on nearly every image, preventing CLS"
+      ],
+      "findings": [
+        {
+          "title": "PROVISIONAL SCORE - capture was logged in, WP Rocket bypassed",
+          "severity": "Info",
+          "description": "WP Rocket does not optimise pages for logged-in users, so minification, combination and JS-delay are all absent from this capture. The public page may be materially faster. No CrUX field data and no lab run were possible.",
+          "recommendation": "Run PageSpeed Insights logged out before acting on any performance item. Treat 35 as unmeasured."
+        },
+        {
+          "title": "Vendor libraries loaded for features the page never uses",
+          "severity": "High",
+          "description": "Happy Elementor Addons (free + Pro) and Royal Elementor Addons load three.js, gsap, TweenMax, ScrollMagic, anime.js, Chart.js, plyr, swiper, owl.carousel, multiscroll, slick, isotope, magnific-popup, justifiedGallery, twentytwenty, datatables, prism, pdfobject, circlr, select2, alpinejs, rangeslider, and fullcalendar with locales-all.min.js. The page uses a hero, cards, an accordion, a form and a video playlist.",
+          "recommendation": "Audit and disable unused addon widgets so these assets stop enqueueing. Highest-value performance lever; test on staging."
+        },
+        {
+          "title": "Four Google Font families, all weights",
+          "severity": "High",
+          "description": "Elementor requests Roboto and Roboto Slab at 100-900 plus every italic (~36 variants), while custom sections load Poppins twice, and the theme hosts Inter and Cardo locally. Three independent typography systems.",
+          "recommendation": "Disable Elementor's Google Fonts or pin to the weights actually used; consolidate to one font system."
+        },
+        {
+          "title": "Unpinned third-party CDN dependency",
+          "severity": "Medium",
+          "description": "//unpkg.com/alpinejs?ver=3.22.0 - the ver parameter is a WordPress cache-buster, not a version pin, so this resolves to whatever alpinejs latest is today. Reliability and supply-chain exposure on a production site. Same pattern for cdn.jsdelivr.net and cdnjs.cloudflare.com scripts.",
+          "recommendation": "Pin explicit versions or self-host."
+        },
+        {
+          "title": "Competing LCP candidates",
+          "severity": "Medium",
+          "description": "Both hero columns declare fetchpriority=\"high\" with loading=\"eager\" on their first image, so two images compete for bandwidth, and neither is likely the true LCP element (the H1 text probably is). The hero background is deferred until after window.load and faded in, producing a visible late repaint.",
+          "recommendation": "Keep at most one fetchpriority=\"high\" resource and confirm the actual LCP element before tuning."
+        },
+        {
+          "title": "Oversized images - the developer's own unactioned to-do",
+          "severity": "Medium",
+          "description": "Four source comments flag this with [TUKAR-URL] markers claiming 80-90% savings. Confirmed: eight Testimoni PNGs at 1024x1024 shown small; IMG_7124-scaled.jpg (up to 2560px) shown at ~520px; ten gallery images at full size shown at 190-280px; floating decorations using -scaled.png at 44-90px display; IMG_2951-1.png and IMG_2953.png are PNG photographs.",
+          "recommendation": "Execute every [TUKAR-URL] to-do; convert PNG photographs to WebP."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 55,
+      "what_works": [
+        "Dentist schema with a rich natural-language description - highly extractable",
+        "alternateName covers misspellings, aiding entity resolution",
+        "Nine FAQs present in raw HTML as directly citable Q&A passages",
+        "Explicit services, service areas, payment methods and languages"
+      ],
+      "findings": [
+        {
+          "title": "Review corpus invisible to non-rendering crawlers",
+          "severity": "High",
+          "description": "The 26 Google reviews are the page's richest citable content but exist only in a JavaScript array until an IntersectionObserver fires. GPTBot, PerplexityBot and ClaudeBot generally do not execute JavaScript; to them this is an empty div.",
+          "recommendation": "Server-render the reviews - they are static strings with no reason to be JS-injected."
+        },
+        {
+          "title": "No FAQPage, Speakable or Review markup",
+          "severity": "Medium",
+          "description": "FAQPage is the highest-value GEO addition given nine existing FAQs.",
+          "recommendation": "Add FAQPage JSON-LD."
+        },
+        {
+          "title": "No sameAs and no author entities",
+          "severity": "Medium",
+          "description": "Without sameAs an LLM cannot connect this site to the clinic's TikTok, Facebook, Instagram or Google Maps presence. Without Person schema the practitioners are strings, not entities.",
+          "recommendation": "Add sameAs and Person schema for both doctors."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 48,
+      "what_works": [
+        "Hero gallery is a model implementation - unique descriptive alt text on real images, animation duplicates correctly marked alt=\"\" aria-hidden=\"true\"",
+        "Same correct decorative pattern used for the insurance-panel marquee",
+        "Explicit width/height on nearly every image prevents CLS",
+        "Treatment icons, doctor portraits and panel logos all carry meaningful alt text",
+        "Video playlist thumbnails use the video title as alt text"
+      ],
+      "findings": [
+        {
+          "title": "15 content images with empty alt attributes",
+          "severity": "High",
+          "description": "All are Elementor image widgets where the Media Library alt field was never filled: logo-everglo2.png, dental-treatment-768x768.png, eight Testimoni images, Google-Review-Everglo.png, and the four promo images (Whitening, Composite Veneer, Braces, Scaling). The promo images matter most - they are the page's commercial offers and are entirely unreadable to search engines, LLMs and screen-reader users.",
+          "recommendation": "Fill all 15 alt attributes, prioritising the four promo images."
+        },
+        {
+          "title": "Gallery uses one duplicated alt string",
+          "severity": "Medium",
+          "description": "All ten gallery tiles carry the identical alt=\"Galeri Everglo\", providing no differentiation.",
+          "recommendation": "Write distinct descriptive alt text per tile."
+        },
+        {
+          "title": "Duplicated HTML attributes on img tags",
+          "severity": "Low",
+          "description": "Many img tags repeat attributes - loading=\"lazy\" twice, and the hero's fetchpriority=\"high\" twice alongside loading=\"eager\". Invalid HTML; the first occurrence wins.",
+          "recommendation": "Clean up the duplicated attributes in the custom HTML widgets."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Install an SEO plugin and set the title and meta description already drafted in the source comment",
+          "Trace and remove the duplicate <title> tag",
+          "Set site language to Bahasa Melayu to fix the lang attribute",
+          "Resolve the NAP conflict and match it exactly to the Google Business Profile",
+          "Add a visible NAP block with address, tel: link, hours and a Maps link"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Add Open Graph and Twitter Card tags",
+          "Add internal links: logo to home, treatment cards to treatment pages",
+          "Fill 15 empty alt attributes; differentiate the 10 gallery alts",
+          "Add sameAs to the JSON-LD",
+          "Remove or properly support aggregateRating",
+          "Rework the H1 to carry location and primary service",
+          "Delete the empty footer <h2>",
+          "Server-render the 26 Google reviews into HTML"
+        ]
+      },
+      {
+        "name": "Phase 3: Content, Performance & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Add practitioner qualifications and MDC registration numbers; add Person schema",
+          "Audit and disable unused Elementor addon widgets to stop vendor-library loading",
+          "Consolidate to one font system; disable Elementor Roboto / Roboto Slab",
+          "Execute every [TUKAR-URL] image-resize to-do; convert PNG photos to WebP",
+          "Pin or self-host unpkg.com/alpinejs and other unversioned CDN scripts",
+          "Add FAQPage JSON-LD",
+          "Add VideoObject schema for the seven videos",
+          "Expand the six treatment descriptions",
+          "Repair the corrupted video-playlist widget configuration",
+          "Replace image-based testimonials with real HTML text"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Run PageSpeed Insights logged out and record real LCP/INP/CLS",
+          "Verify robots.txt, sitemap inclusion and indexation in Search Console",
+          "Confirm AI crawler access in robots.txt; consider llms.txt",
+          "Track map-pack position for 'klinik gigi bandar puteri bangi' after the NAP fix",
+          "Clear 53 moderated comments and disable comments site-wide",
+          "Review the Novamira MCP 'AI Abilities: On' setting; apply 26 pending plugin updates"
+        ]
+      }
+    ]
+  },
+  "not_assessed": [
+    "robots.txt and XML sitemap",
+    "HTTP status codes, redirects and security headers",
+    "Core Web Vitals field data (CrUX) and lab measurement",
+    "Indexation status (Search Console)",
+    "Backlink profile and SERP positions",
+    "Rendered-DOM verification and screenshots",
+    "Site-wide crawl - single URL only"
+  ],
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
