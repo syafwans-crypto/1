@@ -35,6 +35,17 @@ booking bottom sheet.
   `story_book_open`, `story_whatsapp`, `story_form_submit`.
 - `#promo` in the URL opens the offer slide directly.
 
+## Background music
+- Track: **"The Brave Smile Serenade"** (Magnific music generator, Lyria 3), made for
+  a dental "overcoming fear" story ad. Re-cut into a 30.2 s seamless loop
+  (0.6 s tail→head crossfade, loudness-normalised, 128 kbps, 473 KB):
+  `assets/infinity-story-bg-music.mp3` → WP media ID 2528.
+- Starts on the visitor's first tap (browsers block autoplay with sound), fades in,
+  loops gaplessly via Web Audio (falls back to `<audio loop>`).
+- 🔊/🔇 button in the top bar; the choice is remembered (`localStorage ids_music`).
+  Music ducks while the booking sheet is open and pauses when the tab is hidden.
+  `dataLayer` event `story_sound` (on/off).
+
 ## Files
 - `story.src.html`: source (HTML/CSS/JS, `{{A:file}}` asset tokens)
 - `build.py`: builds `preview.html` (local), `elementor-html-widget.html`,
@@ -43,7 +54,7 @@ booking bottom sheet.
 - `assets/`: optimised images. AI images were generated with Magnific; the
   before/after photos and reception photo come from @kpinfinitydental (the
   reception photo was upscaled with Magnific)
-- `media-map.json`: asset → WordPress media URL (IDs 2511–2523)
+- `media-map.json`: asset → WordPress media URL (IDs 2511–2523, music 2528)
 
 ## Updating the live page
 Edit `story.src.html`, run `python3 build.py media-map.json`, then write
