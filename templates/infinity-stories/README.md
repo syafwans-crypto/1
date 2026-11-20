@@ -31,6 +31,8 @@ booking bottom sheet.
   set to the chosen package. Falls back to `wa.me/60182979390` if the plugin is off.
 - The floating Click to Chat button is hidden only while the story is open, so it
   never covers the CTA.
+- The site's "Content is protected" alert (WP Content Copy Protection) is hidden on
+  this page, and long-press / right-click / drag is disabled inside the story.
 - `dataLayer` events: `story_slide`, `story_skip`, `story_pick`,
   `story_book_open`, `story_whatsapp`, `story_form_submit`.
 - `#promo` in the URL opens the offer slide directly.
@@ -40,8 +42,11 @@ booking bottom sheet.
   a dental "overcoming fear" story ad. Re-cut into a 30.2 s seamless loop
   (0.6 s tail→head crossfade, loudness-normalised, 128 kbps, 473 KB):
   `assets/infinity-story-bg-music.mp3` → WP media ID 2528.
-- Starts on the visitor's first tap (browsers block autoplay with sound), fades in,
-  loops gaplessly via Web Audio (falls back to `<audio loop>`).
+- Tries to play as soon as the page loads. Where the browser blocks sound until the
+  visitor interacts (most mobile browsers), it starts on the first touch / click / key
+  anywhere on the page; the 🔊 button pulses while waiting. Fades in, loops gaplessly
+  via Web Audio (falls back to `<audio loop>`); `navigator.audioSession = playback`
+  keeps it audible with the iPhone silent switch on (iOS 17+).
 - 🔊/🔇 button in the top bar; the choice is remembered (`localStorage ids_music`).
   Music ducks while the booking sheet is open and pauses when the tab is hidden.
   `dataLayer` event `story_sound` (on/off).

@@ -8,6 +8,10 @@ html.ids-lock,html.ids-lock body{overflow:hidden!important;height:100%!important
 #ids-app{position:fixed;inset:0;z-index:99990;background:var(--ink);color:var(--text);font-family:var(--bf);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden;overflow:clip}
 /* hide the site's floating Click to Chat button while the story is open; keep its greetings form usable */
 html.ids-lock #ht-ctc-chat>:not(.ht_ctc_greetings){display:none!important}
+/* hide the site's "Content is protected" alert (WP Content Copy Protection) on this page */
+html.ids-lock #wpcp-error-message,html.ids-lock .msgmsg-box-wpcp{display:none!important;visibility:hidden!important}
+#ids-app img{-webkit-user-drag:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+#ids-app .ids-slides,#ids-app .ids-top,#ids-app .ids-ctabar{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #ids-app h1,#ids-app h2,#ids-app h3,#ids-app p,#ids-app ul,#ids-app li,#ids-app table{margin:0;padding:0;font-family:inherit;letter-spacing:normal;text-transform:none;color:inherit}
 #ids-app ul{list-style:none}
 #ids-app img{max-width:none;border:0;border-radius:0;box-shadow:none}
@@ -39,7 +43,8 @@ html.ids-lock #ht-ctc-chat>:not(.ht_ctc_greetings){display:none!important}
 #ids-app .ids-snd .off{display:none}
 #ids-app .ids-snd.muted .on{display:none}
 #ids-app .ids-snd.muted .off{display:block}
-#ids-app .ids-snd.playing::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--gold);opacity:.0;animation:ids-snd 2.4s ease-out infinite}
+#ids-app .ids-snd.playing{border-color:var(--gold)}
+#ids-app .ids-snd.waiting::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--gold);opacity:0;animation:ids-snd 1.8s ease-out infinite}
 @keyframes ids-snd{0%{opacity:.7;transform:scale(.9)}100%{opacity:0;transform:scale(1.25)}}
 #ids-app .ids-snd+.ids-skip{margin-left:8px}
 
@@ -611,43 +616,59 @@ html.ids-lock #ht-ctc-chat>:not(.ht_ctc_greetings){display:none!important}
     else { e.preventDefault(); window.open(waUrl,'_blank','noopener'); }});
   if(window.jQuery){try{window.jQuery(document).on('fluentform_submission_success',function(){track('story_form_submit',{story_package:pkg.id});});}catch(e){}}
 
-  // background music: starts on the first tap (browsers block autoplay with sound), gapless loop via Web Audio
+  // background music: tries to play as soon as the page loads. Where the browser blocks sound until the
+  // visitor interacts (most mobile browsers), it starts on the very first touch/click/key anywhere on the page.
   var music=(function(){
     var url=app.getAttribute('data-music'), btn=$('.ids-snd'), VOL=0.42, DUCK=0.14;
-    var on=true, started=false, ducked=false, ctx=null, gain=null, el=null;
+    var on=true, ducked=false, ctx=null, gain=null, el=null, loading=false, ready=false, unlockedAt=0;
     try{ if(localStorage.getItem('ids_music')==='off') on=false; }catch(e){}
-    function ui(){ btn.classList.toggle('muted',!on); btn.classList.toggle('playing',on&&started); btn.setAttribute('aria-pressed',on?'true':'false'); btn.setAttribute('aria-label',on?'Matikan muzik':'Hidupkan muzik'); }
+    try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){} // iOS 17+: audible even with the silent switch on
+    var evs=['pointerdown','pointerup','touchend','click','keydown'];
+    function playing(){ return on && ((ctx && ready && ctx.state==='running') || (el && !el.paused)); }
+    function ui(){ var pl=playing();
+      btn.classList.toggle('muted',!on); btn.classList.toggle('playing',pl); btn.classList.toggle('waiting',on&&!pl);
+      btn.setAttribute('aria-pressed',on?'true':'false'); btn.setAttribute('aria-label',on?(pl?'Matikan muzik':'Mainkan muzik'):'Hidupkan muzik');
+      if(pl) evs.forEach(function(t){ document.removeEventListener(t,unlock,true); }); }
     function target(){ return on ? (ducked?DUCK:VOL) : 0; }
     function ramp(sec){ var v=target();
       if(gain&&ctx){ var t=ctx.currentTime; gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value,t); gain.gain.linearRampToValueAtTime(v,t+(sec||0.6)); }
       else if(el){ el.volume=v; } }
-    function start(){
-      if(!url||started||!on) return; started=true;
+    function resume(){ if(!on) return;
+      if(ctx&&ctx.state!=='running'&&ctx.resume){ var p=ctx.resume(); if(p&&p.then) p.then(ui,function(){}); }
+      if(el&&el.paused){ var q=el.play(); if(q&&q.then) q.then(ui,function(){}); } }
+    function load(){
+      if(!url||loading) return; loading=true;
       var AC=window.AudioContext||window.webkitAudioContext;
       if(AC){ try{
-        ctx=new AC(); gain=ctx.createGain(); gain.gain.value=0; gain.connect(ctx.destination); if(ctx.resume) ctx.resume();
+        ctx=new AC(); gain=ctx.createGain(); gain.gain.value=0; gain.connect(ctx.destination);
+        ctx.onstatechange=function(){ if(ctx&&ctx.state==='running'&&ready) ramp(1.5); ui(); };
         fetch(url,{credentials:'omit'}).then(function(r){return r.arrayBuffer();}).then(function(b){return new Promise(function(res,rej){ctx.decodeAudioData(b,res,rej);});})
-          .then(function(buf){ var src=ctx.createBufferSource(); src.buffer=buf; src.loop=true; src.connect(gain); src.start(0); ramp(1.8); ui(); })
+          .then(function(buf){ var src=ctx.createBufferSource(); src.buffer=buf; src.loop=true; src.connect(gain); src.start(0); ready=true; resume(); if(ctx.state==='running') ramp(1.5); ui(); })
           .catch(function(){ ctx=null; gain=null; html5(); });
-        ui(); return; }catch(e){ ctx=null; gain=null; } }
+        resume(); return; }catch(e){ ctx=null; gain=null; } }
       html5();
     }
-    function html5(){ try{ el=new Audio(url); el.loop=true; el.volume=target(); var p=el.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} ui(); }
+    function html5(){ try{ el=new Audio(url); el.loop=true; el.preload='auto'; el.volume=target(); el.addEventListener('playing',ui); el.addEventListener('pause',ui); resume(); }catch(e){} ui(); }
+    function unlock(){ if(!on) return; if(!playing()) unlockedAt=Date.now(); if(!loading) load(); resume(); ui(); }
+    evs.forEach(function(t){ document.addEventListener(t,unlock,true); });
     function toggle(){
       on=!on; try{ localStorage.setItem('ids_music',on?'on':'off'); }catch(e){}
-      if(on){ if(!started) start(); else { if(ctx&&ctx.resume) ctx.resume(); if(el) el.play(); ramp(0.8); } }
-      else { ramp(0.3); if(ctx&&ctx.suspend) setTimeout(function(){ if(!on) ctx.suspend(); },350); if(el) el.pause(); }
+      if(on){ if(!loading) load(); resume(); ramp(0.8); }
+      else { ramp(0.3); setTimeout(function(){ if(!on){ if(ctx&&ctx.suspend) ctx.suspend(); if(el) el.pause(); ui(); } },350); }
       ui(); track('story_sound',{story_sound:on?'on':'off'});
     }
-    btn.addEventListener('click',function(e){ e.stopPropagation(); toggle(); });
-    // first interaction anywhere in the story starts the music
-    var kick=function(e){ if(e&&e.target&&e.target.closest&&e.target.closest('.ids-snd')) return; start(); };
-    app.addEventListener('pointerdown',kick,true); app.addEventListener('keydown',kick,true);
-    document.addEventListener('visibilitychange',function(){ if(!started||!on) return;
-      if(document.hidden){ if(ctx&&ctx.suspend) ctx.suspend(); if(el) el.pause(); } else { if(ctx&&ctx.resume) ctx.resume(); if(el) el.play(); } });
+    btn.addEventListener('click',function(e){ e.stopPropagation();
+      if(on && Date.now()-unlockedAt<900) return; // this tap just started the music, don't mute it
+      toggle(); });
+    document.addEventListener('visibilitychange',function(){ if(!on||!loading) return;
+      if(document.hidden){ if(ctx&&ctx.suspend) ctx.suspend(); if(el) el.pause(); } else resume(); });
+    if(on) load(); // autoplay attempt right away
     ui();
-    return { duck:function(d){ ducked=d; if(started) ramp(0.5); } };
+    return { duck:function(d){ ducked=d; if(loading) ramp(0.5); } };
   })();
+
+  // long-press / right-click / drag inside the story: no menu, and don't let the copy-protection plugin react
+  ['contextmenu','dragstart','selectstart'].forEach(function(t){ app.addEventListener(t,function(e){ if(e.target.closest('input,textarea,select,[contenteditable]')) return; e.preventDefault(); e.stopPropagation(); }); });
 
   // start
   attachForm();
