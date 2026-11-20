@@ -1,0 +1,609 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+#ids-app{--ink:#0f0b07;--ink2:#1b140c;--ink3:#271d12;--line:rgba(217,182,90,.22);--gold:#d9b65a;--gold-hi:#f7e9a8;--gold-lo:#a47a35;--gold-grad:linear-gradient(100deg,#a47a35 0%,#d9b65a 30%,#f7e9a8 50%,#d9b65a 70%,#a47a35 100%);--cream:#fbf4e2;--cream2:#f1e6c8;--text:#fff;--muted:rgba(255,255,255,.74);--bad:#e57c6b;--cta-h:54px;--hf:"Montserrat",system-ui,sans-serif;--bf:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+html.ids-lock,html.ids-lock body{overflow:hidden!important;height:100%!important;overscroll-behavior:none}
+#ids-app,#ids-app *{box-sizing:border-box}
+#ids-app{position:fixed;inset:0;z-index:99990;background:var(--ink);color:var(--text);font-family:var(--bf);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;display:flex;align-items:center;justify-content:center;overflow:hidden;overflow:clip}
+/* hide the site's floating Click to Chat button while the story is open; keep its greetings form usable */
+html.ids-lock #ht-ctc-chat>:not(.ht_ctc_greetings){display:none!important}
+#ids-app h1,#ids-app h2,#ids-app h3,#ids-app p,#ids-app ul,#ids-app li,#ids-app table{margin:0;padding:0;font-family:inherit;letter-spacing:normal;text-transform:none;color:inherit}
+#ids-app ul{list-style:none}
+#ids-app img{max-width:none;border:0;border-radius:0;box-shadow:none}
+#ids-app button{font:inherit;color:inherit;background:none;border:0;margin:0;padding:0;cursor:pointer;box-shadow:none;text-transform:none;letter-spacing:normal;line-height:inherit;min-height:0;border-radius:0}
+#ids-app a{color:inherit;text-decoration:none}
+#ids-app strong,#ids-app b{color:#fff;font-weight:700}
+
+/* desktop blurred backdrop */
+#ids-app .ids-backdrop{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(38px) brightness(.38) saturate(1.1);transition:background-image .5s}
+/* story frame */
+#ids-app .ids-frame{position:relative;width:100%;height:100%;background:var(--ink);overflow:hidden;overflow:clip;container-type:size}
+@media (min-width:640px){#ids-app .ids-frame{height:min(calc(100dvh - 32px),940px);width:auto;aspect-ratio:9/17.5;max-width:520px;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 0 1px rgba(217,182,90,.18)}}
+
+/* progress + top bar */
+#ids-app .ids-progress{position:absolute;top:calc(8px + env(safe-area-inset-top));left:10px;right:10px;display:flex;gap:4px;z-index:30}
+#ids-app .ids-progress i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.28);overflow:hidden;position:relative}
+#ids-app .ids-progress i::after{content:"";position:absolute;inset:0;width:0;background:var(--gold-hi);border-radius:3px;transition:width .45s ease}
+#ids-app .ids-progress i.done::after{width:100%;background:var(--gold)}
+#ids-app .ids-progress i.on::after{width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-hi))}
+#ids-app .ids-top{position:absolute;top:calc(20px + env(safe-area-inset-top));left:12px;right:12px;height:38px;display:flex;align-items:center;gap:10px;z-index:30}
+#ids-app .ids-back{width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;transition:opacity .25s,transform .25s;backdrop-filter:blur(6px)}
+#ids-app .ids-back svg{width:16px;height:16px}
+#ids-app .ids-back[hidden]{display:grid!important;opacity:0;pointer-events:none;transform:scale(.7);width:0;margin-right:-10px}
+#ids-app .ids-logo{height:24px;width:auto;filter:drop-shadow(0 1px 6px rgba(0,0,0,.55))}
+#ids-app .ids-skip{margin-left:auto;font-family:var(--hf);font-weight:800;font-size:10.5px;letter-spacing:.06em;color:#1c1408;background:var(--gold-grad);background-size:200% 100%;padding:8px 12px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.35);transition:opacity .25s;white-space:nowrap}
+#ids-app .ids-skip[hidden]{display:block!important;opacity:0;pointer-events:none}
+
+/* slides */
+#ids-app .ids-slides{position:absolute;inset:0}
+#ids-app .ids-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateX(5%) scale(.985);transition:opacity .42s ease,transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s .42s}
+#ids-app .ids-slide.is-on{opacity:1;visibility:visible;transform:none;transition:opacity .42s ease,transform .42s cubic-bezier(.2,.8,.2,1),visibility 0s}
+#ids-app .ids-slide.is-prev{transform:translateX(-5%) scale(.985)}
+#ids-app .ids-media{position:absolute;top:0;left:0;right:0;height:var(--mh,58%);overflow:hidden;background:var(--ink2)}
+#ids-app .ids-media img{width:100%;height:100%;object-fit:cover;object-position:var(--mp,center 30%);display:block;transform:scale(1.06);transition:transform 7s ease-out}
+#ids-app .ids-slide.is-on .ids-media img{transform:scale(1)}
+#ids-app .ids-media::before{content:"";position:absolute;inset:0 0 auto 0;height:120px;background:linear-gradient(rgba(0,0,0,.55),transparent);z-index:1}
+#ids-app .ids-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(15,11,7,.72) 74%,var(--ink) 99%)}
+#ids-app .ids-glow{position:absolute;inset:0;background:radial-gradient(120% 60% at 50% 0%,rgba(217,182,90,.18),transparent 60%),radial-gradient(90% 50% at 100% 100%,rgba(217,182,90,.08),transparent 70%)}
+#ids-app .ids-body{position:absolute;left:0;right:0;bottom:0;max-height:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:0 20px calc(var(--cta-h) + 44px + env(safe-area-inset-bottom));text-align:center}
+#ids-app .ids-body::-webkit-scrollbar{display:none}
+#ids-app .ids-slide[data-layout="top"] .ids-body{top:0;padding-top:calc(78px + env(safe-area-inset-top));display:flex;flex-direction:column;justify-content:center}
+#ids-app .ids-slide[data-layout="top"] .ids-body>.ids-inner{margin:auto 0}
+
+/* typography */
+#ids-app .ids-kicker{display:inline-flex;align-items:center;gap:6px;font-family:var(--hf);font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi);border:1px solid var(--line);background:rgba(15,11,7,.55);padding:6px 11px;border-radius:999px;margin-bottom:12px;backdrop-filter:blur(4px)}
+#ids-app .ids-h{font-family:var(--hf);font-weight:900;text-transform:uppercase;font-size:29px;font-size:clamp(23px,7.6cqw,36px);line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+#ids-app .ids-h span{display:block}
+#ids-app .ids-h .g{background:var(--gold-grad);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ids-sheen 6s linear infinite}
+@keyframes ids-sheen{0%{background-position:0% 0}100%{background-position:220% 0}}
+#ids-app .ids-sub{font-family:var(--hf);font-weight:700;color:var(--gold);font-size:15px;margin-top:8px}
+#ids-app .ids-p{color:var(--muted);font-size:14.5px;font-size:clamp(13.5px,3.75cqw,15.5px);line-height:1.55;margin-top:12px}
+#ids-app .ids-p+.ids-p{margin-top:9px}
+#ids-app .ids-note{color:rgba(255,255,255,.55);font-size:11.5px;line-height:1.45;margin-top:12px}
+
+/* byline + rating (hook) */
+#ids-app .ids-byline{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px}
+#ids-app .ids-avatar{width:36px;height:36px;border-radius:50%;background:#000 center/78% no-repeat;border:1.5px solid var(--gold);flex:none}
+#ids-app .ids-byline div{text-align:left;font-size:12px;line-height:1.35;color:var(--muted)}
+#ids-app .ids-byline b{display:block;font-size:12.5px}
+#ids-app .ids-rating{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;font-size:12px;color:var(--muted);font-weight:600}
+#ids-app .ids-stars{color:var(--gold-hi);letter-spacing:1px;font-size:13px}
+
+/* feature list */
+#ids-app .ids-feats{margin-top:14px;text-align:left;border-top:1px solid var(--line)}
+#ids-app .ids-feats li{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.45;color:var(--muted)}
+#ids-app .ids-ic{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(217,182,90,.08);color:var(--gold-hi)}
+#ids-app .ids-ic svg{width:18px;height:18px}
+#ids-app .ids-feats b{display:inline}
+
+/* sign list (problem) */
+#ids-app .ids-signs{margin:14px auto 0;max-width:330px;text-align:left}
+#ids-app .ids-signs li{display:flex;gap:10px;align-items:center;padding:7px 0;font-size:14px;color:#fff;font-weight:500}
+#ids-app .ids-x{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(229,124,107,.16);color:var(--bad)}
+#ids-app .ids-ok{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(217,182,90,.18);color:var(--gold-hi)}
+#ids-app .ids-x svg,#ids-app .ids-ok svg{width:12px;height:12px}
+
+/* compare */
+#ids-app .ids-toggle{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--cream2);border-radius:6px;overflow:hidden;margin:16px auto 0;max-width:360px}
+#ids-app .ids-toggle button{font-family:var(--hf);font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:11px 6px;color:var(--cream);transition:background .3s,color .3s}
+#ids-app .ids-toggle button.on{background:var(--cream);color:#1c1408}
+#ids-app .ids-teeth{display:flex;justify-content:center;gap:12px;margin:18px 0 6px}
+#ids-app .ids-teeth svg{width:34px;height:34px;transition:color .35s,transform .35s,opacity .35s}
+#ids-app .ids-cmp[data-v="a"] .ids-teeth svg{color:var(--bad);opacity:.9}
+#ids-app .ids-cmp[data-v="b"] .ids-teeth svg{color:var(--gold-hi);transform:translateY(-2px)}
+#ids-app .ids-price{font-family:var(--hf);font-weight:900;font-size:46px;font-size:clamp(38px,12cqw,54px);line-height:1;letter-spacing:-.02em}
+#ids-app .ids-cmp[data-v="a"] .ids-price{color:var(--bad)}
+#ids-app .ids-cmp[data-v="b"] .ids-price{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+#ids-app .ids-price small{font-size:13px;font-weight:700;letter-spacing:0;margin-left:4px;color:#fff;-webkit-text-fill-color:#fff}
+#ids-app .ids-price-sub{font-size:12.5px;color:var(--muted);margin-top:6px}
+#ids-app .ids-cmp-list{margin:14px auto 0;max-width:340px;text-align:left;border-top:1px solid var(--line)}
+#ids-app .ids-cmp-list li{display:flex;gap:10px;align-items:center;padding:10px 2px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+#ids-app .ids-cmp-list li b{margin-right:3px}
+#ids-app .ids-cmp [data-show]{display:none}
+#ids-app .ids-cmp[data-v="a"] [data-show="a"],#ids-app .ids-cmp[data-v="b"] [data-show="b"]{display:revert}
+#ids-app .ids-cmp[data-v="a"] li[data-show="a"],#ids-app .ids-cmp[data-v="b"] li[data-show="b"]{display:flex}
+#ids-app .ids-cmp .ids-swap{animation:ids-pop .45s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes ids-pop{0%{transform:scale(.86);opacity:.2}100%{transform:none;opacity:1}}
+
+/* real before/after */
+#ids-app .ids-ba-tabs{margin-top:14px}
+#ids-app .ids-ba-frame{position:relative;margin:14px auto 0;width:min(100%,44cqh);aspect-ratio:1/1;border-radius:14px;overflow:hidden;border:1.5px solid var(--gold);box-shadow:0 14px 40px rgba(0,0,0,.5);background:var(--ink2)}
+#ids-app .ids-ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
+#ids-app .ids-ba-frame img.on{opacity:1}
+#ids-app .ids-ba-cap[hidden]{display:none}
+
+/* stepper */
+#ids-app .ids-track{position:relative;margin:18px 6px 4px;height:30px}
+#ids-app .ids-track::before{content:"";position:absolute;left:8px;right:8px;top:50%;height:3px;margin-top:-1.5px;background:rgba(255,255,255,.18);border-radius:3px}
+#ids-app .ids-track-fill{position:absolute;left:8px;top:50%;height:3px;margin-top:-1.5px;background:linear-gradient(90deg,var(--gold-lo),var(--gold-hi));border-radius:3px;width:0;transition:width .5s ease}
+#ids-app .ids-dots{position:absolute;inset:0 0;display:flex;justify-content:space-between;align-items:center}
+#ids-app .ids-dots button{width:16px;height:16px;border-radius:50%;background:var(--ink3);border:2px solid rgba(255,255,255,.35);transition:background .3s,border-color .3s;position:relative}
+#ids-app .ids-dots button.done{background:var(--gold);border-color:var(--gold)}
+#ids-app .ids-dots button::after{content:"";position:absolute;inset:-10px}
+#ids-app .ids-marker{position:absolute;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--gold-grad);display:grid;place-items:center;color:#1c1408;box-shadow:0 0 0 4px rgba(217,182,90,.22),0 6px 16px rgba(0,0,0,.4);transition:left .5s cubic-bezier(.3,.9,.3,1.1);pointer-events:none}
+#ids-app .ids-marker svg{width:16px;height:16px}
+#ids-app .ids-track-labels{display:flex;justify-content:space-between;font-family:var(--hf);font-size:9.5px;font-weight:800;letter-spacing:.08em;color:rgba(255,255,255,.55);text-transform:uppercase;margin:0 0 12px}
+#ids-app .ids-cards{position:relative;height:118px}
+#ids-app .ids-card{position:absolute;left:0;right:0;top:0;display:flex;gap:14px;align-items:center;text-align:left;padding:14px 16px;border-radius:12px;background:var(--cream);color:#1c1408;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s;opacity:0;transform:translateY(24px) scale(.94)}
+#ids-app .ids-card.on{opacity:1;transform:none;z-index:2}
+#ids-app .ids-card.next{opacity:.35;transform:translateY(64px) scale(.92);z-index:1}
+#ids-app .ids-card .n{flex:none;width:58px;text-align:center;font-family:var(--hf);font-weight:900;font-size:38px;line-height:1;color:var(--gold-lo)}
+#ids-app .ids-card .n small{display:block;font-size:9px;letter-spacing:.1em;color:#6b5a3a;margin-top:4px}
+#ids-app .ids-card h3{font-family:var(--hf);font-weight:900;font-size:15px;text-transform:uppercase;line-height:1.15;color:#1c1408}
+#ids-app .ids-card p{font-size:12.5px;line-height:1.45;color:#4a3d27;margin-top:4px}
+
+/* 2x2 grid */
+#ids-app .ids-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;text-align:left}
+#ids-app .ids-grid li{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;line-height:1.4;color:#fff;font-weight:500;display:flex;flex-direction:column;gap:8px}
+
+/* report card table */
+#ids-app .ids-table{width:100%;border-collapse:separate;border-spacing:0 4px;margin-top:14px;font-size:12px;table-layout:fixed}
+#ids-app .ids-table th{font-family:var(--hf);font-weight:800;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#1c1408;background:var(--gold);padding:8px 8px;text-align:left}
+#ids-app .ids-table th:first-child{border-radius:6px 0 0 6px;width:30%}
+#ids-app .ids-table th:last-child{border-radius:0 6px 6px 0;width:20%;text-align:center}
+#ids-app .ids-table td{background:var(--cream);color:#2a2113;padding:9px 8px;line-height:1.3;vertical-align:middle;text-align:left}
+#ids-app .ids-table td:first-child{font-family:var(--hf);font-weight:800;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;border-radius:6px 0 0 6px}
+#ids-app .ids-table td:last-child{border-radius:0 6px 6px 0;text-align:center;background:var(--gold-grad);color:#1c1408;font-family:var(--hf);font-weight:900;font-size:16px}
+#ids-app .ids-table tr.total td{background:transparent;color:#fff;font-family:var(--hf);font-weight:900;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+#ids-app .ids-table tr.total td:last-child{background:var(--gold-grad);color:#1c1408;font-size:16px}
+
+/* reviews */
+#ids-app .ids-revs{margin-top:14px;position:relative}
+#ids-app .ids-rev-vp{overflow:hidden;border-radius:14px}
+#ids-app .ids-rev-row{display:flex;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+#ids-app .ids-rev{flex:0 0 100%;background:var(--cream);color:#2a2113;border-radius:14px;padding:14px 16px 16px;text-align:left}
+#ids-app .ids-rev-h{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+#ids-app .ids-rev-av{width:36px;height:36px;border-radius:50%;background:var(--gold-grad);display:grid;place-items:center;font-family:var(--hf);font-weight:900;font-size:12px;color:#1c1408;flex:none}
+#ids-app .ids-rev-h b{display:block;color:#1c1408;font-size:13.5px}
+#ids-app .ids-rev-h span{font-size:11px;color:#7a6847}
+#ids-app .ids-rev-h .ids-stars{color:#c99a2e;font-size:11px;margin-right:4px}
+#ids-app .ids-rev q{display:block;font-size:13.5px;line-height:1.5;quotes:"\201C" "\201D"}
+#ids-app .ids-rev-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px}
+#ids-app .ids-rev-nav>button{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.4);display:grid;place-items:center}
+#ids-app .ids-rev-nav>button svg{width:14px;height:14px}
+#ids-app .ids-rev-dots{display:flex;gap:6px}
+#ids-app .ids-rev-dots i{width:6px;height:6px;border-radius:6px;background:rgba(255,255,255,.35);transition:width .3s,background .3s}
+#ids-app .ids-rev-dots i.on{width:18px;background:var(--gold)}
+
+/* tiers */
+#ids-app .ids-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+#ids-app .ids-tier{position:relative;border:1.5px solid rgba(255,255,255,.28);border-radius:12px;padding:20px 6px 12px;text-align:center;transition:background .25s,border-color .25s,transform .25s;color:#fff}
+#ids-app .ids-tier.on{background:var(--cream);border-color:var(--gold);color:#1c1408;transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.4)}
+#ids-app .ids-tier .bdg{position:absolute;top:-9px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--hf);font-weight:900;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:var(--gold-grad);color:#1c1408}
+#ids-app .ids-tier .bdg.alt{background:#e9dcc0}
+#ids-app .ids-tier .ti{width:26px;height:26px;margin:0 auto 6px;color:var(--gold)}
+#ids-app .ids-tier.on .ti{color:var(--gold-lo)}
+#ids-app .ids-tier .nm{display:block;font-family:var(--hf);font-weight:800;font-size:10px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;min-height:24px}
+#ids-app .ids-tier .pr{display:block;font-family:var(--hf);font-weight:900;font-size:19px;line-height:1.1;margin-top:4px}
+#ids-app .ids-tier .pr small{font-size:10px;font-weight:700}
+#ids-app .ids-tier s{display:block;font-size:11px;opacity:.6;margin-top:2px;min-height:15px}
+#ids-app .ids-tier-desc{font-size:12.5px;color:var(--muted);margin-top:12px;min-height:38px}
+#ids-app .ids-assure{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 12px;margin-top:10px;font-size:11.5px;font-weight:600;color:#fff}
+#ids-app .ids-assure span{display:inline-flex;align-items:center;gap:5px}
+#ids-app .ids-assure svg{width:12px;height:12px;color:var(--gold-hi)}
+#ids-app .ids-legal{font-size:10.5px;line-height:1.5;color:rgba(255,255,255,.48);margin-top:14px;text-align:left}
+
+/* CTA */
+#ids-app .ids-ctabar{position:absolute;left:0;right:0;bottom:0;z-index:25;padding:16px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(15,11,7,.92) 28%,var(--ink))}
+#ids-app .ids-cta{position:relative;overflow:hidden;width:100%;height:var(--cta-h);border-radius:8px;background:var(--gold-grad);background-size:200% 100%;color:#1c1408;font-family:var(--hf);font-weight:900;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 24px rgba(217,182,90,.25),inset 0 -2px 0 rgba(0,0,0,.18);transition:transform .15s,background-position .6s}
+#ids-app .ids-cta:active{transform:scale(.98)}
+#ids-app .ids-cta:hover{background-position:100% 0}
+#ids-app .ids-cta svg{width:18px;height:18px;transition:transform .25s}
+#ids-app .ids-cta:hover svg{transform:translateX(3px)}
+#ids-app .ids-cta::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:ids-shine 3.4s ease-in-out infinite}
+@keyframes ids-shine{0%,55%{left:-60%}85%,100%{left:130%}}
+#ids-app .ids-fine{text-align:center;font-size:10.5px;color:rgba(255,255,255,.5);margin-top:7px;min-height:15px;line-height:1.4}
+#ids-app .ids-hint{position:absolute;right:10px;top:40%;z-index:24;font-size:11px;font-weight:600;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);padding:6px 8px 6px 11px;border-radius:999px;backdrop-filter:blur(6px);display:flex;align-items:center;gap:4px;animation:ids-hint 1.6s ease-in-out infinite;pointer-events:none;transition:opacity .4s}
+#ids-app .ids-hint svg{width:14px;height:14px}
+@keyframes ids-hint{50%{transform:translateX(5px)}}
+#ids-app .ids-hint.off{opacity:0}
+
+/* booking sheet */
+#ids-app .ids-sheet{position:absolute;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;visibility:hidden;transition:visibility 0s .35s}
+#ids-app .ids-sheet.open{visibility:visible;transition:none}
+#ids-app .ids-sheet-bg{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .35s;backdrop-filter:blur(2px)}
+#ids-app .ids-sheet.open .ids-sheet-bg{opacity:1}
+#ids-app .ids-sheet-panel{position:relative;width:100%;max-width:520px;max-height:92%;overflow-y:auto;overscroll-behavior:contain;background:var(--cream);color:#2a2113;border-radius:20px 20px 0 0;padding:10px 18px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+#ids-app .ids-sheet.open .ids-sheet-panel{transform:none}
+#ids-app .ids-grab{width:40px;height:4px;border-radius:4px;background:#d8c89f;margin:0 auto 12px}
+#ids-app .ids-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:#efe3c3;display:grid;place-items:center;color:#1c1408}
+#ids-app .ids-close svg{width:14px;height:14px}
+#ids-app .ids-sheet h2{font-family:var(--hf);font-weight:900;text-transform:uppercase;font-size:20px;line-height:1.1;color:#1c1408;padding-right:36px}
+#ids-app .ids-sheet .ids-pick{display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:#1c1408;color:var(--gold-hi);font-family:var(--hf);font-weight:800;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+#ids-app .ids-sheet .ids-sp{font-size:13px;color:#5b4b2e;margin-top:8px}
+#ids-app #ids-form-host{margin-top:14px;color:#2a2113;font-family:var(--bf)}
+#ids-app #ids-form-host .ids-ph{border:1.5px dashed #cdb97f;border-radius:12px;padding:18px;text-align:center;font-size:13px;color:#6b5a3a}
+#ids-app #ids-form-host input,#ids-app #ids-form-host select,#ids-app #ids-form-host textarea{font-size:16px!important}
+#ids-app #ids-form-host .ff-btn-submit{width:100%;background:#1c1408!important;color:var(--gold-hi)!important;border:0!important;border-radius:8px!important;padding:14px!important;font-family:var(--hf)!important;font-weight:900!important;letter-spacing:.06em;text-transform:uppercase}
+#ids-app #ids-form-host .elementor-widget-container{margin:0!important;padding:0!important;background:none!important;box-shadow:none!important}
+#ids-app .ids-or{display:flex;align-items:center;gap:10px;margin:14px 0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9a8659}
+#ids-app .ids-or::before,#ids-app .ids-or::after{content:"";flex:1;height:1px;background:#dccb9f}
+#ids-app .ids-wa{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:52px;border-radius:8px;background:#1fae53;color:#fff;font-family:var(--hf);font-weight:900;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase}
+#ids-app .ids-wa svg{width:20px;height:20px}
+#ids-app .ids-addr{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#6b5a3a;margin-top:14px;line-height:1.45}
+#ids-app .ids-addr svg{width:15px;height:15px;flex:none;margin-top:1px;color:var(--gold-lo)}
+
+@media (prefers-reduced-motion:reduce){#ids-app *,#ids-app *::before,#ids-app *::after{animation:none!important;transition-duration:.01s!important}}
+@container (max-height:700px){#ids-app .ids-ba-frame{width:min(100%,36cqh);margin-top:10px}#ids-app .ids-ba-tabs{margin-top:10px}#ids-app .ids-table{margin-top:8px;border-spacing:0 3px}#ids-app .ids-table td{padding:6px 8px}#ids-app .ids-kicker{margin-bottom:8px}}
+@container (max-height:640px){#ids-app .ids-h{font-size:clamp(21px,6.8cqw,30px)}#ids-app .ids-p{font-size:13.5px;margin-top:9px}#ids-app .ids-feats li{padding:8px 2px}}
+</style>
+
+<div id="ids-app" aria-label="Infinity Dental story" data-wa="60182979390">
+  <div class="ids-backdrop" aria-hidden="true"></div>
+  <div class="ids-frame">
+    <div class="ids-progress" aria-hidden="true"></div>
+    <div class="ids-top">
+      <button class="ids-back" type="button" aria-label="Slide sebelum" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <img class="ids-logo" src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-logo.png" alt="Infinity Dental" width="140" height="24">
+      <button class="ids-skip" type="button" data-go="last">TERUS KE PROMO</button>
+    </div>
+
+    <div class="ids-slides">
+
+      <!-- 1 HOOK -->
+      <section class="ids-slide" data-cta="Kenapa jadi macam tu?" data-fine="Iklan berbayar · Gambar adalah ilustrasi" style="--mh:64%;--mp:center 22%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s1-hook.webp" alt="Wanita memeriksa gigi di depan cermin" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <span class="ids-kicker">📍 Seri Kembangan · 2 min baca</span>
+          <h1 class="ids-h"><span>Gosok gigi 2x sehari.</span><span class="g">Tapi kenapa masih nampak kusam?</span></h1>
+          <p class="ids-sub">(jawapan jujur dari klinik gigi)</p>
+          <div class="ids-byline"><span class="ids-avatar" style="background-image:url('https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-icon.png')"></span><div><b>Klinik Pergigian Infinity Dental</b>The Atmosphere, Bandar Putra Permai</div></div>
+          <div class="ids-rating"><span class="ids-stars">★★★★★</span> 4.9 · Rating Google</div>
+        </div></div>
+      </section>
+
+      <!-- 2 PROBLEM -->
+      <section class="ids-slide" data-cta="Habis tu, apa jadi?" style="--mh:56%;--mp:center 25%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s2-office.webp" alt="Wanita sibuk di pejabat menolak peringatan di telefon" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Berus gigi buang sisa makanan.</span><span class="g">Tapi bukan semua plak.</span></h2>
+          <p class="ids-p">Berus &amp; ubat gigi bantu bersihkan permukaan. Tapi plak yang terlepas — di celah gigi dan tepi gusi — lama-lama boleh mengeras jadi <b>karang gigi</b>.</p>
+          <p class="ids-p">Dan karang gigi <b>tak boleh dibuang dengan berus gigi biasa.</b> Masalahnya, kita selalu tangguh… <i>"nanti la, bukan sakit pun."</i></p>
+        </div></div>
+      </section>
+
+      <!-- 3 AGITATE -->
+      <section class="ids-slide" data-cta="OK, saya patut buat apa?" style="--mh:52%;--mp:center 20%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s3-cover.webp" alt="Wanita menutup mulut ketika bercakap" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Lama-lama…</span><span class="g">kita sendiri yang perasan.</span></h2>
+          <p class="ids-p">Antara tanda yang ramai abaikan:</p>
+          <ul class="ids-signs">
+            <li><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Nafas kurang segar walaupun dah berus</li>
+            <li><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Gusi berdarah masa gosok gigi</li>
+            <li><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Gigi nampak kekuningan &amp; kusam</li>
+            <li><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>Makanan selalu tersangkut celah gigi</li>
+          </ul>
+          <p class="ids-p"><b>Last-last… nak senyum pun tutup mulut.</b></p>
+        </div></div>
+      </section>
+
+      <!-- 4 INSIGHT -->
+      <section class="ids-slide" data-cta="Jadi kena buat semua?" style="--mh:46%;--mp:center 40%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s4-tools.webp" alt="Peralatan scaling, polishing, fluoride dan whitening" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Bersih ≠ putih.</span><span class="g">4 rawatan, 4 fungsi.</span></h2>
+          <p class="ids-p">Ramai ingat scaling sama dengan whitening. Sebenarnya berbeza:</p>
+          <ul class="ids-feats">
+            <li><span class="ids-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg></span><span><b>Scaling</b> — bantu buang plak &amp; karang gigi.</span></li>
+            <li><span class="ids-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M8.5 12a3.5 3.5 0 0 1 3.5-3.5"/></svg></span><span><b>Polishing</b> — licinkan permukaan &amp; kurangkan kesan kotoran.</span></li>
+            <li><span class="ids-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Express Whitening*</b> — bantu senyuman nampak lebih cerah.</span></li>
+            <li><span class="ids-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span><b>Fluoride</b> — bantu kuatkan enamel &amp; lindungi gigi.</span></li>
+          </ul>
+          <p class="ids-note">*Untuk kes yang sesuai, selepas pemeriksaan doktor gigi.</p>
+        </div></div>
+      </section>
+
+      <!-- 5 REVEAL -->
+      <section class="ids-slide" data-cta="Tunjuk kira-kira dia" style="--mh:54%;--mp:center 30%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s5-chair.webp" alt="Pesakit tenang di kerusi pergigian bersama doktor gigi" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <span class="ids-kicker">✨ Year End Smile Care Special</span>
+          <h2 class="ids-h"><span>4 rawatan.</span><span class="g">Satu pakej.</span></h2>
+          <p class="ids-p">Pakej <b>4-in-1 Smile Care</b> di Infinity Dental: scaling, polishing, express whitening* &amp; fluoride, semuanya dalam satu pakej dan dipantau doktor gigi.</p>
+          <ul class="ids-feats">
+            <li><span class="ids-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/><path d="M12 14v4M10 16h4"/></svg></span><span><b>Doktor berpengalaman</b> — hampir 10 tahun dalam bidang pergigian.</span></li>
+            <li><span class="ids-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13M12 8c-1.5-3-5-4-5-1.5S10 8 12 8zM12 8c1.5-3 5-4 5-1.5S14 8 12 8z"/></svg></span><span><b>Bonus free gift</b> — selagi stok masih ada.</span></li>
+          </ul>
+        </div></div>
+      </section>
+
+      <!-- 6 COMPARE -->
+      <section class="ids-slide" data-cta="Ada bukti ke?" data-layout="top" data-enter="compare">
+        <div class="ids-glow"></div>
+        <div class="ids-body"><div class="ids-inner ids-cmp" data-v="a">
+          <h2 class="ids-h"><span>Rawatan sama.</span><span class="g">Jimat RM160.</span></h2>
+          <div class="ids-toggle" role="tablist">
+            <button type="button" role="tab" data-v="a" class="on">Harga biasa</button>
+            <button type="button" role="tab" data-v="b">Pakej year end</button>
+          </div>
+          <div class="ids-teeth" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg>
+          </div>
+          <div class="ids-price"><span data-show="a">RM460</span><span data-show="b">RM300</span><small data-show="a">harga biasa</small><small data-show="b">pakej 4-in-1</small></div>
+          <p class="ids-price-sub"><span data-show="a">Scaling + polishing + whitening + fluoride, harga biasa.</span><span data-show="b">Rawatan yang sama, harga promo hujung tahun.</span></p>
+          <ul class="ids-cmp-list">
+            <li data-show="a"><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>Bayar penuh</b> RM460</span></li>
+            <li data-show="a"><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>Tiada</b> free gift</span></li>
+            <li data-show="a"><span class="ids-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>Senang tangguh: <b>"nanti-nanti la"</b></span></li>
+            <li data-show="b"><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span><b>4 rawatan</b> dalam 1 pakej</span></li>
+            <li data-show="b"><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span><b>Jimat RM160</b> berbanding harga biasa</span></li>
+            <li data-show="b"><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span><b>Free gift</b> selagi stok ada</span></li>
+          </ul>
+        </div></div>
+      </section>
+
+      <!-- 7 REAL RESULT (from @kpinfinitydental) -->
+      <section class="ids-slide" data-cta="Apa jadi dalam klinik?" data-layout="top">
+        <div class="ids-glow"></div>
+        <div class="ids-body"><div class="ids-inner ids-ba">
+          <span class="ids-kicker">📸 Hasil sebenar · @kpinfinitydental</span>
+          <h2 class="ids-h"><span>Bukan janji kosong.</span><span class="g">Ini hasil sebenar.</span></h2>
+          <div class="ids-toggle ids-ba-tabs ids-noTap" role="tablist">
+            <button type="button" role="tab" class="on" data-ba="0">Whitening 15 minit</button>
+            <button type="button" role="tab" data-ba="1">Shade S22 → S14</button>
+          </div>
+          <div class="ids-ba-frame ids-noTap">
+            <img class="on" data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-ba-whitening-15min.webp" alt="Sebelum dan selepas Express Whitening 15 minit oleh Dr. Azlindar" width="1080" height="1080">
+            <img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-ba-whitening-s22.webp" alt="Sebelum dan selepas whitening, shade S22 ke S14, oleh Dr. Darren" width="1080" height="1080">
+          </div>
+          <p class="ids-p ids-ba-cap" data-ba-cap="0">Express Whitening <b>15 minit</b> oleh Dr. Azlindar. Gigi nampak lebih cerah &amp; natural.</p>
+          <p class="ids-p ids-ba-cap" data-ba-cap="1" hidden>Satu sesi whitening oleh Dr. Darren: dari shade <b>S22 ke S14</b>.</p>
+          <p class="ids-note">Hasil berbeza mengikut individu. Kesesuaian whitening bergantung pada pemeriksaan doktor gigi.</p>
+        </div></div>
+      </section>
+
+      <!-- 8 TIMELINE -->
+      <section class="ids-slide" data-cta="Sesuai untuk saya ke?" data-enter="steps" style="--mh:50%;--mp:center 30%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-clinic-reception.webp" alt="Kaunter pendaftaran sebenar Klinik Pergigian Infinity Dental" width="1080" height="950"></div>
+        <div class="ids-body"><div class="ids-inner ids-steps">
+          <span class="ids-kicker">📍 Klinik sebenar kami · Putra Permai</span>
+          <h2 class="ids-h"><span>Apa jadi</span><span class="g">bila anda sampai.</span></h2>
+          <div class="ids-track">
+            <div class="ids-track-fill"></div>
+            <div class="ids-dots"><button type="button" aria-label="Langkah 1"></button><button type="button" aria-label="Langkah 2"></button><button type="button" aria-label="Langkah 3"></button><button type="button" aria-label="Langkah 4"></button><button type="button" aria-label="Langkah 5"></button></div>
+            <span class="ids-marker"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg></span>
+          </div>
+          <div class="ids-track-labels"><span>Sampai</span><span>Senyum</span></div>
+          <div class="ids-cards">
+            <div class="ids-card"><div class="n">1<small>Langkah</small></div><div><h3>Sampai &amp; daftar</h3><p>Staf sambut anda di kaunter. Ruang menunggu selesa, ada sudut permainan kanak-kanak.</p></div></div>
+            <div class="ids-card"><div class="n">2<small>Langkah</small></div><div><h3>Pemeriksaan doktor</h3><p>Doktor periksa gigi &amp; gusi, dan terangkan apa yang dijumpai sebelum mula.</p></div></div>
+            <div class="ids-card"><div class="n">3<small>Langkah</small></div><div><h3>Scaling &amp; polishing</h3><p>Plak &amp; karang gigi dibuang, permukaan gigi dilicinkan.</p></div></div>
+            <div class="ids-card"><div class="n">4<small>Langkah</small></div><div><h3>Express whitening*</h3><p>Untuk kes yang sesuai, bantu senyuman nampak lebih cerah.</p></div></div>
+            <div class="ids-card"><div class="n">5<small>Langkah</small></div><div><h3>Fluoride + free gift</h3><p>Lapisan fluoride bantu lindungi enamel. Balik bawa free gift 🎁</p></div></div>
+          </div>
+        </div></div>
+      </section>
+
+      <!-- 8 FOR WHO -->
+      <section class="ids-slide" data-cta="Kenapa Infinity Dental?" style="--mh:50%;--mp:center 30%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s8-family.webp" alt="Ibu dan anak di ruang menunggu klinik gigi" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Sesuai untuk siapa?</span><span class="g">Hampir semua orang.</span></h2>
+          <ul class="ids-grid">
+            <li><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Dah lebih 6 bulan tak buat scaling</li>
+            <li><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Nak senyum lebih yakin sebelum tahun baru</li>
+            <li><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Kaki kopi &amp; teh, gigi rasa kusam</li>
+            <li><span class="ids-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Nak bawa keluarga, klinik mesra kanak-kanak</li>
+          </ul>
+          <p class="ids-note">Tak pasti sesuai atau tidak? Doktor akan nilai dulu semasa pemeriksaan.</p>
+        </div></div>
+      </section>
+
+      <!-- 9 REPORT CARD -->
+      <section class="ids-slide" data-cta="Apa kata pesakit?" data-layout="top">
+        <div class="ids-glow"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Kad semakan</span><span class="g">Infinity Dental.</span></h2>
+          <p class="ids-p">Perkara yang pesakit kami selalu sebut dalam ulasan Google:</p>
+          <table class="ids-table">
+            <thead><tr><th>Perkara</th><th>Apa anda dapat</th><th>✓</th></tr></thead>
+            <tbody>
+              <tr><td>Doktor</td><td>Gentle, teliti &amp; terangkan setiap step</td><td>✓</td></tr>
+              <tr><td>Rasa sakit?</td><td>"Tak rasa sakit", ramai yang cakap</td><td>✓</td></tr>
+              <tr><td>Suasana</td><td>Cozy, bersih, ada Netflix &amp; snek</td><td>✓</td></tr>
+              <tr><td>Anak-anak</td><td>Sudut permainan, mesra kanak-kanak</td><td>✓</td></tr>
+              <tr><td>Kos</td><td>Telus, dijelaskan sebelum rawatan</td><td>✓</td></tr>
+              <tr><td>Lokasi</td><td>Jalan kaki dari MRT Putra Permai</td><td>✓</td></tr>
+              <tr class="total"><td>Rating</td><td>Google</td><td>4.9★</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </section>
+
+      <!-- 10 REVIEWS -->
+      <section class="ids-slide" data-cta="OK, tunjuk promo!" data-enter="reviews" style="--mh:46%;--mp:center 28%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s10-cafe.webp" alt="Wanita ketawa dengan senyuman yakin bersama kawan" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Bukan kami yang cakap.</span><span class="g">4.9★ di Google.</span></h2>
+          <div class="ids-revs ids-noTap">
+            <div class="ids-rev-vp"><div class="ids-rev-row">
+              <article class="ids-rev"><div class="ids-rev-h"><span class="ids-rev-av">HN</span><div><b>Hani Nadhirah</b><span><span class="ids-stars">★★★★★</span>Ulasan Google</span></div></div><q>Overall memang puas hati scaling kt sini. Dari awal sampai habis treatment smooth gila! Memang berbaloi dengan harga. Will come again!</q></article>
+              <article class="ids-rev"><div class="ids-rev-h"><span class="ids-rev-av">NZ</span><div><b>Nabilah Zainal</b><span><span class="ids-stars">★★★★★</span>Ulasan Google</span></div></div><q>Dr. Azlindar seorang yang gentle, soft spoken. Treatment scalling &amp; polish tak rasa sakit. Environment klinik cozy, chill2, ada netflix &amp; tidbits. Toilet bersih.</q></article>
+              <article class="ids-rev"><div class="ids-rev-h"><span class="ids-rev-av">NM</span><div><b>Nur Munirah Zaini</b><span><span class="ids-stars">★★★★★</span>Ulasan Google</span></div></div><q>Tak menyesal langsung datang sini. Doktor baik, explain jelas, and yang paling best tak sakit 🤍🥰</q></article>
+              <article class="ids-rev"><div class="ids-rev-h"><span class="ids-rev-av">SF</span><div><b>Siti Fatimah Azzahrah</b><span><span class="ids-stars">★★★★★</span>Ulasan Google</span></div></div><q>Datang sini for scaling and polishing, service memang best. Process sepanjang the treatment pun smooth &amp; doctor sangat gentle. The place is very clean and well organized. 100% recommended!</q></article>
+              <article class="ids-rev"><div class="ids-rev-h"><span class="ids-rev-av">AR</span><div><b>Amira Rosli</b><span><span class="ids-stars">★★★★★</span>Ulasan Google</span></div></div><q>Especially the toys area, my toddler is occupied while waiting for me and my husband doing our scaling… I rasa gigi sangat bersih afterward so worth it. Siap dapat free gifts lagi.</q></article>
+              <article class="ids-rev"><div class="ids-rev-h"><span class="ids-rev-av">WY</span><div><b>Wawa Yazid</b><span><span class="ids-stars">★★★★★</span>Ulasan Google</span></div></div><q>Friendly doc &amp; staff! Recommended sgt klinik ni. My son first time check gigi, happy and tk menangis. See you again soon! 😍</q></article>
+            </div></div>
+            <div class="ids-rev-nav">
+              <button type="button" class="ids-rev-prev" aria-label="Ulasan sebelum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <div class="ids-rev-dots"></div>
+              <button type="button" class="ids-rev-next" aria-label="Ulasan seterusnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <p class="ids-note">Ulasan sebenar pesakit di Google, dipendekkan. Pengalaman setiap individu berbeza.</p>
+        </div></div>
+      </section>
+
+      <!-- 11 OFFER -->
+      <section class="ids-slide" data-cta="Tempah slot saya" data-final="1" data-fine="✓ Dipantau doktor gigi · ✓ Slot terhad · ✓ Free gift selagi stok ada" style="--mh:38%;--mp:center 45%">
+        <div class="ids-media"><img data-src="https://kpinfinitydental.com/wp-content/uploads/2026/11/infinity-story-s11-gift.webp" alt="Kotak hadiah berisi set penjagaan gigi" width="1080" height="1440"></div>
+        <div class="ids-body"><div class="ids-inner">
+          <h2 class="ids-h"><span>Year end special:</span><span class="g">Jimat RM160 hari ini.</span></h2>
+          <p class="ids-p">Senyum lebih bersih &amp; segar sebelum masuk tahun baru. Slot appointment terhad. Pilih rawatan anda:</p>
+          <div class="ids-tiers ids-noTap" role="radiogroup">
+            <button type="button" class="ids-tier on" role="radio" aria-checked="true" data-pkg="pkg4" data-label="4-in-1 Smile Care (RM300)" data-desc="Scaling + polishing + express whitening* + fluoride · Jimat RM160 · Free gift selagi stok ada">
+              <span class="bdg">Paling popular</span>
+              <svg class="ti" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 3C5 3 3.5 5 3.5 7.4c0 2 .7 3.3 1.2 5 .6 2.2.8 8.6 2.8 8.6 1.6 0 1.6-5 3-5h1c1.4 0 1.4 5 3 5 2 0 2.2-6.4 2.8-8.6.5-1.7 1.2-3 1.2-5C18.5 5 17 3 14.5 3c-1.6 0-2.4 1-3.5 1S9.1 3 7.5 3z"/></svg>
+              <span class="nm">4-in-1 Smile Care</span><span class="pr">RM300</span><s>RM460</s>
+            </button>
+            <button type="button" class="ids-tier" role="radio" aria-checked="false" data-pkg="assess" data-label="Comprehensive Smile Assessment (dari RM50)" data-desc="Pemeriksaan penuh + penilaian gusi + cadangan rawatan + pelan senyuman peribadi">
+              <span class="bdg alt">Mula di sini</span>
+              <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
+              <span class="nm">Smile Assessment</span><span class="pr"><small>dari </small>RM50</span><s></s>
+            </button>
+            <button type="button" class="ids-tier" role="radio" aria-checked="false" data-pkg="braces" data-label="Braces (dari RM200/bulan)" data-desc="Konsultasi braces &amp; pelan rawatan ikut keadaan gigi anda · Ansuran bulanan">
+              <span class="bdg alt">Ansuran</span>
+              <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><rect x="4" y="9" width="4" height="6" rx="1"/><rect x="10" y="9" width="4" height="6" rx="1"/><rect x="16" y="9" width="4" height="6" rx="1"/></svg>
+              <span class="nm">Braces</span><span class="pr"><small>dari </small>RM200</span><s style="text-decoration:none">/bulan</s>
+            </button>
+          </div>
+          <p class="ids-tier-desc">Scaling + polishing + express whitening* + fluoride · Jimat RM160 · Free gift selagi stok ada</p>
+          <p class="ids-legal">Tertakluk kepada terma &amp; syarat. Harga dan kesesuaian rawatan bergantung pada pemeriksaan &amp; penilaian doktor gigi. *Express whitening untuk kes yang sesuai. Gambar adalah ilustrasi. Klinik Pergigian Infinity Dental, The Atmosphere, Bandar Putra Permai, Seri Kembangan, Selangor.</p>
+        </div></div>
+      </section>
+
+    </div>
+
+    <div class="ids-hint" aria-hidden="true">Tap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
+
+    <div class="ids-ctabar">
+      <button class="ids-cta" type="button"><span class="ids-cta-t">Kenapa jadi macam tu?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="ids-fine"></p>
+    </div>
+
+    <div class="ids-sheet" aria-hidden="true">
+      <div class="ids-sheet-bg"></div>
+      <div class="ids-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="ids-sheet-t">
+        <div class="ids-grab"></div>
+        <button class="ids-close" type="button" aria-label="Tutup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <h2 id="ids-sheet-t">Tempah slot anda</h2>
+        <span class="ids-pick">✓ <span class="ids-pick-t">4-in-1 Smile Care (RM300)</span></span>
+        <p class="ids-sp">Isi borang di bawah, pasukan kami akan WhatsApp anda untuk sahkan tarikh &amp; masa.</p>
+        <div id="ids-form-host"><div class="ids-ph">Borang tempahan akan dipaparkan di sini.</div></div>
+        <div class="ids-or">atau</div>
+        <a class="ids-wa ctc_greetings" href="#ctc_greetings" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3z"/></svg>WhatsApp kami terus</a>
+        <p class="ids-addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><b style="color:#1c1408">Klinik Pergigian Infinity Dental</b><br>The Atmosphere, Bandar Putra Permai, Seri Kembangan, Selangor · Jalan kaki dari MRT Putra Permai</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var app=document.getElementById('ids-app'); if(!app||app.__ids) return; app.__ids=1;
+  document.documentElement.classList.add('ids-lock');
+  // lift the app to <body> so theme wrappers cannot clip or transform it
+  if(app.parentNode!==document.body){document.body.appendChild(app);}
+  var $=function(s,r){return (r||app).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||app).querySelectorAll(s))};
+  var slides=$$('.ids-slide'), N=slides.length, idx=0, prog=$('.ids-progress');
+  var ctaT=$('.ids-cta-t'), fine=$('.ids-fine'), back=$('.ids-back'), skip=$('.ids-skip'), hint=$('.ids-hint'), backdrop=$('.ids-backdrop');
+  var pkg={id:'pkg4',label:'4-in-1 Smile Care (RM300)'};
+  function track(name,params){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name},params||{}));}catch(e){}}
+  slides.forEach(function(){prog.appendChild(document.createElement('i'));});
+  var bars=$$('i',prog);
+  function load(i){var s=slides[i]; if(!s) return; $$('img[data-src]',s).forEach(function(im){im.src=im.getAttribute('data-src');im.removeAttribute('data-src');});}
+  var timers=[]; function clearTimers(){timers.forEach(clearTimeout);timers=[];}
+  function go(i,dir){
+    i=Math.max(0,Math.min(N-1,i)); if(i===idx&&app.__started) return;
+    app.__started=1; clearTimers();
+    slides.forEach(function(s,k){s.classList.toggle('is-on',k===i);s.classList.toggle('is-prev',k<i);s.setAttribute('aria-hidden',k===i?'false':'true');});
+    bars.forEach(function(b,k){b.className=k<i?'done':(k===i?'on':'');});
+    idx=i; var s=slides[i];
+    ctaT.textContent=s.getAttribute('data-cta')||'Seterusnya';
+    fine.textContent=s.getAttribute('data-fine')||'';
+    back.hidden=i===0; skip.hidden=i===N-1;
+    load(i);load(i+1);load(i+2);
+    var im=s.querySelector('.ids-media img'); if(im){backdrop.style.backgroundImage='url("'+(im.currentSrc||im.src)+'")';}
+    var body=s.querySelector('.ids-body'); if(body) body.scrollTop=0;
+    var en=s.getAttribute('data-enter'); if(en&&enter[en]) enter[en](s);
+    if(i>0) hint.classList.add('off');
+    track('story_slide',{story_slide:i+1});
+  }
+  function next(){ if(slides[idx].hasAttribute('data-final')) openSheet(); else go(idx+1,1); }
+  function prev(){ go(idx-1,-1); }
+  $('.ids-cta').addEventListener('click',next);
+  back.addEventListener('click',prev);
+  skip.addEventListener('click',function(){track('story_skip',{from:idx+1});go(N-1,1);});
+  // tap zones (left 30% = back, rest = next) like stories
+  $('.ids-slides').addEventListener('click',function(e){
+    if(e.target.closest('a,button,input,select,textarea,label,.ids-noTap,table')) return;
+    var r=app.querySelector('.ids-frame').getBoundingClientRect(); var x=e.clientX-r.left;
+    if(x<r.width*0.3) prev(); else if(!slides[idx].hasAttribute('data-final')) go(idx+1,1);
+  });
+  // swipe
+  var sx=null,sy=null;
+  $('.ids-slides').addEventListener('touchstart',function(e){if(e.target.closest('.ids-noTap')){sx=null;return;}sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  $('.ids-slides').addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4){dx<0?(slides[idx].hasAttribute('data-final')||go(idx+1,1)):prev();}sx=null;},{passive:true});
+  document.addEventListener('keydown',function(e){ if(sheet.classList.contains('open')){if(e.key==='Escape')closeSheet();return;} if(e.key==='ArrowRight')next(); else if(e.key==='ArrowLeft')prev(); });
+
+  // slide behaviours
+  var enter={
+    compare:function(s){var c=s.querySelector('.ids-cmp');set(c,'a');timers.push(setTimeout(function(){set(c,'b');},1300));},
+    steps:function(s){stepTo(s,0);var k=0;(function tick(){timers.push(setTimeout(function(){k++;if(k<5){stepTo(s,k);tick();}},2100));})();},
+    reviews:function(s){revTo(s,0);var k=0,n=$$('.ids-rev',s).length;(function tick(){timers.push(setTimeout(function(){k=(k+1)%n;revTo(s,k);tick();},4800));})();}
+  };
+  $$('.ids-ba').forEach(function(ba){$$('.ids-ba-tabs button',ba).forEach(function(b){b.addEventListener('click',function(){var k=+b.getAttribute('data-ba');
+    $$('.ids-ba-tabs button',ba).forEach(function(o){o.classList.toggle('on',o===b);});
+    $$('.ids-ba-frame img',ba).forEach(function(im,j){im.classList.toggle('on',j===k);});
+    $$('.ids-ba-cap',ba).forEach(function(c){c.hidden=+c.getAttribute('data-ba-cap')!==k;});});});});
+  function set(c,v){if(c.getAttribute('data-v')===v)return;c.setAttribute('data-v',v);$$('.ids-toggle button',c).forEach(function(b){b.classList.toggle('on',b.getAttribute('data-v')===v);});var p=c.querySelector('.ids-price');p.classList.remove('ids-swap');void p.offsetWidth;p.classList.add('ids-swap');}
+  $$('.ids-cmp .ids-toggle button').forEach(function(b){b.addEventListener('click',function(){clearTimers();set(b.closest('.ids-cmp'),b.getAttribute('data-v'));});});
+  function stepTo(s,k){var dots=$$('.ids-dots button',s),cards=$$('.ids-card',s);dots.forEach(function(d,j){d.classList.toggle('done',j<=k);});cards.forEach(function(c,j){c.classList.toggle('on',j===k);c.classList.toggle('next',j===k+1);});var pct=(k/(dots.length-1));s.querySelector('.ids-marker').style.left='calc(8px + '+pct+' * (100% - 16px))';s.querySelector('.ids-track-fill').style.width='calc('+pct+' * (100% - 16px))';}
+  $$('.ids-steps').forEach(function(st){$$('.ids-dots button',st).forEach(function(d,j){d.addEventListener('click',function(){clearTimers();stepTo(st.closest('.ids-slide'),j);});});});
+  function revTo(s,k){var row=s.querySelector('.ids-rev-row'),dots=$$('.ids-rev-dots i',s);row.style.transform='translateX('+(-100*k)+'%)';row.setAttribute('data-k',k);dots.forEach(function(d,j){d.classList.toggle('on',j===k);});}
+  $$('.ids-revs').forEach(function(rv){var s=rv.closest('.ids-slide'),n=$$('.ids-rev',rv).length,dw=rv.querySelector('.ids-rev-dots');for(var j=0;j<n;j++)dw.appendChild(document.createElement('i'));
+    function cur(){return +rv.querySelector('.ids-rev-row').getAttribute('data-k')||0;}
+    rv.querySelector('.ids-rev-prev').addEventListener('click',function(){clearTimers();revTo(s,(cur()-1+n)%n);});
+    rv.querySelector('.ids-rev-next').addEventListener('click',function(){clearTimers();revTo(s,(cur()+1)%n);});
+    var rx=null;rv.addEventListener('touchstart',function(e){rx=e.touches[0].clientX;},{passive:true});
+    rv.addEventListener('touchend',function(e){if(rx===null)return;var dx=e.changedTouches[0].clientX-rx;if(Math.abs(dx)>40){clearTimers();revTo(s,(cur()+(dx<0?1:-1)+n)%n);}rx=null;},{passive:true});
+    revTo(s,0);});
+
+  // tiers
+  var desc=$('.ids-tier-desc');
+  $$('.ids-tier').forEach(function(t){t.addEventListener('click',function(){$$('.ids-tier').forEach(function(o){o.classList.toggle('on',o===t);o.setAttribute('aria-checked',o===t?'true':'false');});desc.innerHTML=t.getAttribute('data-desc');pkg={id:t.getAttribute('data-pkg'),label:t.getAttribute('data-label')};track('story_pick',{story_package:pkg.id});});});
+
+  // booking sheet
+  var sheet=$('.ids-sheet'), host=$('#ids-form-host'), wa=$('.ids-wa'), moved=false;
+  var match={pkg4:/year\s*end/i,assess:/assess/i,braces:/^\s*braces\s*$/i};
+  var gmatch={pkg4:/scal+ing/i,braces:/^\s*braces\s*$/i}; // Click to Chat greetings form has no 'Year End' option
+  function attachForm(){
+    if(moved) return true;
+    var src=document.getElementById('ids-form-src'); if(!src) return false;
+    host.innerHTML=''; host.appendChild(src); src.style.display='block'; moved=true; return true;
+  }
+  function preselect(){
+    var sel=host.querySelector('select'); if(!sel) return;
+    for(var i=0;i<sel.options.length;i++){ if(match[pkg.id]&&match[pkg.id].test(sel.options[i].text)){ sel.selectedIndex=i; sel.dispatchEvent(new Event('change',{bubbles:true})); if(window.jQuery){try{window.jQuery(sel).trigger('change');}catch(e){}} break; } }
+  }
+  function openSheet(){
+    attachForm(); preselect();
+    $('.ids-pick-t').textContent=pkg.label;
+    var msg='Hi Infinity Dental, saya nak tempah slot untuk '+pkg.label+'. (Dari promo Year End Smile Care)';
+    waUrl='https://wa.me/'+app.getAttribute('data-wa')+'?text='+encodeURIComponent(msg);
+    if(hasCtc()){ try{ if(window.ht_ctc_chat_var) window.ht_ctc_chat_var.pre_filled=msg; }catch(e){} }
+    sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false');
+    track('story_book_open',{story_package:pkg.id});
+  }
+  function closeSheet(){sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true');}
+  $('.ids-close').addEventListener('click',closeSheet);
+  $('.ids-sheet-bg').addEventListener('click',closeSheet);
+  // WhatsApp: use the site's Click to Chat greetings form when present (keeps the CRM/tracking flow), else plain wa.me
+  // (checked at click time: the plugin renders in the footer, after this script)
+  var waUrl='https://wa.me/'+app.getAttribute('data-wa');
+  function hasCtc(){return !!document.querySelector('#ht-ctc-chat .ht_ctc_chat_greetings_box');}
+  wa.addEventListener('click',function(e){track('story_whatsapp',{story_package:pkg.id});
+    if(hasCtc()){ setTimeout(closeSheet,60); setTimeout(function(){ var g=document.querySelector('#ht-ctc-chat select'); if(!g) return; for(var i=0;i<g.options.length;i++){ if(gmatch[pkg.id]&&gmatch[pkg.id].test(g.options[i].text)){ g.selectedIndex=i; g.dispatchEvent(new Event('change',{bubbles:true})); break; } } },300); }
+    else { e.preventDefault(); window.open(waUrl,'_blank','noopener'); }});
+  if(window.jQuery){try{window.jQuery(document).on('fluentform_submission_success',function(){track('story_form_submit',{story_package:pkg.id});});}catch(e){}}
+
+  // start
+  attachForm();
+  go(/#promo|#offer/i.test(location.hash)?N-1:0);
+})();
+</script>
